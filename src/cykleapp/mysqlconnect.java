@@ -26,7 +26,7 @@ public class mysqlconnect {
 
             switch(m){
                 case SKOCZOW:
-                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
+                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=no","obiady","technitools192");
                     System.out.println("Połączono z serwerem MySQL SKOCZÓW IP: 10.0.1.215:3306");
                     break;
                 case USTRON:
