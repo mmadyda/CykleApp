@@ -115,6 +115,8 @@ import org.apache.poi.ss.usermodel.DataFormat;
  * @author <a href="mailto:marekmadyda@gmail.com">Marek Madyda</a>
  */
 public class cykleFXController implements Initializable {
+    
+    private final boolean DEBUG = true;
 
     @FXML
     private Color x2;
@@ -595,13 +597,13 @@ public class cykleFXController implements Initializable {
             String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"';";
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))";
             String sqlNow = "select NOW() as teraz";
-            System.out.println(sqlNorma);
+            if(DEBUG)
+            {
+                System.out.println(sql);
+                System.out.println(sqlNorma);
+            }
             
             
-            
-            
-                
-            //System.out.println(sql);
             pst = conn.prepareStatement(sql);
             
             rs = pst.executeQuery(sql);
@@ -700,7 +702,11 @@ public class cykleFXController implements Initializable {
 
                 LocalDateTime dataWpisaniaNormy = LocalDateTime.parse(dataString, formatter);
                 
-                System.out.println(dataWpisaniaNormy.getHour());
+                if(DEBUG)
+                {
+                    System.out.println(dataWpisaniaNormy.getHour());
+                }
+
                 
                 
                 
@@ -779,8 +785,11 @@ public class cykleFXController implements Initializable {
                     //JEŚLI DZISIEJSZA DATA TO TRZEBA OBLICZYĆ PROCENT NORMY JAKA MA JUŻ ZOSTAĆ WYKONANA
                     if( d.getDate().getDayOfYear() == nowSqlDate.getDayOfYear())
                     {
-                        System.out.println("OBECNA DATA");
-                        System.out.println(nowSqlDate);
+                        if(DEBUG)
+                        {
+                            System.out.println("OBECNA DATA");
+                            System.out.println(nowSqlDate);
+                        }
                         
                         czasMinut = nowSqlDate.getMinute();
                         czasGodzin = nowSqlDate.getHour();
@@ -789,11 +798,14 @@ public class cykleFXController implements Initializable {
                     //d.getDate().getDayOfYear() > nowSqlDate.getDayOfYear()
                     else if(d.getDate().isAfter(nowSqlDate))
                     {
-                        System.out.println("WIĘKSZA DATA");
-                        System.out.println(nowSqlDate);
+                        if(DEBUG)
+                        {
+                            System.out.println("WIĘKSZA DATA");
+                            System.out.println(nowSqlDate);
+                        }
                         
-                         czasMinut = 0;
-                         czasGodzin = 0;
+                        czasMinut = 0;
+                        czasGodzin = 0;
                     }
                     else
                     {
@@ -803,14 +815,21 @@ public class cykleFXController implements Initializable {
                     
 
                     Double czesc = (czasGodzin+czasMinut/60)*poprzedniaNorma.getNorma();
-                    System.out.println("czesc normy "+czesc);
+                    if(DEBUG)
+                    {
+                        System.out.println("czesc normy "+czesc);
+                    }
+                    
                     norma += czesc;
                 }
                 poprzedniaNorma = d;
             }
-            System.out.println("TAB");
-            System.out.println(tab);
-            System.out.println("norma: "+norma);
+            if(DEBUG)
+            {
+                System.out.println("TAB");
+                System.out.println(tab);
+                System.out.println("norma: "+norma);
+            }
 
             
             //END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA 
@@ -1153,7 +1172,10 @@ public class cykleFXController implements Initializable {
             public void run()
             {
                 nazwaMaszynyDoExcel = wybranaMaszyna;
-                System.out.println("nazwa do excel "+nazwaMaszynyDoExcel);
+                if(DEBUG)
+                {
+                    System.out.println("nazwa do excel "+nazwaMaszynyDoExcel);
+                }
                  
                 s_wtrysk = new XYChart.Series();
                 s_wtrysk.setName("wtrysk");
@@ -1296,7 +1318,10 @@ public class cykleFXController implements Initializable {
             String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))";
             String sqlNow = "select NOW() as teraz";
-            System.out.println(sqlNorma);
+            if(DEBUG)
+            {
+                System.out.println(sqlNorma);
+            }
             
             
             
@@ -1400,7 +1425,10 @@ public class cykleFXController implements Initializable {
 
                 LocalDateTime dataWpisaniaNormy = LocalDateTime.parse(dataString, formatter);
                 
-                System.out.println(dataWpisaniaNormy.getHour());
+                if(DEBUG)
+                {
+                    System.out.println(dataWpisaniaNormy.getHour());
+                }
                 
                 
                 
@@ -1475,16 +1503,22 @@ public class cykleFXController implements Initializable {
                             d.getDate().getDayOfYear() == nowSqlDate.getDayOfYear() &&
                                         d.getDate().getHour() == nowSqlDate.getHour())
                     {
+                        if(DEBUG)
+                        {
                         System.out.println("OBECNA DATA");
                         System.out.println(nowSqlDate);
+                        }
                         
                         czas = nowSqlDate.getMinute();
                     }
                     //JEŚLI DATA NA WYKRESIE JEST PÓŹNIEJ NIŻ DATA OBECNA WSZYSTKO NA 0
                     else if(d.getDate().isAfter(nowSqlDate))
                     {
+                        if(DEBUG)
+                        {
                         System.out.println("WIĘKSZA DATA");
                         System.out.println(nowSqlDate);
+                        }
                         
                          czas = 0;
                     }
@@ -1495,14 +1529,20 @@ public class cykleFXController implements Initializable {
                     
 
                     Double czesc = czas/60*poprzedniaNorma.getNorma();
-                    System.out.println("czesc normy "+czesc);
+                    if(DEBUG)
+                    {
+                        System.out.println("czesc normy "+czesc);
+                    }
                     norma += czesc;
                 }
                 poprzedniaNorma = d;
             }
-            System.out.println("TAB");
-            System.out.println(tab);
-            System.out.println("norma: "+norma);
+            if(DEBUG)
+            {
+                System.out.println("TAB");
+                System.out.println(tab);
+                System.out.println("norma: "+norma);
+            }
 
             
             //END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA 
@@ -1789,8 +1829,7 @@ public class cykleFXController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
+
         ustawDate();
         Lstatus.setText("TECHNIPLAST");
         ProgressBar.setVisible(false);
@@ -3517,7 +3556,7 @@ public class cykleFXController implements Initializable {
         
     }
     public void shutdown(){
-       
+        
     }
     public boolean getZaladowanoOkno()
     {
