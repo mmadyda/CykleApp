@@ -1,0 +1,44 @@
+//uruchomienie funkcji w w¹tku
+Runnable task = new Runnable()
+
+{
+
+	public void run()
+
+	{
+
+		runTask();
+
+	}
+
+};
+
+
+
+Thread backgroundThread = new Thread(task);
+
+backgroundThread.setDaemon(true);
+
+
+backgroundThread.start();
+
+
+
+
+//tam gdzie sie zmienia GUI trzeba wstawiæ w funkcji:
+
+Platform.runLater(new Runnable()
+
+{
+
+	@Override
+
+	public void run()
+
+	{
+
+		statusLabel.setText(status);
+
+	}
+
+});

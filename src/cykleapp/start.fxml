@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioMenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.startFXController">
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="395.0" prefWidth="590.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                  <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="0.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" minWidth="15.0" prefWidth="20.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="274.0" minWidth="10.0" prefWidth="264.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="202.0" minWidth="25.0" prefWidth="50.0" />
+                <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="317.0" minWidth="10.0" prefWidth="248.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" minWidth="15.0" prefWidth="20.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="ALWAYS" minWidth="0.0" prefWidth="20.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints maxHeight="59.0" minHeight="0.0" prefHeight="21.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="38.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="134.0" minHeight="10.0" prefHeight="22.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="116.0" minHeight="80.0" prefHeight="103.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="115.0" minHeight="8.0" prefHeight="13.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="171.0" minHeight="45.0" prefHeight="63.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="171.0" minHeight="10.0" prefHeight="19.0" vgrow="NEVER" />
+                <RowConstraints minHeight="80.0" prefHeight="95.0" vgrow="SOMETIMES" />
+                  <RowConstraints maxHeight="147.0" minHeight="4.0" prefHeight="26.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Analizuj pojedynczą wtryskarkę" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton id="wtryskarka" fx:id="BTNanalizujWtryskarke" buttonType="RAISED" maxHeight="100.0" maxWidth="100.0" onAction="#BTNanalizujWtryskarkeAction" onMouseEntered="#BTNanalizujWtryskarkeMouseEntered" onMouseExited="#BTNanalizujWtryskarkeMouseExited" ripplerFill="#ffffff00" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Label text="Moduł automatyka" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton id="automatyk" fx:id="BTNmodułAutomatyka" buttonType="RAISED" maxHeight="100.0" maxWidth="100.0" onAction="#BTNmodułAutomatykaAction" onMouseEntered="#BTNmodułAutomatykaMouseEntered" onMouseExited="#BTNmodułAutomatykaMouseExited" ripplerFill="#ffffff00" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="2" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Label text="Analizuj wtryskarki" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton id="wtryskarki" fx:id="BTNanalizujWiele" buttonType="RAISED" maxHeight="100.0" maxWidth="100.0" onAction="#BTNanalizujWieleAction" onMouseEntered="#BTNanalizujWieleMouseEntered" onMouseExited="#BTNanalizujWieleMouseExited" ripplerFill="#ffffff00" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <Label contentDisplay="TOP" text="Hala produkcyjna" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="TOP">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <JFXButton id="hala" fx:id="BTNpodgladHali" buttonType="RAISED" maxHeight="100.0" maxWidth="100.0" onAction="#BTNpodgladHaliAction" onMouseEntered="#BTNpodgladHaliMouseEntered" onMouseExited="#BTNpodgladHaliMouseExited" pickOnBounds="false" ripplerFill="#ffffff00" textAlignment="CENTER" wrapText="true" GridPane.columnIndex="4" GridPane.rowIndex="7">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </JFXButton>
+                  <JFXSpinner fx:id="progressDeska" maxHeight="20.0" maxWidth="20.0" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
+                  <JFXSpinner fx:id="progressWtryskarki" maxHeight="20.0" maxWidth="20.0" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                  <JFXSpinner fx:id="progressWtryskarka" maxHeight="20.0" maxWidth="20.0" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <JFXSpinner fx:id="progressAutomatyk" maxHeight="20.0" maxWidth="20.0" prefHeight="20.0" prefWidth="20.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <JFXComboBox id="CBmiejsce" fx:id="CBmiejsce" onAction="#CBmiejsceAction" prefHeight="25.0" prefWidth="161.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="5" GridPane.valignment="BOTTOM" />
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <FlowPane alignment="CENTER" columnHalignment="CENTER" prefWrapLength="1000.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane alignment="CENTER" prefHeight="43.0" prefWidth="630.0">
+               <columnConstraints>
+                  <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <MenuButton fx:id="CBserwer" mnemonicParsing="false" text="Serwer danych" GridPane.columnIndex="1">
+                     <items>
+                        <RadioMenuItem fx:id="rMenuSkoczow" mnemonicParsing="false" onAction="#rMenuSkoczowAction" selected="true" text="Skoczów">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="serwer" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="rMenuUstron" mnemonicParsing="false" onAction="#rMenuUstronAction" text="Ustroń" toggleGroup="$serwer" />
+                     </items>
+                  </MenuButton>
+                  <MenuButton id="BTNmenu" fx:id="BTNmenu" mnemonicParsing="false">
+                    <items>
+                        <MenuItem fx:id="pomocMIT" mnemonicParsing="false" onAction="#pomocMITaction" text="Pomoc" />
+                        <MenuItem fx:id="oProgramieMIT" mnemonicParsing="false" onAction="#oProgramieMITaction" text="O programie" />
+                    </items>
+                  </MenuButton>
+                  <ImageView fitHeight="100.0" fitWidth="239.0" focusTraversable="true" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" styleClass="logo" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                     <image>
+                        <Image url="@img/logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </GridPane>
+         </children>
+      </FlowPane>
+   </top>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+   <right>
+      <Pane maxWidth="40.0" minWidth="40.0" prefWidth="40.0" BorderPane.alignment="TOP_RIGHT" />
+   </right>
+   <left>
+      <Pane maxWidth="30.0" minWidth="30.0" prefWidth="30.0" BorderPane.alignment="TOP_LEFT" />
+   </left>
+   <bottom>
+      <Pane minHeight="60.0" prefHeight="60.0" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>

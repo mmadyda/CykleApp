@@ -1,0 +1,75 @@
+
+.SplitPane {
+    /*
+    -fx-background-color: transparent;
+    */
+    -fx-background-image: url("img/bg50.png");
+    -fx-background-position: center, center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: cover, auto;
+
+}
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+.scroll-pane {
+    
+   -fx-background-color: transparent;
+   
+}
+.chart-legend { -fx-background-color: transparent; }  
+.chart{ -fx-background-color: transparent; }  
+
+.default-color0.chart-area-symbol{
+     -fx-background-color: rgba(0,0,0,0.5), white;
+     -fx-background-insets: 0, 2;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color0.chart-series-area-line{
+     -fx-stroke: rgba(0,0,0,0.5);
+}
+
+.default-color0.chart-series-area-fill{
+    
+    -fx-fill:  rgba(153, 255, 51,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+#wtryskarka {          
+    -fx-graphic: url("img/wtryskarka.png");
+}
+#wtryskarki {          
+    -fx-graphic: url("img/wtryskarki.png");
+}
+#automatyk {          
+    -fx-graphic: url("img/automatyk.png");
+}
+#hala {          
+    -fx-graphic: url("img/zaklad.png");
+}
+
+.root{
+    -fx-background-color: transparent;
+}
+#BTNmenu {          
+    -fx-graphic: url("img/help33.png");
+    -fx-background-color: transparent;
+    
+}
+.combo-box {
+    -fx-font-size: 18px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+}
+.combo-box.center-aligned>.list-cell {
+    -fx-alignment: center-left;
+}
+.combo-box>.list-cell {
+    -fx-alignment: center-left;
+}

@@ -1,0 +1,4 @@
+keytool -genkey -keystore myKeystore -alias kamaro
+
+
+jarsigner -keystore myKeystore CykleApp.jar kamaro

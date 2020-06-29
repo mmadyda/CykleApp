@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: CykleApp
+JavaFX-Preloader-Class: cykleapp.MyPreloader
+X-COMMENT: Main-Class will be added automatically by build
+Implementation-Vendor: Marek Madyda
+Main-Class: cykleapp.CykleApp
+Permissions: sandbox
+Codebase: *
+JavaFX-Version: 8.0

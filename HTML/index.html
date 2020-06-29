@@ -1,0 +1,84 @@
+<html><head>
+  <SCRIPT src="./web-files/dtjava.js"></SCRIPT>
+<script>
+    function launchApplication(jnlpfile) {
+        dtjava.launch(            {
+                url : 'CykleApp.jnlp',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxqbmxwIHNwZWM9IjEuMCIgeG1sbnM6amZ4PSJodHRwOi8vamF2YWZ4LmNvbSIgaHJlZj0iQ3lrbGVBcHAuam5scCI+DQogIDxpbmZvcm1hdGlvbj4NCiAgICA8dGl0bGU+Q3lrbGVBcHA8L3RpdGxlPg0KICAgIDx2ZW5kb3I+TWFyZWsgTWFkeWRhPC92ZW5kb3I+DQogICAgPGRlc2NyaXB0aW9uPm51bGw8L2Rlc2NyaXB0aW9uPg0KICAgIDxvZmZsaW5lLWFsbG93ZWQvPg0KICA8c2hvcnRjdXQ+PGRlc2t0b3AvPjwvc2hvcnRjdXQ+DQogIDwvaW5mb3JtYXRpb24+DQogIDxyZXNvdXJjZXM+DQogICAgPGoyc2UgdmVyc2lvbj0iMS42KyIgamF2YS12bS1hcmdzPSItc3BsYXNoOmN5a2xlYXBwL2ltZy9sb2dvLmdpZiAiICBocmVmPSJodHRwOi8vamF2YS5zdW4uY29tL3Byb2R1Y3RzL2F1dG9kbC9qMnNlIi8+DQogICAgPGphciBocmVmPSJDeWtsZUFwcC5qYXIiIHNpemU9Ijg0OTg4NzIiIGRvd25sb2FkPSJlYWdlciIgLz4NCiAgICA8amFyIGhyZWY9ImxpYlxqZm9lbml4LTguMC4xLmphciIgc2l6ZT0iMjQ5MTU3MSIgZG93bmxvYWQ9ImxhenkiIC8+DQogICAgPGphciBocmVmPSJsaWJcbXlzcWwtY29ubmVjdG9yLWphdmEtNS4xLjQ1LWJpbi5qYXIiIHNpemU9IjEwMzk5MzgiIGRvd25sb2FkPSJsYXp5IiAvPg0KICA8L3Jlc291cmNlcz4NCjxzZWN1cml0eT4NCiAgPGFsbC1wZXJtaXNzaW9ucy8+DQo8L3NlY3VyaXR5Pg0KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9IkN5a2xlQXBwIiA+DQogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPg0KICA8L2FwcGxldC1kZXNjPg0KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0iY3lrbGVhcHAuQ3lrbGVBcHAiICBuYW1lPSJDeWtsZUFwcCIgLz4NCiAgPHVwZGF0ZSBjaGVjaz0iYWx3YXlzIi8+DQo8L2pubHA+DQo='
+            },
+            {
+                javafx : '8.0+',
+                jvmargs : '-splash:cykleapp/img/logo.gif '
+            },
+            {}
+        );
+        return false;
+    }
+</script>
+
+<script>
+    function javafxEmbedcykleapp() {
+        dtjava.embed(
+            {
+                id : 'cykleapp',
+                url : 'CykleApp.jnlp',
+                placeholder : 'javafx-app-placeholder',
+                width : '800',
+                height : '600',
+                jnlp_content : 'PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjxqbmxwIHNwZWM9IjEuMCIgeG1sbnM6amZ4PSJodHRwOi8vamF2YWZ4LmNvbSIgaHJlZj0iQ3lrbGVBcHAuam5scCI+DQogIDxpbmZvcm1hdGlvbj4NCiAgICA8dGl0bGU+Q3lrbGVBcHA8L3RpdGxlPg0KICAgIDx2ZW5kb3I+TWFyZWsgTWFkeWRhPC92ZW5kb3I+DQogICAgPGRlc2NyaXB0aW9uPm51bGw8L2Rlc2NyaXB0aW9uPg0KICAgIDxvZmZsaW5lLWFsbG93ZWQvPg0KICA8c2hvcnRjdXQ+PGRlc2t0b3AvPjwvc2hvcnRjdXQ+DQogIDwvaW5mb3JtYXRpb24+DQogIDxyZXNvdXJjZXM+DQogICAgPGoyc2UgdmVyc2lvbj0iMS42KyIgamF2YS12bS1hcmdzPSItc3BsYXNoOmN5a2xlYXBwL2ltZy9sb2dvLmdpZiAiICBocmVmPSJodHRwOi8vamF2YS5zdW4uY29tL3Byb2R1Y3RzL2F1dG9kbC9qMnNlIi8+DQogICAgPGphciBocmVmPSJDeWtsZUFwcC5qYXIiIHNpemU9Ijg0OTg4NzIiIGRvd25sb2FkPSJlYWdlciIgLz4NCiAgICA8amFyIGhyZWY9ImxpYlxqZm9lbml4LTguMC4xLmphciIgc2l6ZT0iMjQ5MTU3MSIgZG93bmxvYWQ9ImxhenkiIC8+DQogICAgPGphciBocmVmPSJsaWJcbXlzcWwtY29ubmVjdG9yLWphdmEtNS4xLjQ1LWJpbi5qYXIiIHNpemU9IjEwMzk5MzgiIGRvd25sb2FkPSJsYXp5IiAvPg0KICA8L3Jlc291cmNlcz4NCjxzZWN1cml0eT4NCiAgPGFsbC1wZXJtaXNzaW9ucy8+DQo8L3NlY3VyaXR5Pg0KICA8YXBwbGV0LWRlc2MgIHdpZHRoPSI4MDAiIGhlaWdodD0iNjAwIiBtYWluLWNsYXNzPSJjb20uamF2YWZ4Lm1haW4uTm9KYXZhRlhGYWxsYmFjayIgIG5hbWU9IkN5a2xlQXBwIiA+DQogICAgPHBhcmFtIG5hbWU9InJlcXVpcmVkRlhWZXJzaW9uIiB2YWx1ZT0iOC4wKyIvPg0KICA8L2FwcGxldC1kZXNjPg0KICA8amZ4OmphdmFmeC1kZXNjICB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgbWFpbi1jbGFzcz0iY3lrbGVhcHAuQ3lrbGVBcHAiICBuYW1lPSJDeWtsZUFwcCIgLz4NCiAgPHVwZGF0ZSBjaGVjaz0iYWx3YXlzIi8+DQo8L2pubHA+DQo='
+            },
+            {
+                javafx : '8.0+',
+                jvmargs : '-splash:cykleapp/img/logo.gif '
+            },
+            {}
+        );
+    }
+    <!-- Embed FX application into web page once page is loaded -->
+    dtjava.addOnloadCallback(javafxEmbedcykleapp);
+</script>
+<link rel="stylesheet" href="styles.css">
+<link rel="icon"  href="img/icon48.ico">
+<link href="https://fonts.googleapis.com/css?family=Gruppo" rel="stylesheet">
+<title>TECHNIPLAST kontrola masyzn</title>
+</head>
+<body>
+<div class="logo">
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1> Analizator pracy wtryskarek:</h1>
+
+<br>
+
+<form>
+<button class="btn btn-success" id = "submit" href='CykleApp.jnlp' onclick="return launchApplication('CykleApp.jnlp')">Uruchom program</button>	
+</form>
+<form method="get" action="download/CykleApp.zip">
+<button class="btn btn-success" id = "submit" >Pobierz program</button>	
+   
+</form>
+
+
+
+  
+
+  <!-- Applet will be inserted here -->
+ <!-- <div id='javafx-app-placeholder'></div> -->
+
+  <div class="bottom">
+   <center>
+               <font  size = "2"> <p style=" bottom: 0; width:100%; text-align: center"> <a href="http://www.techniplast.pl/pl.html">TECHNIPLAST</a> 2018<br>Marek Madyda</p></font>
+                
+           </center>
+</div>
+ 
+</body></html>
+
