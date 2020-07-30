@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXProgressBar?>
-<?import com.jfoenix.controls.JFXTextArea?>
 <?import eu.hansolo.medusa.Clock?>
-<?import eu.hansolo.medusa.Gauge?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.GaussianBlur?>
-<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -30,35 +26,17 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="938.0" prefWidth="1781.0">
                      <children>
-                        <ImageView id="TLO" fx:id="imgHala" fitHeight="795.0" fitWidth="1785.0" layoutX="55.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="TLO" fx:id="imgHala" fitHeight="886.0" fitWidth="1556.0" layoutX="61.0" layoutY="117.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/hala1.png" />
+                              <Image url="@img/hala_skoczow_cien.png" />
                            </image>
-                           <effect>
-                              <Glow level="0.0">
-                                 <input>
-                                    <Bloom />
-                                 </input>
-                              </Glow>
-                           </effect>
                         </ImageView>
                         <Circle fx:id="cien_zegar111" fill="#f2f2f2" layoutX="1668.0" layoutY="123.0" radius="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                            <effect>
                               <GaussianBlur radius="18.25" />
                            </effect>
                         </Circle>
-                        <Circle fx:id="cien_zegar11" fill="#f2f2f2" layoutX="141.0" layoutY="126.0" radius="112.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <effect>
-                              <GaussianBlur radius="18.25" />
-                           </effect>
-                        </Circle>
-                        <Circle fx:id="cien_zegar1" fill="#363636" layoutX="125.0" layoutY="110.0" radius="104.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="btnARBURG_35" layoutX="196.0" layoutY="486.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARBURG 35">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_34" layoutX="196.0" layoutY="417.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 34">
+                        <Button fx:id="btnARBURG_34" layoutX="286.0" layoutY="591.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 34">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -136,50 +114,6 @@
                            </effect>
                         </Circle>
                         <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1570.0" layoutY="1.0" prefHeight="219.0" prefWidth="202.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
-                        <Gauge fx:id="wskaznik" animated="true" decimals="0" layoutX="37.0" layoutY="24.0" prefHeight="173.0" prefWidth="177.0" shadowsEnabled="true" skinType="SIMPLE" smoothing="true" startFromZero="true" />
-                        <JFXTextArea fx:id="komunikaty" editable="false" labelFloat="true" layoutX="95.0" layoutY="678.0" onMouseClicked="#komunikatyLoad" prefHeight="305.0" prefWidth="1672.0" text="Kliknij aby wczytać komunikaty" unFocusColor="#4059a9">
-                           <font>
-                              <Font size="49.0" />
-                           </font>
-                           <effect>
-                              <Glow level="0.5" />
-                           </effect>
-                        </JFXTextArea>
-                        <Button fx:id="btnARBURG_33" layoutX="229.0" layoutY="312.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 33">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_32" layoutX="229.0" layoutY="238.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 32">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_31" layoutX="229.0" layoutY="165.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 31">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_36" layoutX="196.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARBURG 36">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_39" layoutX="1111.0" layoutY="444.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="205.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 39">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_41" layoutX="1337.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 41">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_42" layoutX="1495.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 42">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                      </children>
                   </AnchorPane>
               </content>

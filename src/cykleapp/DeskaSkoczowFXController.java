@@ -83,13 +83,8 @@ public class DeskaSkoczowFXController implements Initializable {
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;
     
-    private static final int liczba_podlaczonych_wtryskarek_ustron = 14;
-    private int liczba_ppracujacych_wtryskarek_ustron = 0;
     private double postep;
-    List<String> komunikatyTxt;
-    private boolean wczytanoKomunikaty;
-    private Timeline komunikatyTimeline;
-    private File fileText;
+
     private static final int czasZmianyKomunikatu = 20;
     private boolean zaladowano_okno = false;
             
@@ -145,8 +140,6 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnLEG_BRAK_DANYCH;
     @FXML
     private Label labLEG_BRAK_DANYCH;
-    private Button btnARBURG_49;
-   
     @FXML
     private Circle cien_zegar;
     @FXML
@@ -161,8 +154,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Circle cien_zegar111;
     @FXML
     private Circle cien_zegar11;
-    @FXML
-    private Button btnARBURG_35;
+
     @FXML
     private Button btnARBURG_34;
     
@@ -170,7 +162,7 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private ScrollPane ScrollPane;
     @FXML
-    private Button btnARBURG_36;
+    private Button btnARBURG_35;
     @FXML
     private Button btnARBURG_33;
     @FXML
@@ -178,11 +170,14 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private Button btnARBURG_31;
     @FXML
+    private Button btnARBURG_36;
+    @FXML
     private Button btnHAITIAN_39;
     @FXML
     private Button btnHAITIAN_41;
     @FXML
     private Button btnHAITIAN_42;
+  
 
     /**
      * Initializes the controller class.
@@ -196,18 +191,13 @@ public class DeskaSkoczowFXController implements Initializable {
         borderPane.setMinHeight(480);
         System.out.println("jestem w initialize DeskaSkoczowFXController");
         conn = mysqlconnect.ConnecrDb();
-        wczytanoKomunikaty = false;
+
         Platform.runLater(new Runnable(){
 
         @Override
         public void run(){
         //wczytywanie komunikatów
-        File komunikaty = new File("komunikaty.txt");
-         if(CykleApp.rootPref.get("OPEN_KOMUNIKATY_FILE", "")!= "")
-        {
-        komunikaty = new File(CykleApp.rootPref.get("OPEN_KOMUNIKATY_FILE", ""));
-        } 
-        komunikaty(komunikaty);
+
         // koniec wczytywania komunikatów
         kolorLegenda();
         progressBar.setVisible(false);
@@ -229,7 +219,6 @@ public class DeskaSkoczowFXController implements Initializable {
         alertInternet.setHeaderText("Brak połączenia internetowego");
         alertInternet.setContentText("Przywróć połączenie internetowe");
         istniejace_maszyny = IstniejaceMaszynyUstron.LadujNazwyMaszyn();
-        wskaznik.setMaxValue(liczba_podlaczonych_wtryskarek_ustron);
            }
 
                     });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
@@ -281,19 +270,7 @@ public class DeskaSkoczowFXController implements Initializable {
         updater.setCycleCount(Timeline.INDEFINITE);
         updater.play();
         
-        //Zmiana komunikatów
-        komunikatyTimeline = new Timeline();
-        komunikatyTimeline.setCycleCount(Animation.INDEFINITE);
-        KeyFrame zmienKomunikat = new KeyFrame(Duration.seconds(czasZmianyKomunikatu),
-                new EventHandler<ActionEvent>() {
 
-                    public void handle(ActionEvent event) {
-                        komunikaty(fileText);
-                    }
-                });
-
-        komunikatyTimeline.getKeyFrames().add(zmienKomunikat);
-        komunikatyTimeline.play();
         
          
         zaladowano_okno = true;
@@ -306,7 +283,6 @@ public class DeskaSkoczowFXController implements Initializable {
         if(jestInternet())
         {
             System.out.println("Aktualizowanie...");
-            liczba_ppracujacych_wtryskarek_ustron = 0;
             int i =1;
             for(Maszyna masfor:istniejace_maszyny)
             {
@@ -355,10 +331,6 @@ public class DeskaSkoczowFXController implements Initializable {
                     brak_zaop += (int)Float.parseFloat(rs.getString("brak_zaop"));
                     postoj += (int)Float.parseFloat(rs.getString("postoj"));
                     
-                    if(wtrysk > 0 || wybrak > 0)
-                    {
-                        liczba_ppracujacych_wtryskarek_ustron++;
-                    }
 
                 }
                 }
@@ -442,8 +414,7 @@ public class DeskaSkoczowFXController implements Initializable {
             }
             
         }
-        System.out.println("liczba pracujących wtryskarek: "+liczba_ppracujacych_wtryskarek_ustron);
-        wskaznik.setValue(liczba_ppracujacych_wtryskarek_ustron);     
+ 
     }
     //DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT
     public void przypiszKolory(Maszyna mas)
@@ -453,32 +424,6 @@ public class DeskaSkoczowFXController implements Initializable {
         switch (mas.getNazwa()) {
             case "ARBURG_34":
                 btnARBURG_34.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_35":
-                btnARBURG_35.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_36":
-                btnARBURG_36.setStyle(mas.getStyl());
-                break;
-
-            ////////////////////////////////////////////////////////////////////
-            case "ARBURG_31":
-                btnARBURG_31.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_32":
-                btnARBURG_32.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_33":
-                btnARBURG_33.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_39":
-                btnHAITIAN_39.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_41":
-                btnHAITIAN_41.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_42":
-                btnHAITIAN_42.setStyle(mas.getStyl());
                 break;
               
             default:
@@ -498,10 +443,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 {
                 updater.stop();
                 }
-                if(komunikatyTimeline != null)
-                {
-                komunikatyTimeline.stop();
-                }
+               
 
             } catch (SQLException ex) {
                 System.err.println("Błąd: " + ex.getMessage());
@@ -555,108 +497,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
         } 
     }
-     private void komunikaty(File plik)
-     {   
-          try 
-        { 
-             
-            if(plik != null)
-            {
-            komunikatyTxt = new ArrayList<String>();
-            //FileInputStream fstream_school = new FileInputStream(plik); 
-            //DataInputStream data_input = new DataInputStream(fstream_school); 
-            ///BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input)); 
-            BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(plik), "UTF8"));
-            String str_line; 
 
-            while ((str_line = buffer.readLine()) != null) 
-            { 
-                str_line = str_line.trim(); 
-                if ((str_line.length()!=0))  
-                { 
-                    komunikatyTxt.add(str_line);
-                } 
-            }
-            //arr = (String[])komunikatyTxt.toArray(new String[komunikatyTxt.size()]);
-
-            wczytanoKomunikaty = true;
-            liczbaKomunikatow = komunikatyTxt.size();
-            }
-
-        }
-        catch (Exception e)  
-        {
-         // Catch exception if any
-            System.err.println("Błąd komunikaty: " + e.getMessage());
-        }
-         if(wczytanoKomunikaty)
-         {
-             if(obecnyKomunikat == liczbaKomunikatow)
-             {
-                 obecnyKomunikat = 0;
-             }
-             komunikaty.setText(komunikatyTxt.get(obecnyKomunikat));
-             obecnyKomunikat++;
-         }
-     }
-
-    @FXML
-    private void komunikatyLoad(MouseEvent event) {
-    //String[] arr= null;
-    
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Wczytaj listę komunikatów");
-    //fileChooser.setInitialFileName("Wykres słupkowy.png");
-     fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("TXT", "*.txt")
-    );
-    if(CykleApp.rootPref.get("OPEN_KOMUNIKATY_DIR", "")!= "")
-                {
-                fileChooser.setInitialDirectory(new File(CykleApp.rootPref.get("OPEN_KOMUNIKATY_DIR", "")));
-                } 
-    
-    fileText = fileChooser.showOpenDialog(null);
-    if(fileText != null)
-    {
-    CykleApp.rootPref.put("OPEN_KOMUNIKATY_DIR", fileText.getParent());
-    CykleApp.rootPref.put("OPEN_KOMUNIKATY_FILE", fileText.getAbsolutePath());
-    }
-    try 
-    { 
-        if(fileText != null)
-        {
-        komunikatyTxt = new ArrayList<String>();
-        FileInputStream fstream_school = new FileInputStream(fileText); 
-        DataInputStream data_input = new DataInputStream(fstream_school); 
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input)); 
-        String str_line; 
-
-        while ((str_line = buffer.readLine()) != null) 
-        { 
-            str_line = str_line.trim(); 
-            if ((str_line.length()!=0))  
-            { 
-                komunikatyTxt.add(str_line);
-            } 
-        }
-
-        //arr = (String[])komunikatyTxt.toArray(new String[komunikatyTxt.size()]);
-        
-        wczytanoKomunikaty = true;
-        liczbaKomunikatow = komunikatyTxt.size();
-        }
-        
-    }
-    catch (Exception e)  
-    {
-     // Catch exception if any
-        System.err.println("Błąd: " + e.getMessage());
-    }
-    
-   
-            
-            
-    }
     public boolean getZaladowanoOkno()
     {
         return zaladowano_okno;
@@ -666,15 +507,19 @@ public class DeskaSkoczowFXController implements Initializable {
     private void oknoMouseClickedAction(MouseEvent event) {
         if(event.getClickCount() == 2)
         {
-            if(!startFXController.stageDeskaUstron.isFullScreen())
+            if(!startFXController.stageDeskaSkoczow.isFullScreen())
             {
-            startFXController.stageDeskaUstron.setFullScreen(true);
+            startFXController.stageDeskaSkoczow.setFullScreen(true);
             }
             else
             {
-                startFXController.stageDeskaUstron.setFullScreen(false);
+                startFXController.stageDeskaSkoczow.setFullScreen(false);
             }
         }
+    }
+
+    @FXML
+    private void komunikatyLoad(MouseEvent event) {
     }
 
   
