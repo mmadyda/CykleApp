@@ -69,7 +69,8 @@ public class startFXController implements Initializable {
     @FXML
     private JFXButton BTNanalizujWiele;
     
-    private DeskaFXController deskaController;
+    private DeskaUstronFXController deskaUstronController;
+    private DeskaSkoczowFXController deskaSkoczowController;
     private cykleFXController wtryskarkaController;
     private AutomatykFXController automatykController;
     private obciazenieFXController wtryskarkiController;
@@ -97,7 +98,8 @@ public class startFXController implements Initializable {
     @FXML
     private RadioMenuItem rMenuUstron;
     
-    public static Stage stageDeska;
+    public static Stage stageDeskaUstron;
+    public static Stage stageDeskaSkoczow;
     public static Stage stageAnalizujWtryskarke;
     public static Stage stageAnalizujWiele;
     public static Stage stageModulAutomatyka;
@@ -157,11 +159,17 @@ public class startFXController implements Initializable {
 
                 @Override
                 public void handle(ActionEvent event) {
-                    if(deskaController != null && deskaController.getZaladowanoOkno())
+                    if(deskaUstronController != null && deskaUstronController.getZaladowanoOkno())
                     {
                            progressDeska.setVisible(false);   
                            BTNpodgladHali.setDisable(false);
-                           deskaController = null;
+                           deskaUstronController = null;
+                    }
+                    if(deskaSkoczowController != null && deskaSkoczowController.getZaladowanoOkno())
+                    {
+                           progressDeska.setVisible(false);   
+                           BTNpodgladHali.setDisable(false);
+                           deskaSkoczowController = null;
                     }
                     if(wtryskarkaController != null && wtryskarkaController.getZaladowanoOkno())
                     {
@@ -306,122 +314,237 @@ public class startFXController implements Initializable {
 
     @FXML
     private void BTNpodgladHaliAction(ActionEvent event) {
-          if(jestInternet())
+        if(jestInternet())
         {
             if(CBmiejsce.getValue().equals("Ustroń"))
             {
-             Runnable taskDeskaRozdzielcza = new Runnable()
+            Runnable taskDeskaRozdzielcza = new Runnable()
             {
                 public void run(){
-        try {
-             progressDeska.setVisible(true);
-             BTNpodgladHali.setDisable(true);
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("deskaFX.fxml"));
-            Parent rootDeska = (Parent) fxmlLoader.load();
-            deskaController = fxmlLoader.getController();
-            DeskaFXController deskaControllerLocal = deskaController;
-            //marker okna
-            Scene sceneDeska = new Scene(rootDeska);
-                     
-            Platform.runLater(new Runnable(){
+            try {
+                progressDeska.setVisible(true);
+                BTNpodgladHali.setDisable(true);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("deskaUstronFX.fxml"));
+                Parent rootDeska = (Parent) fxmlLoader.load();
+                deskaUstronController = fxmlLoader.getController();
+                DeskaUstronFXController deskaControllerLocal = deskaUstronController;
+                //marker okna
+                Scene sceneDeska = new Scene(rootDeska);
+
+                Platform.runLater(new Runnable(){
+
+                        @Override
+                        public void run(){
+
+                stageDeskaUstron = new Stage();
+
+
+
+                //stage.getScene().getStylesheets().add(getClass().getResource("styleAutomatyk.css").toExternalForm());
+                //stage.initModality(Modality.APPLICATION_MODAL);
+
+
+                //stage.initStyle(StageStyle.DECORATED);
+                stageDeskaUstron.setTitle("Hala produkcyjna-Ustroń");
+                stageDeskaUstron.getIcons().add(new Image(getClass().getResourceAsStream("img/icon48.png")));
+                stageDeskaUstron.setScene(sceneDeska);  
+
+                String css = this.getClass().getResource("styleDeska.css").toExternalForm(); 
+                sceneDeska.getStylesheets().clear();
+                sceneDeska.getStylesheets().add(css);
+
+
+                //stage.setOnHidden(e -> controller.shutdown());
+
+                //Undecorator undecorator = new Undecorator(stage, (Region) rootDeska);
+                 //undecorator.getStylesheets().add(css);
+                 //undecorator.getStylesheets().add("skin/undecoratorDeska.css");
+                stageDeskaUstron.setOnCloseRequest(new EventHandler<WindowEvent>(){
 
                     @Override
-                    public void run(){
-                        
-            stageDeska = new Stage();
-                        
+                    public void handle(WindowEvent event) {
 
-            
-            //stage.getScene().getStylesheets().add(getClass().getResource("styleAutomatyk.css").toExternalForm());
-            //stage.initModality(Modality.APPLICATION_MODAL);
-            
-            
-            //stage.initStyle(StageStyle.DECORATED);
-            stageDeska.setTitle("Hala produkcyjna-Ustroń");
-            stageDeska.getIcons().add(new Image(getClass().getResourceAsStream("img/icon48.png")));
-            stageDeska.setScene(sceneDeska);  
-            
-            String css = this.getClass().getResource("styleDeska.css").toExternalForm(); 
-            sceneDeska.getStylesheets().clear();
-            sceneDeska.getStylesheets().add(css);
-            
-            
-            //stage.setOnHidden(e -> controller.shutdown());
-            
-            //Undecorator undecorator = new Undecorator(stage, (Region) rootDeska);
-             //undecorator.getStylesheets().add(css);
-             //undecorator.getStylesheets().add("skin/undecoratorDeska.css");
-            stageDeska.setOnCloseRequest(new EventHandler<WindowEvent>(){
-            
-                @Override
-                public void handle(WindowEvent event) {
+                        //event.consume();
+                        deskaControllerLocal.shutdown();
+                        //undecorator.setFadeOutTransition();
 
-                    //event.consume();
-                    deskaControllerLocal.shutdown();
-                    //undecorator.setFadeOutTransition();
-                    
+
+                    }
+                });
+
+                //stage.initStyle(StageStyle.TRANSPARENT);
+                stageDeskaUstron.initStyle(StageStyle.DECORATED);
+
+
+                //Scene scene = new Scene(undecorator);
+                //undecorator.installAccelerators(scene);
+                //undecorator.setFadeInTransition();
+                //scene.setFill(Color.TRANSPARENT);
+                stageDeskaUstron.show();
+                stageDeskaUstron.setScene(sceneDeska);
+
+
+
+                //stage.setWidth(1900);
+                //stage.setHeight(1060);
+
+                if(rozdzielczoscEkranuX != 0 && rozdzielczoscEkranuY != 0)
+                {
+                    stageDeskaUstron.setWidth(rozdzielczoscEkranuX*9/10);
+                    stageDeskaUstron.setHeight(rozdzielczoscEkranuY*9/10);
+                }
+                else
+                {
+                    stageDeskaUstron.setWidth(800);
+                    stageDeskaUstron.setHeight(600);
+                }
+                stageDeskaUstron.setMinWidth(800);
+                stageDeskaUstron.setMinHeight(600);
+                // to samo co w pliku Controler.java przy borderPane
+
+                //stage.show();
+                Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                stageDeskaUstron.setX((primScreenBounds.getWidth() - stageDeskaUstron.getWidth()) / 2);
+                stageDeskaUstron.setY((primScreenBounds.getHeight() - stageDeskaUstron.getHeight()) / 2);
+
 
                 }
-            });
-            
-            //stage.initStyle(StageStyle.TRANSPARENT);
-            stageDeska.initStyle(StageStyle.DECORATED);
-             
-            
-            //Scene scene = new Scene(undecorator);
-            //undecorator.installAccelerators(scene);
-            //undecorator.setFadeInTransition();
-            //scene.setFill(Color.TRANSPARENT);
-            stageDeska.show();
-            stageDeska.setScene(sceneDeska);
-            
-            
-            
-            //stage.setWidth(1900);
-            //stage.setHeight(1060);
-            
-            if(rozdzielczoscEkranuX != 0 && rozdzielczoscEkranuY != 0)
-            {
-                stageDeska.setWidth(rozdzielczoscEkranuX*9/10);
-                stageDeska.setHeight(rozdzielczoscEkranuY*9/10);
-            }
-            else
-            {
-                stageDeska.setWidth(800);
-                stageDeska.setHeight(600);
-            }
-            stageDeska.setMinWidth(800);
-            stageDeska.setMinHeight(600);
-            // to samo co w pliku Controler.java przy borderPane
-            
-            //stage.show();
-            Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-            stageDeska.setX((primScreenBounds.getWidth() - stageDeska.getWidth()) / 2);
-            stageDeska.setY((primScreenBounds.getHeight() - stageDeska.getHeight()) / 2);
-            
-            
-            }
 
-                    });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
+                        });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
 
-     
-        }
-        catch (IOException e) {
-            System.err.println("Błąd: " + e.getMessage());
-            BTNpodgladHaliAction(new ActionEvent());
-            progressDeska.setVisible(false);
-            BTNpodgladHali.setDisable(false);
-        }
-          }//END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN
+
+            }
+            catch (IOException e) {
+                System.err.println("Błąd: " + e.getMessage());
+                BTNpodgladHaliAction(new ActionEvent());
+                progressDeska.setVisible(false);
+                BTNpodgladHali.setDisable(false);
+            }
+        }//END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN
 
             };
 
-            Thread wczytywanieDanych = new Thread(taskDeskaRozdzielcza);
-            wczytywanieDanych.setName("Analiza obciazenia-uruchamianie okna");
-            wczytywanieDanych.setDaemon(true);
-            wczytywanieDanych.start();            
-        }//koniec Ustroń
-        }//koniec if
+            Thread wczytywanieDanychUstron = new Thread(taskDeskaRozdzielcza);
+            wczytywanieDanychUstron.setName("Analiza obciazenia-uruchamianie okna");
+            wczytywanieDanychUstron.setDaemon(true);
+            wczytywanieDanychUstron.start();            
+        }//koniec if Ustroń
+            
+        //HALA SKOCZÓW
+        if(CBmiejsce.getValue().equals("Skoczów"))
+            {
+            Runnable taskDeskaRozdzielczaSkoczow = new Runnable()
+            {
+                public void run(){
+            try {
+                progressDeska.setVisible(true);
+                BTNpodgladHali.setDisable(true);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("deskaSkoczowFX.fxml"));
+                Parent rootDeska = (Parent) fxmlLoader.load();
+                deskaSkoczowController = fxmlLoader.getController();
+                DeskaSkoczowFXController deskaControllerLocal = deskaSkoczowController;
+                //marker okna
+                Scene sceneDeska = new Scene(rootDeska);
+
+                Platform.runLater(new Runnable(){
+
+                        @Override
+                        public void run(){
+
+                stageDeskaSkoczow = new Stage();
+
+
+
+                //stage.getScene().getStylesheets().add(getClass().getResource("styleAutomatyk.css").toExternalForm());
+                //stage.initModality(Modality.APPLICATION_MODAL);
+
+
+                //stage.initStyle(StageStyle.DECORATED);
+                stageDeskaSkoczow.setTitle("Hala produkcyjna-Skoczów");
+                stageDeskaSkoczow.getIcons().add(new Image(getClass().getResourceAsStream("img/icon48.png")));
+                stageDeskaSkoczow.setScene(sceneDeska);  
+
+                String css = this.getClass().getResource("styleDeska.css").toExternalForm(); 
+                sceneDeska.getStylesheets().clear();
+                sceneDeska.getStylesheets().add(css);
+
+
+                //stage.setOnHidden(e -> controller.shutdown());
+
+                //Undecorator undecorator = new Undecorator(stage, (Region) rootDeska);
+                 //undecorator.getStylesheets().add(css);
+                 //undecorator.getStylesheets().add("skin/undecoratorDeska.css");
+                stageDeskaSkoczow.setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+                    @Override
+                    public void handle(WindowEvent event) {
+
+                        //event.consume();
+                        deskaControllerLocal.shutdown();
+                        //undecorator.setFadeOutTransition();
+
+
+                    }
+                });
+
+                //stage.initStyle(StageStyle.TRANSPARENT);
+                stageDeskaSkoczow.initStyle(StageStyle.DECORATED);
+
+
+                //Scene scene = new Scene(undecorator);
+                //undecorator.installAccelerators(scene);
+                //undecorator.setFadeInTransition();
+                //scene.setFill(Color.TRANSPARENT);
+                stageDeskaSkoczow.show();
+                stageDeskaSkoczow.setScene(sceneDeska);
+
+
+
+                //stage.setWidth(1900);
+                //stage.setHeight(1060);
+
+                if(rozdzielczoscEkranuX != 0 && rozdzielczoscEkranuY != 0)
+                {
+                    stageDeskaSkoczow.setWidth(rozdzielczoscEkranuX*9/10);
+                    stageDeskaSkoczow.setHeight(rozdzielczoscEkranuY*9/10);
+                }
+                else
+                {
+                    stageDeskaSkoczow.setWidth(800);
+                    stageDeskaSkoczow.setHeight(600);
+                }
+                stageDeskaSkoczow.setMinWidth(800);
+                stageDeskaSkoczow.setMinHeight(600);
+                // to samo co w pliku Controler.java przy borderPane
+
+                //stage.show();
+                Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+                stageDeskaSkoczow.setX((primScreenBounds.getWidth() - stageDeskaSkoczow.getWidth()) / 2);
+                stageDeskaSkoczow.setY((primScreenBounds.getHeight() - stageDeskaSkoczow.getHeight()) / 2);
+
+
+                }
+
+                        });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
+
+
+            }
+            catch (IOException e) {
+                System.err.println("Błąd: " + e.getMessage());
+                BTNpodgladHaliAction(new ActionEvent());
+                progressDeska.setVisible(false);
+                BTNpodgladHali.setDisable(false);
+            }
+        }//END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN END RUN
+
+            };
+
+            Thread wczytywanieDanychSkoczow = new Thread(taskDeskaRozdzielczaSkoczow);
+            wczytywanieDanychSkoczow.setName("Analiza obciazenia-uruchamianie okna");
+            wczytywanieDanychSkoczow.setDaemon(true);
+            wczytywanieDanychSkoczow.start();            
+        }//koniec if Skoczów
+        }//koniec if jest internet
     }
 
     @FXML
