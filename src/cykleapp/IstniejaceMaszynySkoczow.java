@@ -36,6 +36,7 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_68");
         CBmaszyna.getItems().add("ST_66");
         CBmaszyna.getItems().add("ST_46");
+        CBmaszyna.getItems().add("ST_59");
 
         
         CBmaszyna.setValue("ST_04");
@@ -68,6 +69,7 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_68"));
         maszyny.add(new Maszyna("ST_66"));
         maszyny.add(new Maszyna("ST_46"));
+        maszyny.add(new Maszyna("ST_59"));
      
         return maszyny;
         
