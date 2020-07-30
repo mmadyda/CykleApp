@@ -145,38 +145,46 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private Clock zegar;
     @FXML
-    private Gauge wskaznik;
-    @FXML
-    private Circle cien_zegar1;
-    @FXML
-    private JFXTextArea komunikaty;
-    @FXML
     private Circle cien_zegar111;
-    @FXML
-    private Circle cien_zegar11;
-
-    @FXML
-    private Button btnARBURG_34;
-    
     
     @FXML
     private ScrollPane ScrollPane;
     @FXML
-    private Button btnARBURG_35;
+    private Button btnST_29;
     @FXML
-    private Button btnARBURG_33;
+    private Button btnST_49;
     @FXML
-    private Button btnARBURG_32;
+    private Button btnST_50;
     @FXML
-    private Button btnARBURG_31;
+    private Button btnST_46;
     @FXML
-    private Button btnARBURG_36;
+    private Button btnST_59;
     @FXML
-    private Button btnHAITIAN_39;
+    private Button btnST_68;
     @FXML
-    private Button btnHAITIAN_41;
+    private Button btnST_57;
     @FXML
-    private Button btnHAITIAN_42;
+    private Button btnST_66;
+    @FXML
+    private Button btnST_51;
+    @FXML
+    private Button btnST_04;
+    @FXML
+    private Button btnST_27;
+    @FXML
+    private Button btnST_23;
+    @FXML
+    private Button btnST_25;
+    @FXML
+    private Button btnST_47;
+    @FXML
+    private Button btnST_55;
+    @FXML
+    private Button btnST_48;
+    @FXML
+    private Button btnST_52;
+    @FXML
+    private Button btnST_53;
   
 
     /**
@@ -218,7 +226,7 @@ public class DeskaSkoczowFXController implements Initializable {
         alertInternet.setTitle("TECHNIPLAST Analizator pracy wtryskarek: Błąd");
         alertInternet.setHeaderText("Brak połączenia internetowego");
         alertInternet.setContentText("Przywróć połączenie internetowe");
-        istniejace_maszyny = IstniejaceMaszynyUstron.LadujNazwyMaszyn();
+        istniejace_maszyny = IstniejaceMaszynySkoczow.LadujNazwyMaszyn();
            }
 
                     });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
@@ -269,10 +277,7 @@ public class DeskaSkoczowFXController implements Initializable {
         
         updater.setCycleCount(Timeline.INDEFINITE);
         updater.play();
-        
-
-        
-         
+  
         zaladowano_okno = true;
     }
 
@@ -422,10 +427,60 @@ public class DeskaSkoczowFXController implements Initializable {
         
         
         switch (mas.getNazwa()) {
-            case "ARBURG_34":
-                btnARBURG_34.setStyle(mas.getStyl());
+            case "ST_23":
+                btnST_23.setStyle(mas.getStyl());
                 break;
-              
+            case "ST_25":
+                btnST_25.setStyle(mas.getStyl());
+                break;
+            case "ST_47":
+                btnST_47.setStyle(mas.getStyl());
+                break;
+            case "ST_55":
+                btnST_55.setStyle(mas.getStyl());
+                break;
+            case "ST_48":
+                btnST_48.setStyle(mas.getStyl());
+                break;
+            case "ST_52":
+                btnST_52.setStyle(mas.getStyl());
+                break;
+            case "ST_53":
+                btnST_53.setStyle(mas.getStyl());
+                break;
+            case "ST_04":
+                btnST_04.setStyle(mas.getStyl());
+                break;
+            case "ST_27":
+                btnST_27.setStyle(mas.getStyl());
+                break;
+            case "ST_57":
+                btnST_57.setStyle(mas.getStyl());
+                break;
+            case "ST_59":
+                btnST_59.setStyle(mas.getStyl());
+                break;
+            case "ST_68":
+                btnST_68.setStyle(mas.getStyl());
+                break;
+            case "ST_50":
+                btnST_50.setStyle(mas.getStyl());
+                break;
+            case "ST_49":
+                btnST_49.setStyle(mas.getStyl());
+                break;
+            case "ST_46":
+                btnST_46.setStyle(mas.getStyl());
+                break;
+            case "ST_51":
+                btnST_51.setStyle(mas.getStyl());
+                break;
+            case "ST_29":
+                btnST_29.setStyle(mas.getStyl());
+                break;
+            case "ST_66":
+                btnST_66.setStyle(mas.getStyl());
+                break;
             default:
                 break;
         }
@@ -518,9 +573,6 @@ public class DeskaSkoczowFXController implements Initializable {
         }
     }
 
-    @FXML
-    private void komunikatyLoad(MouseEvent event) {
-    }
 
   
     
