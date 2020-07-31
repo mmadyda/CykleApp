@@ -53,12 +53,12 @@
                            </effect>
                         </Circle>
                         <Circle fx:id="cien_zegar1" fill="#363636" layoutX="125.0" layoutY="110.0" radius="104.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
-                        <Button fx:id="btnARBURG_35" layoutX="196.0" layoutY="486.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARBURG 35">
+                        <Button fx:id="btnARBURG_35" layoutX="196.0" layoutY="486.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARB 35">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnARBURG_34" layoutX="196.0" layoutY="417.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 34">
+                        <Button fx:id="btnARBURG_34" layoutX="196.0" layoutY="417.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 34">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -145,37 +145,37 @@
                               <Glow level="0.5" />
                            </effect>
                         </JFXTextArea>
-                        <Button fx:id="btnARBURG_33" layoutX="229.0" layoutY="312.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 33">
+                        <Button fx:id="btnARBURG_33" layoutX="229.0" layoutY="312.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 33">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnARBURG_32" layoutX="229.0" layoutY="238.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 32">
+                        <Button fx:id="btnARBURG_32" layoutX="229.0" layoutY="238.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 32">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnARBURG_31" layoutX="229.0" layoutY="165.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARBURG 31">
+                        <Button fx:id="btnARBURG_31" layoutX="229.0" layoutY="165.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 31">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnARBURG_36" layoutX="196.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARBURG 36">
+                        <Button fx:id="btnARBURG_36" layoutX="196.0" layoutY="553.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARB 36">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnHAITIAN_39" layoutX="1111.0" layoutY="444.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="205.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 39">
+                        <Button fx:id="btnHAITIAN_39" layoutX="1111.0" layoutY="444.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="205.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 39">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnHAITIAN_41" layoutX="1337.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 41">
+                        <Button fx:id="btnHAITIAN_41" layoutX="1337.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 41">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnHAITIAN_42" layoutX="1495.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAITIAN 42">
+                        <Button fx:id="btnHAITIAN_42" layoutX="1495.0" layoutY="430.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 42">
                            <font>
                               <Font size="18.0" />
                            </font>

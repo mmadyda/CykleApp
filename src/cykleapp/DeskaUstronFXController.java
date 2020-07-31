@@ -334,26 +334,27 @@ public class DeskaUstronFXController implements Initializable {
                 postoj =0;
 
                 String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 10 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 2 MINUTE));";
-
+                ResultSet rs_a;
+                PreparedStatement pst_a;
                 //System.out.println(sql);
-                pst = conn.prepareStatement(sql);
+                pst_a = conn.prepareStatement(sql);
 
-                rs = pst.executeQuery(sql);
-                if(rs != null)
+                rs_a = pst_a.executeQuery(sql);
+                if(rs_a != null)
                 {
-                while(rs.next()) {
+                while(rs_a.next()) {
                     brakDanych=false;
-                    data = rs.getString("data_g").substring(10,19);
+                    data = rs_a.getString("data_g").substring(10,19);
 
-                    wtrysk += Integer.parseInt(rs.getString("wtrysk"));
-                    wybrak += Integer.parseInt(rs.getString("wybrak"));
-                    brak_operatora += (int)Float.parseFloat(rs.getString("postoj_n"));
-                    awaria_m += (int)Float.parseFloat(rs.getString("awaria_m"));
-                    awaria_f += (int)Float.parseFloat(rs.getString("awaria_f"));
-                    przezbrajanie += (int)Float.parseFloat(rs.getString("przezbrajanie"));
-                    proby_tech += (int)Float.parseFloat(rs.getString("proby_tech"));
-                    brak_zaop += (int)Float.parseFloat(rs.getString("brak_zaop"));
-                    postoj += (int)Float.parseFloat(rs.getString("postoj"));
+                    wtrysk += Integer.parseInt(rs_a.getString("wtrysk"));
+                    wybrak += Integer.parseInt(rs_a.getString("wybrak"));
+                    brak_operatora += (int)Float.parseFloat(rs_a.getString("postoj_n"));
+                    awaria_m += (int)Float.parseFloat(rs_a.getString("awaria_m"));
+                    awaria_f += (int)Float.parseFloat(rs_a.getString("awaria_f"));
+                    przezbrajanie += (int)Float.parseFloat(rs_a.getString("przezbrajanie"));
+                    proby_tech += (int)Float.parseFloat(rs_a.getString("proby_tech"));
+                    brak_zaop += (int)Float.parseFloat(rs_a.getString("brak_zaop"));
+                    postoj += (int)Float.parseFloat(rs_a.getString("postoj"));
                     
                     if(wtrysk > 0 || wybrak > 0)
                     {
@@ -373,35 +374,35 @@ public class DeskaUstronFXController implements Initializable {
                         {
                              masfor.setStatus(Maszyna.Stan.PRACA);
                         }
-                        else if(wybrak > 0)
+                        if(wybrak > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.WYBRAK);
                         }
-                        else if(brak_operatora > 0)
+                        if(brak_operatora > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.POSTOJ_NIEUZASADNIONY);
                         }
-                        else if(awaria_m > 0)
+                        if(awaria_m > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.AWARIA_M);
                         }
-                        else if(awaria_f > 0)
+                        if(awaria_f > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.AWARIA_F);
                         }
-                        else if( przezbrajanie > 0)
+                        if( przezbrajanie > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.PRZEZBRAJANIE);
                         }
-                        else if(proby_tech > 0)
+                        if(proby_tech > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.PROBY);
                         }
-                        else if(brak_zaop > 0)
+                        if(brak_zaop > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.BRAK_ZAOPATRZENIA);
                         }
-                        else if(postoj > 0)
+                        if(postoj > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.POSTOJ_PLANOWANY);
                         }

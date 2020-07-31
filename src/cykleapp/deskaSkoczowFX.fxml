@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -26,81 +27,111 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="938.0" prefWidth="1781.0">
                      <children>
-                        <ImageView id="TLO" fx:id="imgHala" fitHeight="886.0" fitWidth="1556.0" layoutX="201.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="TLO" fx:id="imgHala" fitHeight="886.0" fitWidth="1556.0" layoutX="152.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
-                        <Circle fx:id="cien_zegar111" fill="#f2f2f2" layoutX="1668.0" layoutY="123.0" radius="148.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                        <Circle fx:id="cien_zegar111" fill="#f2f2f2" layoutX="1720.0" layoutY="175.0" radius="220.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                            <effect>
                               <GaussianBlur radius="18.25" />
                            </effect>
                         </Circle>
-                        <Button fx:id="btnST_29" layoutX="1358.0" layoutY="572.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 29">
+                        <Button fx:id="btnST_29" layoutX="1309.0" layoutY="484.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 29">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <HBox layoutX="239.0" layoutY="14.0" prefHeight="100.0" prefWidth="1304.0" spacing="10.0">
+                        <HBox alignment="CENTER" layoutX="2.0" layoutY="924.0" prefHeight="100.0" prefWidth="1900.0" spacing="10.0">
                            <children>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_PRACA" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_PRACA" text="Praca" />
+                                    <Button fx:id="btnLEG_PRACA" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_PRACA" text="Praca">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_WYBRAK" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_WYBRAK" text="Wadliwe elementy" />
+                                    <Button fx:id="btnLEG_WYBRAK" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_WYBRAK" text="Wadliwe elementy">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_AWARIA_MASZYNY" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_AWARIA_MASZYNY" text="Awaria maszyny" />
+                                    <Button fx:id="btnLEG_AWARIA_MASZYNY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_AWARIA_MASZYNY" text="Awaria maszyny">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_AWARIA_FORMY" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_AWARIA_FORMY" text="Awaria formy" />
+                                    <Button fx:id="btnLEG_AWARIA_FORMY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_AWARIA_FORMY" text="Awaria formy">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_PRZEZBRAJANIE" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_PRZEZBRAJANIE" text="Przezbrajanie" />
+                                    <Button fx:id="btnLEG_PRZEZBRAJANIE" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_PRZEZBRAJANIE" text="Przezbrajanie">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_PROBY" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_PROBY" text="Próby technologiczne" />
+                                    <Button fx:id="btnLEG_PROBY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_PROBY" alignment="CENTER" text="Próby">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_BRAK_Z" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_BRAK_Z" text="Brak zaopatrzenia" />
+                                    <Button fx:id="btnLEG_BRAK_Z" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_BRAK_Z" text="Brak zaopatrzenia">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_POSTOJ_P" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_POSTOJ_P" text="Postój planowany" />
+                                    <Button fx:id="btnLEG_POSTOJ_P" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_POSTOJ_P" text="Postój planowany">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_POSTOJ_N" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_POSTOJ_N" text="Postój nieuzasadniony" />
+                                    <Button fx:id="btnLEG_POSTOJ_N" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_POSTOJ_N" text="Postój niecelowy">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="120.0" spacing="10.0">
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_BRAK_DANYCH" mnemonicParsing="false" prefHeight="25.0" prefWidth="27.0" />
-                                    <Label fx:id="labLEG_BRAK_DANYCH" text="Brak danych" />
+                                    <Button fx:id="btnLEG_BRAK_DANYCH" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_BRAK_DANYCH" text="Brak danych">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font></Label>
                                  </children>
                               </VBox>
                            </children>
@@ -108,95 +139,149 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <Circle fx:id="cien_zegar" fill="#363636" layoutX="1671.0" layoutY="110.0" radius="104.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
+                        <Circle fx:id="cien_zegar" fill="#363636" layoutX="1720.0" layoutY="175.0" radius="160.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
                            <effect>
                               <GaussianBlur radius="0.0" />
                            </effect>
                         </Circle>
-                        <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1570.0" layoutY="1.0" prefHeight="219.0" prefWidth="202.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
-                        <Button fx:id="btnST_49" layoutX="1428.0" layoutY="864.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 49">
+                        <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1570.0" layoutY="25.0" prefHeight="300.0" prefWidth="300.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
+                        <Button fx:id="btnST_49" layoutX="1379.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 49">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_50" layoutX="1358.0" layoutY="864.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 50">
+                        <Button fx:id="btnST_50" layoutX="1309.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 50">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_46" layoutX="950.0" layoutY="595.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 46">
+                        <Button fx:id="btnST_46" layoutX="901.0" layoutY="507.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 46">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_59" layoutX="1127.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 59">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_59" layoutX="1182.0" layoutY="839.0" mnemonicParsing="false" prefHeight="105.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 59">
+                        <Button fx:id="btnST_68" layoutX="1222.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 68">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_68" layoutX="1271.0" layoutY="864.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 68">
+                        <Button fx:id="btnST_57" layoutX="1035.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_57" layoutX="1084.0" layoutY="864.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
+                        <Button fx:id="btnST_66" layoutX="1385.0" layoutY="484.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 66">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_66" layoutX="1434.0" layoutY="572.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 66">
+                        <Button fx:id="btnST_51" layoutX="1007.0" layoutY="507.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 51">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_51" layoutX="1056.0" layoutY="595.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 51">
+                        <Button fx:id="btnST_04" layoutX="928.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 04">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_04" layoutX="977.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 04">
+                        <Button fx:id="btnST_27" layoutX="984.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 27">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_27" layoutX="1033.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 27">
+                        <Button fx:id="btnST_23" layoutX="380.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 23">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_25" layoutX="454.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 25">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_23" layoutX="429.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 23">
+                        <Button fx:id="btnST_47" layoutX="523.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_55" layoutX="589.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_48" layoutX="667.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_52" layoutX="732.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 52">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_25" layoutX="503.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 25">
+                        <Button fx:id="btnST_53" layoutX="807.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 53">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_47" layoutX="572.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
+                        <ImageView fitHeight="106.0" fitWidth="599.0" layoutX="435.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="1472.0" layoutY="662.0" prefHeight="32.0" prefWidth="139.0" text="Jesteś tutaj" textFill="RED">
+                           <font>
+                              <Font name="Calibri Bold" size="25.0" />
+                           </font>
+                           <effect>
+                              <Bloom threshold="0.82" />
+                           </effect>
+                        </Label>
+                        <Circle fill="RED" layoutX="1615.0" layoutY="678.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                        <Button fx:id="btnST_63" layoutX="1117.0" layoutY="507.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 63">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_55" layoutX="638.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
+                        <Button fx:id="btnST_58" layoutX="961.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 58">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_48" layoutX="716.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
+                        <Button fx:id="btnST_67" layoutX="796.0" layoutY="507.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 67">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_69" layoutX="863.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 69">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_52" layoutX="781.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 52">
+                        <Button fx:id="btnST_61" layoutX="758.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 61">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_53" layoutX="856.0" layoutY="163.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 53">
+                        <Button fx:id="btnST_70" layoutX="624.0" layoutY="494.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="190.0" styleClass="wtryskarki" text="ST 70">
                            <font>
-                              <Font size="18.0" />
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_65" layoutX="370.0" layoutY="494.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="241.0" styleClass="wtryskarki" text="ST 65">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnST_60" layoutX="524.0" layoutY="774.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="241.0" styleClass="wtryskarki" text="ST 60">
+                           <font>
+                              <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
                      </children>

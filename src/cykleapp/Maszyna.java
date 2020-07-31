@@ -26,7 +26,8 @@ public class Maszyna {
         PRZEZBRAJANIE,
         PROBY,
         BRAK_ZAOPATRZENIA,
-        POSTOJ_PLANOWANY;
+        POSTOJ_PLANOWANY,
+        NIE_PODLACZONE;
     }
    
     public static String STYL_BRAK_DANYCH = (
@@ -98,11 +99,17 @@ public class Maszyna {
                                 "                          linear-gradient(derive(#000000,30%), derive(#000000,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+     public static String STYL_NIE_PODLACZONE = (
+                                "    -fx-background-color: linear-gradient(derive(#ffffff,-30%), derive(#ffffff,-40%)),\n" +
+                                "                          linear-gradient(derive(#ffffff,80%), derive(#ffffff, 0%)),\n" +
+                                "                          linear-gradient(derive(#ffffff,30%), derive(#ffffff,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
      
      public static String STYL_TEKST = (" -fx-text-fill: white;\n"
                                  + "-fx-font-family: \"Arial\";\n"
                                  + "-fx-text-fill: linear-gradient(white, #d0d0d0);\n"
-                                 + "-fx-font-size: 16px;\n");
+                                 + "-fx-font-size: 24px;\n");
      
      
      
@@ -157,6 +164,10 @@ public class Maszyna {
         {
             styl = Maszyna.STYL_POSTOJ_PLANOWANY + Maszyna.STYL_TEKST;
         }
+        if(statu.equals(Stan.NIE_PODLACZONE))
+        {
+            styl = Maszyna.STYL_NIE_PODLACZONE + Maszyna.STYL_TEKST;
+        }
         status = statu;
     }
     public Stan getStatus()
@@ -182,6 +193,10 @@ public class Maszyna {
     }
     public String toString() {
         return this.nazwa;
+    }
+    public static String getStylNiePodlaczone()
+    {
+        return STYL_NIE_PODLACZONE + STYL_TEKST;
     }
     
 }

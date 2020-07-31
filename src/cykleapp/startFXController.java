@@ -349,7 +349,7 @@ public class startFXController implements Initializable {
                 stageDeskaUstron.getIcons().add(new Image(getClass().getResourceAsStream("img/icon48.png")));
                 stageDeskaUstron.setScene(sceneDeska);  
 
-                String css = this.getClass().getResource("styleDeska.css").toExternalForm(); 
+                String css = this.getClass().getResource("styleDeskaUstron.css").toExternalForm(); 
                 sceneDeska.getStylesheets().clear();
                 sceneDeska.getStylesheets().add(css);
 
@@ -464,7 +464,7 @@ public class startFXController implements Initializable {
                 stageDeskaSkoczow.getIcons().add(new Image(getClass().getResourceAsStream("img/icon48.png")));
                 stageDeskaSkoczow.setScene(sceneDeska);  
 
-                String css = this.getClass().getResource("styleDeska.css").toExternalForm(); 
+                String css = this.getClass().getResource("styleDeskaSkoczow.css").toExternalForm(); 
                 sceneDeska.getStylesheets().clear();
                 sceneDeska.getStylesheets().add(css);
 
