@@ -152,15 +152,7 @@ public class DeskaUstronFXController implements Initializable {
     @FXML
     private Clock zegar;
     @FXML
-    private Gauge wskaznik;
-    @FXML
-    private Circle cien_zegar1;
-    @FXML
-    private JFXTextArea komunikaty;
-    @FXML
     private Circle cien_zegar111;
-    @FXML
-    private Circle cien_zegar11;
     @FXML
     private Button btnARBURG_35;
     @FXML
@@ -229,7 +221,6 @@ public class DeskaUstronFXController implements Initializable {
         alertInternet.setHeaderText("Brak połączenia internetowego");
         alertInternet.setContentText("Przywróć połączenie internetowe");
         istniejace_maszyny = IstniejaceMaszynyUstron.LadujNazwyMaszyn();
-        wskaznik.setMaxValue(liczba_podlaczonych_wtryskarek_ustron);
            }
 
                     });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
@@ -444,7 +435,6 @@ public class DeskaUstronFXController implements Initializable {
             
         }
         System.out.println("liczba pracujących wtryskarek: "+liczba_ppracujacych_wtryskarek_ustron);
-        wskaznik.setValue(liczba_ppracujacych_wtryskarek_ustron);     
     }
     //DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT
     public void przypiszKolory(Maszyna mas)
@@ -596,12 +586,10 @@ public class DeskaUstronFXController implements Initializable {
              {
                  obecnyKomunikat = 0;
              }
-             komunikaty.setText(komunikatyTxt.get(obecnyKomunikat));
              obecnyKomunikat++;
          }
      }
 
-    @FXML
     private void komunikatyLoad(MouseEvent event) {
     //String[] arr= null;
     
