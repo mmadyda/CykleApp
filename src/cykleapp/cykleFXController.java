@@ -1858,9 +1858,10 @@ public class cykleFXController implements Initializable {
         */
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Ustroń");
+        CBmiejsce.setValue("Skoczów");
 
-        IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
         wybranaMaszyna = CBmaszyna.getValue();
         
         

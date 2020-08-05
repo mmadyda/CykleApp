@@ -149,7 +149,7 @@ public class startFXController implements Initializable {
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Ustroń");
+        CBmiejsce.setValue("Skoczów");
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         rozdzielczoscEkranuX = screenSize.getWidth();

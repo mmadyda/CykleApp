@@ -182,13 +182,15 @@ public class AutomatykFXController implements Initializable {
         //AWykresPane.widthProperty().addListener(observable -> redraw());
         //AWykresPane.heightProperty().addListener(observable -> redraw());
         stageSizeChageListener(splitPane);
-        IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Ustroń");
+        CBmiejsce.setValue("Skoczów");
 
-        IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
         
         wybranaMaszyna = CBmaszyna.getValue();
         TBgodzina_od._24HourViewProperty().set(true);
@@ -740,7 +742,7 @@ public class AutomatykFXController implements Initializable {
             //System.out.println("check box zaznaczony");
             
             
-             t = executor.scheduleAtFixedRate(taskUpdater, 0, 5, TimeUnit.SECONDS);
+             t = executor.scheduleAtFixedRate(taskUpdater, 0, 15, TimeUnit.SECONDS);
             
         }
         else
