@@ -193,17 +193,17 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="94.0" fitWidth="537.0" layoutX="681.0" layoutY="61.0">
-                           <image>
-                              <Image url="@img/logo.png" />
-                           </image>
-                        </ImageView>
                         <Label layoutX="210.0" layoutY="452.0" prefHeight="17.0" prefWidth="103.0" text="Jesteś tutaj" textFill="RED">
                            <font>
                               <Font name="Calibri Bold" size="18.0" />
                            </font>
                         </Label>
                         <Circle fill="RED" layoutX="187.0" layoutY="452.0" radius="11.0" stroke="RED" strokeType="INSIDE" />
+                        <ImageView fitHeight="77.0" fitWidth="768.0" layoutX="507.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/techniplast_big.png" />
+                           </image>
+                        </ImageView>
                      </children>
                   </AnchorPane>
               </content>

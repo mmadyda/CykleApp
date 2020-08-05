@@ -83,7 +83,6 @@ public class DeskaUstronFXController implements Initializable {
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;
     
-    private static final int liczba_podlaczonych_wtryskarek_ustron = 14;
     private int liczba_ppracujacych_wtryskarek_ustron = 0;
     private double postep;
     List<String> komunikatyTxt;
@@ -590,62 +589,6 @@ public class DeskaUstronFXController implements Initializable {
          }
      }
 
-    private void komunikatyLoad(MouseEvent event) {
-    //String[] arr= null;
-    
-    FileChooser fileChooser = new FileChooser();
-    fileChooser.setTitle("Wczytaj listę komunikatów");
-    //fileChooser.setInitialFileName("Wykres słupkowy.png");
-     fileChooser.getExtensionFilters().addAll(
-        new FileChooser.ExtensionFilter("TXT", "*.txt")
-    );
-    if(CykleApp.rootPref.get("OPEN_KOMUNIKATY_DIR", "")!= "")
-                {
-                fileChooser.setInitialDirectory(new File(CykleApp.rootPref.get("OPEN_KOMUNIKATY_DIR", "")));
-                } 
-    
-    fileText = fileChooser.showOpenDialog(null);
-    if(fileText != null)
-    {
-    CykleApp.rootPref.put("OPEN_KOMUNIKATY_DIR", fileText.getParent());
-    CykleApp.rootPref.put("OPEN_KOMUNIKATY_FILE", fileText.getAbsolutePath());
-    }
-    try 
-    { 
-        if(fileText != null)
-        {
-        komunikatyTxt = new ArrayList<String>();
-        FileInputStream fstream_school = new FileInputStream(fileText); 
-        DataInputStream data_input = new DataInputStream(fstream_school); 
-        BufferedReader buffer = new BufferedReader(new InputStreamReader(data_input)); 
-        String str_line; 
-
-        while ((str_line = buffer.readLine()) != null) 
-        { 
-            str_line = str_line.trim(); 
-            if ((str_line.length()!=0))  
-            { 
-                komunikatyTxt.add(str_line);
-            } 
-        }
-
-        //arr = (String[])komunikatyTxt.toArray(new String[komunikatyTxt.size()]);
-        
-        wczytanoKomunikaty = true;
-        liczbaKomunikatow = komunikatyTxt.size();
-        }
-        
-    }
-    catch (Exception e)  
-    {
-     // Catch exception if any
-        System.err.println("Błąd: " + e.getMessage());
-    }
-    
-   
-            
-            
-    }
     public boolean getZaladowanoOkno()
     {
         return zaladowano_okno;

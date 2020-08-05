@@ -230,9 +230,9 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="106.0" fitWidth="599.0" layoutX="435.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="72.0" fitWidth="852.0" layoutX="483.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/logo.png" />
+                              <Image url="@img/techniplast_big.png" />
                            </image>
                         </ImageView>
                         <Label layoutX="1472.0" layoutY="662.0" prefHeight="32.0" prefWidth="139.0" text="Jesteś tutaj" textFill="RED">
