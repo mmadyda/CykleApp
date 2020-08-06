@@ -87,6 +87,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
     private static final int czasZmianyKomunikatu = 20;
     private boolean zaladowano_okno = false;
+    private boolean zamknieto_okno = false;
             
     @FXML
     private BorderPane borderPane;
@@ -547,6 +548,10 @@ public class DeskaSkoczowFXController implements Initializable {
             } catch (SQLException ex) {
                 System.err.println("Błąd: " + ex.getMessage());
             }
+            finally
+            {
+                zamknieto_okno = true;
+            }
         }
     }
     public void kolorLegenda()
@@ -609,6 +614,10 @@ public class DeskaSkoczowFXController implements Initializable {
     public boolean getZaladowanoOkno()
     {
         return zaladowano_okno;
+    }
+    public boolean getZamknietoOkno()
+    {
+        return zamknieto_okno;
     }
 
     @FXML

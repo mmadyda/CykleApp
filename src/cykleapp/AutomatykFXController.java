@@ -179,17 +179,13 @@ public class AutomatykFXController implements Initializable {
          };
         
         
-        //AWykresPane.widthProperty().addListener(observable -> redraw());
-        //AWykresPane.heightProperty().addListener(observable -> redraw());
+
         stageSizeChageListener(splitPane);
-        //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
-        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
         CBmiejsce.setValue("Skoczów");
 
-        //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
         IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
         
         wybranaMaszyna = CBmaszyna.getValue();

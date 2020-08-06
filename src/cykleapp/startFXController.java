@@ -162,14 +162,24 @@ public class startFXController implements Initializable {
                     if(deskaUstronController != null && deskaUstronController.getZaladowanoOkno())
                     {
                            progressDeska.setVisible(false);   
-                           BTNpodgladHali.setDisable(false);
-                           deskaUstronController = null;
+                           //BTNpodgladHali.setDisable(false);
+                           //deskaUstronController = null;
                     }
                     if(deskaSkoczowController != null && deskaSkoczowController.getZaladowanoOkno())
                     {
                            progressDeska.setVisible(false);   
+                           //BTNpodgladHali.setDisable(false);
+                           //deskaSkoczowController = null;
+                    }
+                    if(deskaSkoczowController != null && deskaSkoczowController.getZamknietoOkno())
+                    {
                            BTNpodgladHali.setDisable(false);
                            deskaSkoczowController = null;
+                    }
+                    if(deskaUstronController != null && deskaUstronController.getZamknietoOkno())
+                    {
+                           BTNpodgladHali.setDisable(false);
+                           deskaUstronController = null;
                     }
                     if(wtryskarkaController != null && wtryskarkaController.getZaladowanoOkno())
                     {
