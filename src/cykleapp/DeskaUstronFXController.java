@@ -78,7 +78,7 @@ public class DeskaUstronFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private static int czas_odswierzania = 20;
+    private static int czas_odswierzania = 100;
     private static int czas_animacji = 3;
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;
@@ -221,12 +221,29 @@ public class DeskaUstronFXController implements Initializable {
         alertInternet.setHeaderText("Brak połączenia internetowego");
         alertInternet.setContentText("Przywróć połączenie internetowe");
         istniejace_maszyny = IstniejaceMaszynyUstron.LadujNazwyMaszyn();
+        
+        for(Maszyna masfor:istniejace_maszyny)
+        {
+            przypiszKolory(masfor);
+        }
+        Runnable task = new Runnable()
+
+        {
+                public void run()
+
+                {
+                        aktualizuj();
+                }
+        };
+        Thread backgroundThread = new Thread(task);
+        backgroundThread.setDaemon(true);
+        backgroundThread.start();
            }
 
                     });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
        
 
-        aktualizuj();
+        //aktualizuj();
        
         //new Thread(task).start();
         animacja = new Timeline(new KeyFrame(Duration.seconds(czas_animacji), new EventHandler<ActionEvent>() {
