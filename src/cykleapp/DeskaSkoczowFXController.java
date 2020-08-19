@@ -78,7 +78,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private static int czas_odswierzania = 20;
+    private static int czas_odswierzania = 120;
     private static int czas_animacji = 3;
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;
@@ -377,35 +377,35 @@ public class DeskaSkoczowFXController implements Initializable {
                         {
                              masfor.setStatus(Maszyna.Stan.PRACA);
                         }
-                        if(wybrak > 0)
+                        else if(wybrak > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.WYBRAK);
                         }
-                        if(brak_operatora > 0)
+                        else if(brak_operatora > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.POSTOJ_NIEUZASADNIONY);
                         }
-                        if(awaria_m > 0)
+                        else if(awaria_m > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.AWARIA_M);
                         }
-                        if(awaria_f > 0)
+                        else if(awaria_f > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.AWARIA_F);
                         }
-                        if( przezbrajanie > 0)
+                        else if( przezbrajanie > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.PRZEZBRAJANIE);
                         }
-                        if(proby_tech > 0)
+                        else if(proby_tech > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.PROBY);
                         }
-                        if(brak_zaop > 0)
+                        else if(brak_zaop > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.BRAK_ZAOPATRZENIA);
                         }
-                        if(postoj > 0)
+                        else if(postoj > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.POSTOJ_PLANOWANY);
                         }
