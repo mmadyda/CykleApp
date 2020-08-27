@@ -78,10 +78,10 @@ public class DeskaSkoczowFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private static int czas_odswierzania = 100;
-    private static int czas_animacji = 3;
-    private static int obecnyKomunikat = 0;
-    private static int liczbaKomunikatow = 0;
+    private final static int czas_odswierzania = 20;
+    private final static int czas_animacji = 3;
+    private final static int obecnyKomunikat = 0;
+    private final static int liczbaKomunikatow = 0;
     
     private double postep;
 
@@ -357,7 +357,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 brak_zaop =0;
                 postoj =0;
 
-                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 10 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 2 MINUTE));";
+                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 10 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
                 
                 ResultSet rs_a;
                 PreparedStatement pst_a;
