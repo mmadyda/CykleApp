@@ -287,7 +287,16 @@ public class DeskaSkoczowFXController implements Initializable {
                     Lstatus.setText("Ładowanie danych...");
                     progressBar.setVisible(true);
                     postep = 0;
-                    progressBar.setProgress(postep);
+                    Platform.runLater(new Runnable()
+                    {
+                            @Override
+                            public void run()
+                            {
+                                progressBar.setProgress(postep);
+                                
+                            }
+
+                    });
                     Runnable task = new Runnable()
 
                     {
@@ -327,7 +336,16 @@ public class DeskaSkoczowFXController implements Initializable {
             {
                 postep = i/(new Double(istniejace_maszyny.size()));
                 
-                progressBar.setProgress(postep);
+                Platform.runLater(new Runnable()
+                    {
+                            @Override
+                            public void run()
+                            {
+                                progressBar.setProgress(postep);
+                                
+                            }
+
+                    });
                 i++;
                 try
                 {
