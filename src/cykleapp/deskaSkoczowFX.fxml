@@ -7,7 +7,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,11 +31,6 @@
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
-                        <Circle fx:id="cien_zegar111" fill="#f2f2f2" layoutX="1720.0" layoutY="175.0" radius="220.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <effect>
-                              <GaussianBlur radius="18.25" />
-                           </effect>
-                        </Circle>
                         <Button fx:id="btnST_29" layoutX="1309.0" layoutY="484.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 29">
                            <font>
                               <Font size="18.0" />
@@ -139,12 +133,6 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <Circle fx:id="cien_zegar" fill="#363636" layoutX="1720.0" layoutY="175.0" radius="160.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <effect>
-                              <GaussianBlur radius="0.0" />
-                           </effect>
-                        </Circle>
-                        <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1570.0" layoutY="25.0" prefHeight="300.0" prefWidth="300.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
                         <Button fx:id="btnST_49" layoutX="1379.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 49">
                            <font>
                               <Font size="18.0" />
@@ -230,7 +218,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <ImageView fitHeight="72.0" fitWidth="852.0" layoutX="483.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="58.0" fitWidth="578.0" layoutX="483.0" layoutY="256.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/techniplast_big.png" />
                            </image>
@@ -284,6 +272,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
+                        <Clock fx:id="clock" layoutX="1179.0" layoutY="26.0" minHeight="271.0" minWidth="662.0" prefHeight="271.0" prefWidth="662.0" running="true" skinType="TEXT" />
                      </children>
                   </AnchorPane>
               </content>

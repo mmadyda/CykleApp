@@ -157,7 +157,7 @@
                               <GaussianBlur radius="0.0" />
                            </effect>
                         </Circle>
-                        <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1501.0" layoutY="2.0" prefHeight="291.0" prefWidth="268.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
+                        <Clock fx:id="zegar" dateVisible="true" discreteSeconds="false" layoutX="1501.0" layoutY="23.0" lcdDesign="BLUE" lcdFont="LCD" prefHeight="291.0" prefWidth="268.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="SLIM" />
                         <Button fx:id="btnARBURG_33" layoutX="231.0" layoutY="394.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 33">
                            <font>
                               <Font size="18.0" />

@@ -141,12 +141,6 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnLEG_BRAK_DANYCH;
     @FXML
     private Label labLEG_BRAK_DANYCH;
-    @FXML
-    private Circle cien_zegar;
-    @FXML
-    private Clock zegar;
-    @FXML
-    private Circle cien_zegar111;
     
     @FXML
     private ScrollPane ScrollPane;
@@ -202,6 +196,8 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnST_65;
     @FXML
     private Button btnST_60;
+    @FXML
+    private Clock clock;
   
 
     /**
