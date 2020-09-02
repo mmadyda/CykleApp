@@ -149,7 +149,19 @@ public class startFXController implements Initializable {
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Skoczów");
+        
+         switch (CykleApp.rootPref.get("START_MIEJSCE", "")) {
+            case "SKOCZOW":
+                CBmiejsce.setValue("Skoczów");
+                        break;
+            case "USTRON":
+                CBmiejsce.setValue("Ustroń");
+                break;
+            default:
+                CBmiejsce.setValue("Skoczów");
+                break;
+         }
+
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         rozdzielczoscEkranuX = screenSize.getWidth();
@@ -864,6 +876,14 @@ public class startFXController implements Initializable {
 
     @FXML
     private void CBmiejsceAction(ActionEvent event) {
+        if(CBmiejsce.getValue().equals("Ustroń"))
+        {
+            CykleApp.rootPref.put("START_MIEJSCE", "USTRON");
+        }
+        if(CBmiejsce.getValue().equals("Skoczów"))
+        {
+            CykleApp.rootPref.put("START_MIEJSCE", "SKOCZOW");
+        }
     }
     
 }

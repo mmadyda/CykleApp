@@ -322,13 +322,16 @@ public class cykleFXController implements Initializable {
         if(CBmiejsce.getValue().equals("Ustroń"))
         {
             IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+            CykleApp.rootPref.put("CYKLE_MIEJSCE", "USTRON");
         }
         if(CBmiejsce.getValue().equals("Skoczów"))
         {
             IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+            CykleApp.rootPref.put("CYKLE_MIEJSCE", "SKOCZOW");
         }
         
         wybranaMaszyna = CBmaszyna.getValue();
+        
     }
 
     @FXML
@@ -1858,10 +1861,26 @@ public class cykleFXController implements Initializable {
         */
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Skoczów");
+        switch (CykleApp.rootPref.get("CYKLE_MIEJSCE", "")) {
+            case "SKOCZOW":
+                CBmiejsce.setValue("Skoczów");
+                IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+                        break;
+            case "USTRON":
+                CBmiejsce.setValue("Ustroń");
+                IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+                break;
+            default:
+                CBmiejsce.setValue("Skoczów");
+                IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+                break;
+        }
 
         //IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
-        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+        if(CykleApp.rootPref.get("CYKLE_MASZYNA", "") != "")
+        {
+            CBmaszyna.setValue(CykleApp.rootPref.get("CYKLE_MASZYNA", ""));
+        }
         wybranaMaszyna = CBmaszyna.getValue();
         
         
@@ -3039,6 +3058,7 @@ public class cykleFXController implements Initializable {
     private void CBmaszynaAction(ActionEvent event) 
     {
         wybranaMaszyna = CBmaszyna.getSelectionModel().getSelectedItem();
+        CykleApp.rootPref.put("CYKLE_MASZYNA", wybranaMaszyna);
         
         //System.out.println(wybranaMaszyna);
     }

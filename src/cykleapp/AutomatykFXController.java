@@ -184,9 +184,25 @@ public class AutomatykFXController implements Initializable {
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
-        CBmiejsce.setValue("Skoczów");
-
-        IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+        switch (CykleApp.rootPref.get("AUTOMA_MIEJSCE", "")) {
+            case "SKOCZOW":
+                CBmiejsce.setValue("Skoczów");
+                IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+                        break;
+            case "USTRON":
+                CBmiejsce.setValue("Ustroń");
+                IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+                break;
+            default:
+                CBmiejsce.setValue("Skoczów");
+                IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+                break;
+        }
+        
+        if(CykleApp.rootPref.get("AUTOMA_MASZYNA", "") != "")
+        {
+            CBmaszyna.setValue(CykleApp.rootPref.get("AUTOMA_MASZYNA", ""));
+        }
         
         wybranaMaszyna = CBmaszyna.getValue();
         TBgodzina_od._24HourViewProperty().set(true);
@@ -515,6 +531,7 @@ public class AutomatykFXController implements Initializable {
     @FXML
     private void CBmaszynaAction(ActionEvent event) {
         wybranaMaszyna = CBmaszyna.getSelectionModel().getSelectedItem();
+        CykleApp.rootPref.put("AUTOMA_MASZYNA", wybranaMaszyna);
     }
 
     @FXML
@@ -822,10 +839,12 @@ public class AutomatykFXController implements Initializable {
         if(CBmiejsce.getValue().equals("Ustroń"))
         {
             IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+            CykleApp.rootPref.put("AUTOMA_MIEJSCE", "USTRON");
         }
         if(CBmiejsce.getValue().equals("Skoczów"))
         {
             IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
+            CykleApp.rootPref.put("AUTOMA_MIEJSCE", "SKOCZOW");
         }
         
         wybranaMaszyna = CBmaszyna.getValue();
