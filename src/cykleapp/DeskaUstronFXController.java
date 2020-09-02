@@ -6,6 +6,7 @@
 package cykleapp;
 
 import com.jfoenix.controls.JFXProgressBar;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextArea;
 import eu.hansolo.medusa.Clock;
 import eu.hansolo.medusa.Gauge;
@@ -79,7 +80,7 @@ public class DeskaUstronFXController implements Initializable {
     private Alert alertSQL;
     private Alert alertInternet;
     private final static int czas_odswierzania = 20;
-    private static int czas_animacji = 3;
+    private static int czas_animacji = 2;
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;
     
@@ -96,15 +97,9 @@ public class DeskaUstronFXController implements Initializable {
     @FXML
     private BorderPane borderPane;
     @FXML
-    private Label Lstatus;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
-    @FXML
     private ImageView imgHala;
     @FXML
-    private JFXProgressBar progressBar;
+    private JFXSpinner progressBar;
     @FXML
     private Button btnLEG_PRACA;
     @FXML
@@ -148,10 +143,6 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnARBURG_49;
    
     @FXML
-    private Circle cien_zegar;
-    @FXML
-    private Clock zegar;
-    @FXML
     private Circle cien_zegar111;
     @FXML
     private Button btnARBURG_35;
@@ -175,6 +166,8 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnHAITIAN_41;
     @FXML
     private Button btnHAITIAN_42;
+    @FXML
+    private Clock clock;
 
     /**
      * Initializes the controller class.
@@ -202,7 +195,7 @@ public class DeskaUstronFXController implements Initializable {
         komunikaty(komunikaty);
         // koniec wczytywania komunikatów
         kolorLegenda();
-        progressBar.setVisible(false);
+        progressBar.setVisible(true);
         System.out.println("jestem w initialize DeskaFXController 2");
         
         alertSQL = new Alert(Alert.AlertType.ERROR);
@@ -251,7 +244,6 @@ public class DeskaUstronFXController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     progressBar.setVisible(false);
-                    Lstatus.setText("TECHNIPLAST");
 
                 }
             }));
@@ -261,7 +253,6 @@ public class DeskaUstronFXController implements Initializable {
                 public void handle(ActionEvent event) {
                     
                     //System.out.println("wczytuje...");
-                    Lstatus.setText("Ładowanie danych...");
                     progressBar.setVisible(true);
                     postep = 0;
                     Platform.runLater(new Runnable()
@@ -289,7 +280,7 @@ public class DeskaUstronFXController implements Initializable {
 
                     backgroundThread.start();
 
-                    animacja.play();
+                    
                     
 
                 }
@@ -460,13 +451,10 @@ public class DeskaUstronFXController implements Initializable {
                                 
                             }
 
-                    });
-
-                    
+                    });                   
                 }
-                
-
             }
+            animacja.play();
             
         }
         System.out.println("liczba pracujących wtryskarek: "+liczba_ppracujacych_wtryskarek_ustron);

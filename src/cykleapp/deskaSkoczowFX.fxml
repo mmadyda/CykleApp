@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXProgressBar?>
+<?import com.jfoenix.controls.JFXSpinner?>
 <?import eu.hansolo.medusa.Clock?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,17 +13,15 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaSkoczowFXController">
    <center>
       <VBox prefHeight="910.0" prefWidth="1846.0">
          <children>
-            <ScrollPane fx:id="ScrollPane" prefHeight="1033.0" prefWidth="1877.0">
+            <ScrollPane fx:id="ScrollPane" prefHeight="1080.0" prefWidth="1877.0">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="938.0" prefWidth="1781.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="945.0" prefWidth="1781.0">
                      <children>
                         <ImageView id="TLO" fx:id="imgHala" fitHeight="886.0" fitWidth="1556.0" layoutX="152.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -36,7 +33,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <HBox alignment="CENTER" layoutX="2.0" layoutY="924.0" prefHeight="100.0" prefWidth="1900.0" spacing="10.0">
+                        <HBox alignment="CENTER" layoutX="2.0" layoutY="950.0" prefHeight="100.0" prefWidth="1900.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
@@ -223,15 +220,6 @@
                               <Image url="@img/techniplast_big.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="1472.0" layoutY="662.0" prefHeight="32.0" prefWidth="139.0" text="Jesteś tutaj" textFill="RED">
-                           <font>
-                              <Font name="Calibri Bold" size="25.0" />
-                           </font>
-                           <effect>
-                              <Bloom threshold="0.82" />
-                           </effect>
-                        </Label>
-                        <Circle fill="RED" layoutX="1615.0" layoutY="678.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
                         <Button fx:id="btnST_63" layoutX="1117.0" layoutY="507.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="190.0" rotate="-90.0" styleClass="wtryskarki" text="ST 63">
                            <font>
                               <Font size="18.0" />
@@ -272,38 +260,14 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Clock fx:id="clock" layoutX="1179.0" layoutY="26.0" minHeight="271.0" minWidth="662.0" prefHeight="271.0" prefWidth="662.0" running="true" skinType="TEXT" />
+                        <Clock fx:id="clock" backgroundPaint="BLACK" discreteSeconds="false" layoutX="1172.0" layoutY="12.0" minHeight="340.0" minWidth="662.0" prefHeight="400.0" prefWidth="695.0" running="true" skinType="MINIMAL" />
+                        <JFXSpinner fx:id="progressBar" layoutX="14.0" layoutY="12.0" progress="0.0" radius="40.0" startingAngle="0.0" />
                      </children>
                   </AnchorPane>
               </content>
             </ScrollPane>
-          <HBox id="HBox" alignment="CENTER_LEFT" spacing="20.0" VBox.vgrow="NEVER">
-            <children>
-              <Label fx:id="Lstatus" maxHeight="1.7976931348623157E308" maxWidth="-1.0" text="TECHNIPLAST" HBox.hgrow="ALWAYS">
-                <font>
-                  <Font size="11.0" fx:id="x3" />
-                </font>
-                <textFill>
-                  <Color blue="0.625" green="0.625" red="0.625" fx:id="x4" />
-                </textFill>
-              </Label>
-                  <JFXProgressBar fx:id="progressBar" prefHeight="0.0" prefWidth="316.0" />
-            </children>
-            <padding>
-              <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
-            </padding>
-          </HBox>
         <Pane prefHeight="-1.0" prefWidth="-1.0" />
          </children>
       </VBox>
    </center>
-   <top>
-      <AnchorPane id="title" prefHeight="18.0" prefWidth="1920.0" style="-fx-background-color: transparent;" BorderPane.alignment="CENTER" />
-   </top>
-   <right>
-      <Pane prefWidth="5.0" BorderPane.alignment="CENTER" />
-   </right>
-   <left>
-      <Pane prefWidth="5.0" BorderPane.alignment="CENTER" />
-   </left>
 </BorderPane>

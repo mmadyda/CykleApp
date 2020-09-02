@@ -6,6 +6,7 @@
 package cykleapp;
 
 import com.jfoenix.controls.JFXProgressBar;
+import com.jfoenix.controls.JFXSpinner;
 import com.jfoenix.controls.JFXTextArea;
 import eu.hansolo.medusa.Clock;
 import eu.hansolo.medusa.Gauge;
@@ -79,7 +80,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Alert alertSQL;
     private Alert alertInternet;
     private final static int czas_odswierzania = 20;
-    private final static int czas_animacji = 3;
+    private final static int czas_animacji = 2;
     private final static int obecnyKomunikat = 0;
     private final static int liczbaKomunikatow = 0;
     
@@ -92,15 +93,9 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private BorderPane borderPane;
     @FXML
-    private Label Lstatus;
-    @FXML
-    private Color x4;
-    @FXML
-    private Font x3;
-    @FXML
     private ImageView imgHala;
     @FXML
-    private JFXProgressBar progressBar;
+    private JFXSpinner progressBar;
     @FXML
     private Button btnLEG_PRACA;
     @FXML
@@ -221,7 +216,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
         // koniec wczytywania komunikatów
         kolorLegenda();
-        progressBar.setVisible(false);
+        progressBar.setVisible(true);
         System.out.println("jestem w initialize DeskaSkoczowFXController 2");
         
         alertSQL = new Alert(Alert.AlertType.ERROR);
@@ -270,7 +265,6 @@ public class DeskaSkoczowFXController implements Initializable {
                 @Override
                 public void handle(ActionEvent event) {
                     progressBar.setVisible(false);
-                    Lstatus.setText("TECHNIPLAST");
 
                 }
             }));
@@ -280,7 +274,6 @@ public class DeskaSkoczowFXController implements Initializable {
                 public void handle(ActionEvent event) {
                     
                     //System.out.println("wczytuje...");
-                    Lstatus.setText("Ładowanie danych...");
                     progressBar.setVisible(true);
                     postep = 0;
                     Platform.runLater(new Runnable()
@@ -308,7 +301,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
                     backgroundThread.start();
 
-                    animacja.play();
+                    
                     
 
                 }
@@ -484,6 +477,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 
 
             }
+            animacja.play();
             
         }
  
