@@ -542,6 +542,30 @@ public class DeskaSkoczowFXController implements Initializable {
             case "ST_66":
                 btnST_66.setStyle(mas.getStyl());
                 break;
+             case "ST_65":
+                btnST_65.setStyle(mas.getStyl());
+                break;
+            case "ST_70":
+                btnST_70.setStyle(mas.getStyl());
+                break;
+            case "ST_60":
+                btnST_60.setStyle(mas.getStyl());
+                break;
+            case "ST_63":
+                btnST_63.setStyle(mas.getStyl());
+                break;
+            case "ST_67":
+                btnST_67.setStyle(mas.getStyl());
+                break;
+            case "ST_61":
+                btnST_61.setStyle(mas.getStyl());
+                break;
+            case "ST_58":
+                btnST_58.setStyle(mas.getStyl());
+                break;
+            case "ST_69":
+                btnST_69.setStyle(mas.getStyl());
+                break;
             default:
                 break;    
         }
