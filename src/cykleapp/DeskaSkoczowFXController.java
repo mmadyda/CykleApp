@@ -570,14 +570,14 @@ public class DeskaSkoczowFXController implements Initializable {
                 break;    
         }
         //maszyny nie podłączone
-        btnST_63.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_67.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_70.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_65.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_58.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_69.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_61.setStyle(Maszyna.getStylNiePodlaczone());
-        btnST_60.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_63.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_67.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_70.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_65.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_58.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_69.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_61.setStyle(Maszyna.getStylNiePodlaczone());
+        //btnST_60.setStyle(Maszyna.getStylNiePodlaczone());
     }
     public void shutdown(){
         //System.out.println("zamykanie okna");
