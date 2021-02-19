@@ -79,7 +79,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private final static int czas_odswierzania = 20;
+    private final static int czas_odswierzania = 30;
     private final static int czas_animacji = 2;
     private final static int obecnyKomunikat = 0;
     private final static int liczbaKomunikatow = 0;
@@ -364,7 +364,8 @@ public class DeskaSkoczowFXController implements Initializable {
                 brak_zaop =0;
                 postoj =0;
 
-                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 10 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
+                //String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 10 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
+                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' ORDER BY lp DESC LIMIT 1;";
                 
                 ResultSet rs_a;
                 PreparedStatement pst_a;
