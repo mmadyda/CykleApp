@@ -185,11 +185,6 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_25" layoutX="454.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 25">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="btnST_47" layoutX="523.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
                            <font>
                               <Font name="System Bold" size="18.0" />
