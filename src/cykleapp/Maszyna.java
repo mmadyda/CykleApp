@@ -7,7 +7,7 @@ package cykleapp;
 
 /**
  *
- * @author DELL
+ * @author Marek Madyda
  */
 public class Maszyna {
     private String nazwa;
@@ -18,90 +18,102 @@ public class Maszyna {
     public enum Stan 
     {
         BRAK_DANYCH,
+        
         PRACA,
-        WYBRAK,
+        PROBY,
+        POSTOJ_PLANOWANY,
+        PRZEZBRAJANIE,
         POSTOJ_NIEUZASADNIONY,
         AWARIA_M,
         AWARIA_F,
-        PRZEZBRAJANIE,
-        PROBY,
         BRAK_ZAOPATRZENIA,
-        POSTOJ_PLANOWANY,
+        WYBRAK,
+        
         NIE_PODLACZONE;
     }
    
     public static String STYL_BRAK_DANYCH = (
-                                "    -fx-background-color: linear-gradient(derive(#2F4F4F,-30%), derive(#2F4F4F,-40%)),\n" +
-                                "                          linear-gradient(derive(#2F4F4F,80%), derive(#2F4F4F, 0%)),\n" +
-                                "                          linear-gradient(derive(#2F4F4F,30%), derive(#2F4F4F,-10%));\n" +
+                                "    -fx-background-color: linear-gradient(derive(#1b1b1b,+30%), derive(#1b1b1b,+40%)),\n" +
+                                "                          linear-gradient(derive(#1b1b1b,80%), derive(#1b1b1b, 80%)),\n" +
+                                "                          linear-gradient(derive(#1b1b1b,30%), derive(#1b1b1b,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
 
     public static String STYL_BPRACA = (
-                                "    -fx-background-color: linear-gradient(derive(#22bad9,-30%), derive(#22bad9,-40%)),\n" +
-                                "                          linear-gradient(derive(#22bad9,80%), derive(#22bad9, 0%)),\n" +
-                                "                          linear-gradient(derive(#22bad9,30%), derive(#22bad9,-10%));\n" +
+                                "    -fx-background-color: linear-gradient(derive(#32cd32,+30%), derive(#32cd32,+40%)),\n" +
+                                "                          linear-gradient(derive(#32cd32,80%), derive(#32cd32, 80%)),\n" +
+                                "                          linear-gradient(derive(#32cd32,30%), derive(#32cd32, -10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
     
-    public static String STYL_WYBRAK = (
-                                "    -fx-background-color: linear-gradient(derive(#ff6600,-30%), derive(#ff6600,-40%)),\n" +
-                                "                          linear-gradient(derive(#ff6600,80%), derive(#ff6600, 0%)),\n" +
-                                "                          linear-gradient(derive(#ff6600,30%), derive(#ff6600,-10%));\n" +
+    public static String STYL_PROBY_TECHNOLOGICZNE = (
+                                "    -fx-background-color: linear-gradient(derive(#8db600,+30%), derive(#8db600,+40%)),\n" +
+                                "                          linear-gradient(derive(#8db600,80%), derive(#8db600, 80%)),\n" +
+                                "                          linear-gradient(derive(#8db600,30%), derive(#8db600,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
     
-    public static String STYL_AWARIA_MASZYNY = (
-                                "    -fx-background-color: linear-gradient(derive(#cc0000,-30%), derive(#cc0000,-40%)),\n" +
-                                "                          linear-gradient(derive(#cc0000,80%), derive(#cc0000, 0%)),\n" +
-                                "                          linear-gradient(derive(#cc0000,30%), derive(#cc0000,-10%));\n" +
-                                "    -fx-background-insets: 0,1,2;\n" +
-                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-    
-     public static String STYL_AWARIA_FORMY = (
-                                "    -fx-background-color: linear-gradient(derive(#b84dff,-30%), derive(#b84dff,-40%)),\n" +
-                                "                          linear-gradient(derive(#b84dff,80%), derive(#b84dff, 0%)),\n" +
-                                "                          linear-gradient(derive(#b84dff,30%), derive(#b84dff,-10%));\n" +
-                                "    -fx-background-insets: 0,1,2;\n" +
-                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     
-     public static String STYL_PRZEZBRAJANIE = (
-                                "    -fx-background-color: linear-gradient(derive(#39e600,-30%), derive(#39e600,-40%)),\n" +
-                                "                          linear-gradient(derive(#39e600,80%), derive(#39e600, 0%)),\n" +
-                                "                          linear-gradient(derive(#39e600,30%), derive(#39e600,-10%));\n" +
-                                "    -fx-background-insets: 0,1,2;\n" +
-                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     
-     public static String STYL_PROBY_TECHNOLOGICZNE = (
-                                "    -fx-background-color: linear-gradient(derive(#333399,-30%), derive(#333399,-40%)),\n" +
-                                "                          linear-gradient(derive(#333399,80%), derive(#333399, 0%)),\n" +
-                                "                          linear-gradient(derive(#333399,30%), derive(#333399,-10%));\n" +
-                                "    -fx-background-insets: 0,1,2;\n" +
-                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     
-     public static String STYL_BRAK_ZAOPATRZENIA = (
-                                "    -fx-background-color: linear-gradient(derive(#f5f53d,-30%), derive(#f5f53d,-40%)),\n" +
-                                "                          linear-gradient(derive(#f5f53d,80%), derive(#f5f53d, 0%)),\n" +
-                                "                          linear-gradient(derive(#f5f53d,30%), derive(#f5f53d,-10%));\n" +
-                                "    -fx-background-insets: 0,1,2;\n" +
-                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     
-     public static String STYL_POSTOJ_PLANOWANY = (
-                                "    -fx-background-color: linear-gradient(derive(#cccccc,-30%), derive(#cccccc,-40%)),\n" +
-                                "                          linear-gradient(derive(#cccccc,80%), derive(#cccccc, 0%)),\n" +
+    public static String STYL_POSTOJ_PLANOWANY = (
+                                "    -fx-background-color: linear-gradient(derive(#cccccc,+30%), derive(#cccccc,+40%)),\n" +
+                                "                          linear-gradient(derive(#cccccc,80%), derive(#cccccc, 80%)),\n" +
                                 "                          linear-gradient(derive(#cccccc,30%), derive(#cccccc,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
      
-     public static String STYL_POSTOJ_NIEUZASADNIONY = (
-                                "    -fx-background-color: linear-gradient(derive(#000000,-30%), derive(#000000,-40%)),\n" +
-                                "                          linear-gradient(derive(#000000,80%), derive(#000000, 0%)),\n" +
-                                "                          linear-gradient(derive(#000000,30%), derive(#000000,-10%));\n" +
+    public static String STYL_PRZEZBRAJANIE = (
+                                "    -fx-background-color: linear-gradient(derive(#22bad9,+30%), derive(#22bad9,+40%)),\n" +
+                                "                          linear-gradient(derive(#22bad9,80%), derive(#22bad9, 80%)),\n" +
+                                "                          linear-gradient(derive(#22bad9,30%), derive(#22bad9,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+     
+    public static String STYL_POSTOJ_NIEUZASADNIONY = (
+                                "    -fx-background-color: linear-gradient(derive(#c11d38,+30%), derive(#ffc857,+40%)),\n" +
+                                "                          linear-gradient(derive(#ffc857,80%), derive(#c11d38, 80%)),\n" +
+                                "                          linear-gradient(derive(#c11d38,30%), derive(#ffc857,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+    public static String STYL_AWARIA_MASZYNY = (
+                                "    -fx-background-color: linear-gradient(derive(#dc143c,+30%), derive(#dc143c,+40%)),\n" +
+                                "                          linear-gradient(derive(#dc143c,80%), derive(#dc143c, 80%)),\n" +
+                                "                          linear-gradient(derive(#dc143c,30%), derive(#dc143c,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+    
+    public static String STYL_AWARIA_FORMY = (
+                                "    -fx-background-color: linear-gradient(derive(#ff6347,+30%), derive(#ff6347,+40%)),\n" +
+                                "                          linear-gradient(derive(#ff6347,80%), derive(#ff6347, 80%)),\n" +
+                                "                          linear-gradient(derive(#ff6347,30%), derive(#ff6347,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+     public static String STYL_BRAK_ZAOPATRZENIA = (
+                                "    -fx-background-color: linear-gradient(derive(#ffd700,+30%), derive(#ffd700,+40%)),\n" +
+                                "                          linear-gradient(derive(#ffd700,80%), derive(#ffd700, 80%)),\n" +
+                                "                          linear-gradient(derive(#ffd700,30%), derive(#ffd700,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+     
+    
+    public static String STYL_WYBRAK = (
+                                "    -fx-background-color: linear-gradient(derive(#ff8c00,+30%), derive(#ff8c00,+40%)),\n" +
+                                "                          linear-gradient(derive(#ff8c00,80%), derive(#ff8c00, 80%)),\n" +
+                                "                          linear-gradient(derive(#ff8c00,30%), derive(#ff8c00,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+    
+    
+     
+     
+     
+     
+     
+    
+    
+     
+     
      public static String STYL_NIE_PODLACZONE = (
                                 "    -fx-background-color: linear-gradient(derive(#ffffff,-30%), derive(#ffffff,-40%)),\n" +
-                                "                          linear-gradient(derive(#ffffff,80%), derive(#ffffff, 0%)),\n" +
+                                "                          linear-gradient(derive(#ffffff,80%), derive(#ffffff, 80%)),\n" +
                                 "                          linear-gradient(derive(#ffffff,30%), derive(#ffffff,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");

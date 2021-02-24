@@ -66,8 +66,35 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_WYBRAK" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_WYBRAK" text="Wadliwe elementy">
+                                    <Button fx:id="btnLEG_PROBY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_PROBY" text="Próby">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font></Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="btnLEG_POSTOJ_P" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_POSTOJ_P" text="Postój planowany">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font></Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="btnLEG_PRZEZBRAJANIE" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_PRZEZBRAJANIE" text="Przezbrajanie">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font></Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
+                                    <Button fx:id="btnLEG_POSTOJ_N" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_POSTOJ_N" text="Nie zgłoszono">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font></Label>
@@ -93,24 +120,6 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_PRZEZBRAJANIE" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_PRZEZBRAJANIE" text="Przezbrajanie">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font></Label>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <Button fx:id="btnLEG_PROBY" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_PROBY" text="Próby">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font></Label>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
                                     <Button fx:id="btnLEG_BRAK_Z" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
                                     <Label fx:id="labLEG_BRAK_Z" text="Brak zaopatrzenia">
                                        <font>
@@ -120,17 +129,8 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnLEG_POSTOJ_P" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_POSTOJ_P" text="Postój planowany">
-                                       <font>
-                                          <Font name="System Bold" size="18.0" />
-                                       </font></Label>
-                                 </children>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
-                                 <children>
-                                    <Button fx:id="btnLEG_POSTOJ_N" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_POSTOJ_N" text="Postój niecelowy">
+                                    <Button fx:id="btnLEG_WYBRAK" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_WYBRAK" text="Wadliwe elementy">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font></Label>
@@ -139,7 +139,7 @@
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
                                     <Button fx:id="btnLEG_BRAK_DANYCH" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
-                                    <Label fx:id="labLEG_BRAK_DANYCH" text="Brak danych">
+                                    <Label fx:id="labLEG_BRAK_DANYCH" text="System WYŁ">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font></Label>

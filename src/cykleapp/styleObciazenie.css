@@ -1,162 +1,164 @@
 .default-color0.chart-bar /*wtrysk #22bad9*/
 { 
-    -fx-bar-fill: #22bad9;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #32cd32;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
 
-.default-color1.chart-bar /*wybrak*/
+.default-color1.chart-bar /*próby*/
 { 
-    -fx-bar-fill: #ff6600;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #8db600;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color2.chart-bar /*brak operatora*/
+.default-color2.chart-bar /*postój zaplanowany*/
 { 
-    -fx-bar-fill: #000000;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #cccccc;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color3.chart-bar /*awaria maszyny*/
+.default-color3.chart-bar /*przezbrajanie*/
 { 
-    -fx-bar-fill: #cc0000;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #22bad9;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color4.chart-bar /*awaria formy*/
+.default-color4.chart-bar /*nie zgloszono*/
 { 
-    -fx-bar-fill: #b84dff;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-background-color: linear-gradient(derive(#c11d38,+30%), derive(#ffc857,+40%))
+                          linear-gradient(derive(#ffc857,80%), derive(#c11d38, 80%)),
+                          linear-gradient(derive(#c11d38,30%), derive(#ffc857,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.default-color5.chart-bar /*awaria maszyny*/
+{ 
+    -fx-bar-fill: #dc143c;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color5.chart-bar /*przezbrajanie*/
+.default-color6.chart-bar /*awaria formy*/
 { 
-    -fx-bar-fill: #39e600;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-}
-.default-color6.chart-bar /*próby technologiczne*/
-{ 
-    -fx-bar-fill: #333399;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ff6347;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
 .default-color7.chart-bar /*brak zaopatrzenia*/
 { 
-    -fx-bar-fill: #f5f53d;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ffd700;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color8.chart-bar    /*postój*/
+.default-color8.chart-bar    /*wybrak*/
 { 
-    -fx-bar-fill: #ffffff;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ff8c00;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
+
+
+
+
 .data0.chart-pie /*wtrysk*/
 {
+    -fx-bar-fill: #32cd32;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.data1.chart-pie /*próby*/
+{
+    -fx-bar-fill: #8db600;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.data2.chart-pie /*postój zaplanowany*/
+{
+    -fx-bar-fill: #cccccc;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.data3.chart-pie /*przezbrajanie*/
+{
     -fx-bar-fill: #22bad9;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.data1.chart-pie /*wybrak*/
+.data4.chart-pie /*nie zgłoszono*/
 {
-    -fx-bar-fill: #ff6600;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-background-color: linear-gradient(derive(#c11d38,+30%), derive(#ffc857,+40%))
+                          linear-gradient(derive(#ffc857,80%), derive(#c11d38, 80%)),
+                          linear-gradient(derive(#c11d38,30%), derive(#ffc857,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.data5.chart-pie /*awaria maszyny*/
+{
+    -fx-bar-fill: #dc143c;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.data2.chart-pie /*brak operatora*/
+.data6.chart-pie /*awaria formy*/
 {
-    -fx-bar-fill: #000000;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-}
-.data3.chart-pie /*awaria maszyny*/
-{
-    -fx-bar-fill: #cc0000;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-}
-.data4.chart-pie /*awaria formy*/
-{
-    -fx-bar-fill: #b84dff;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-}
-.data5.chart-pie /*przezbrajanie*/
-{
-    -fx-bar-fill: #39e600;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-}
-.data6.chart-pie /*próby technologiczne*/
-{
-    -fx-bar-fill: #333399;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ff6347;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
 .data7.chart-pie /*brak zaopatrzenia*/
 {
-    -fx-bar-fill: #f5f53d;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ffd700;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.data8.chart-pie /*postój*/
+.data8.chart-pie /*wybrak*/
 {
-    -fx-bar-fill: #ffffff;
-    -fx-background-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+    -fx-bar-fill: #ff8c00;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;

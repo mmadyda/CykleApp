@@ -263,13 +263,13 @@ public class AutomatykFXController implements Initializable {
         
         l_wtrysk.setName("wtrysk");
         l_wybrak.setName("wybrak");
-        l_postoj_n.setName("postój nieuzasadniony");
+        l_postoj_n.setName("nie zgłoszono");
         l_awaria_m.setName("awaria maszyny");
         l_awaria_f.setName("awaria formy");
         l_przezbrajanie.setName("przezbrajanie");
         l_proby.setName("próby technologiczne");
         l_brak_zaop.setName("brak zaopatrzenia");
-        l_postoj.setName("postój");
+        l_postoj.setName("postój zaplanowany");
         
         wtrysk = 0;
         wybrak = 0;
@@ -428,7 +428,8 @@ public class AutomatykFXController implements Initializable {
 
                     {
                         wykresLiniowy.getData().clear();
-                        wykresLiniowy.getData().addAll(l_wtrysk,l_wybrak,l_postoj_n,l_awaria_m,l_awaria_f,l_przezbrajanie,l_proby,l_brak_zaop,l_postoj);
+                        //KOLEJNOŚĆ TABELA wykres liniowy
+                        wykresLiniowy.getData().addAll(l_wtrysk,l_proby,l_postoj,l_przezbrajanie,l_postoj_n,l_awaria_m,l_awaria_f,l_brak_zaop,l_wybrak);
                         poprawKolory();
                         addWykresEventsListener();
                         addWykresLegendaEventsListener();

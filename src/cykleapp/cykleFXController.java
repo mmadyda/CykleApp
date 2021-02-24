@@ -465,7 +465,7 @@ public class cykleFXController implements Initializable {
 
                 //////////////////////////////////////
                 s_brak_operatora = new XYChart.Series();
-                s_brak_operatora.setName("postój nieuzasadniony");
+                s_brak_operatora.setName("nie zgłoszono");
 
                 s_awaria_m = new XYChart.Series();
                 s_awaria_m.setName("awaria maszyny");
@@ -504,13 +504,13 @@ public class cykleFXController implements Initializable {
                 TBCdata = new TableColumn("data");
                 TBCwtrysk = new TableColumn("wtrysk");
                 TBCwybrak = new TableColumn("wybrak");
-                TBCbrak_operatora = new TableColumn("postój\nnieuzasadniony");
+                TBCbrak_operatora = new TableColumn("nie zgłoszono");
                 TBCawaria_m = new TableColumn("awaria\nmaszyny");
                 TBCawaria_f = new TableColumn("awaria\nformy");
                 TBCprzezbrajanie = new TableColumn("przezbrajanie");
                 TBCproby_tech = new TableColumn("próby\ntechnologiczne");
                 TBCbrak_zaop = new TableColumn("brak\nzaopatrzenia");
-                TBCpostoj = new TableColumn("postój");
+                TBCpostoj = new TableColumn("postój\n planowany");
                 TBCczas_cyklu = new TableColumn("średni czas\ncyklu [s]");
 
                 TBCdata.setCellValueFactory(new PropertyValueFactory<>("data"));
@@ -873,24 +873,24 @@ public class cykleFXController implements Initializable {
                 daneWykresKolowy = FXCollections.observableArrayList(
                 new PieChart.Data("wtrysk", kol_wtrysk),
                 new PieChart.Data("wybrak", kol_wybrak),
-                new PieChart.Data("postój nieuzasadniony", kol_brak_operatora),
+                new PieChart.Data("nie zgłoszono", kol_brak_operatora),
                 new PieChart.Data("awaria maszyny", kol_awaria_m),
                 new PieChart.Data("awaria formy", kol_awaria_f),
                 new PieChart.Data("przezbrajanie", kol_przezbrajanie),
                 new PieChart.Data("próby technologiczne", kol_proby_tech),
                 new PieChart.Data("brak zaopatrzenia", kol_brak_zaop),
-                new PieChart.Data("postój", kol_postoj));
+                new PieChart.Data("postój zaplanowany", kol_postoj));
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wtrysk",kol_wtrysk+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wybrak",kol_wybrak+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój nieuzasadniony",kol_brak_operatora+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("nie zgłoszono",kol_brak_operatora+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria maszyny",kol_awaria_m+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria formy",kol_awaria_f+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("przezbrajanie",kol_przezbrajanie+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("próby technologiczne",kol_proby_tech+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak zaopatrzenia",kol_brak_zaop+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój",kol_postoj+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój zaplanowany",kol_postoj+""));
                 
                 
      
@@ -1188,7 +1188,7 @@ public class cykleFXController implements Initializable {
 
                 //////////////////////////////////////
                 s_brak_operatora = new XYChart.Series();
-                s_brak_operatora.setName("postój nieuzasadniony");
+                s_brak_operatora.setName("Nie zgłoszono");
 
                 s_awaria_m = new XYChart.Series();
                 s_awaria_m.setName("awaria maszyny");
@@ -1206,7 +1206,7 @@ public class cykleFXController implements Initializable {
                 s_brak_zaop.setName("brak zaopatrzenia");
 
                 s_postoj = new XYChart.Series();
-                s_postoj.setName("postój");
+                s_postoj.setName("postój zaplanowany");
 
 
 
@@ -1226,7 +1226,7 @@ public class cykleFXController implements Initializable {
                 TBCdata = new TableColumn("godzina");
                 TBCwtrysk = new TableColumn("wtrysk");
                 TBCwybrak = new TableColumn("wybrak");
-                TBCbrak_operatora = new TableColumn("postój\nnieuzasadniony");
+                TBCbrak_operatora = new TableColumn("nie zgłoszono");
                 TBCawaria_m = new TableColumn("awaria\nmaszyny");
                 TBCawaria_f = new TableColumn("awaria\nformy");
                 TBCprzezbrajanie = new TableColumn("przezbrajanie");
@@ -1584,28 +1584,36 @@ public class cykleFXController implements Initializable {
             
             
             }
-             
+              ///KOLEJNOSC w wykresie kolowym
+            
                 daneWykresKolowy = FXCollections.observableArrayList(
                 new PieChart.Data("wtrysk", kol_wtrysk),
-                new PieChart.Data("wybrak", kol_wybrak),
-                new PieChart.Data("postój nieuzasadniony", kol_brak_operatora),
+                new PieChart.Data("próby technologiczne", kol_proby_tech),
+                new PieChart.Data("postój zaplanowany", kol_postoj),
+                new PieChart.Data("przezbrajanie", kol_przezbrajanie),
+                new PieChart.Data("nie zgłoszono", kol_brak_operatora),
                 new PieChart.Data("awaria maszyny", kol_awaria_m),
                 new PieChart.Data("awaria formy", kol_awaria_f),
-                new PieChart.Data("przezbrajanie", kol_przezbrajanie),
-                new PieChart.Data("próby technologiczne", kol_proby_tech),
                 new PieChart.Data("brak zaopatrzenia", kol_brak_zaop),
-                new PieChart.Data("postój", kol_postoj));
+                new PieChart.Data("wybrak", kol_wybrak));
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ///KOLEJNOSC w tabeli wykresu kolowego
                 
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wtrysk",kol_wtrysk+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wybrak",kol_wybrak+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój nieuzasadniony",kol_brak_operatora+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("próby technologiczne",kol_proby_tech+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój zaplanowany",kol_postoj+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("przezbrajanie",kol_przezbrajanie+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",kol_brak_operatora+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria maszyny",kol_awaria_m+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria formy",kol_awaria_f+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("przezbrajanie",kol_przezbrajanie+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("próby technologiczne",kol_proby_tech+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak zaopatrzenia",kol_brak_zaop+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój",kol_postoj+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wybrak",kol_wybrak+""));
+                
+                
+                
+                
+                
+                
                 
                 
                 
@@ -1668,13 +1676,15 @@ public class cykleFXController implements Initializable {
                     {
                     
                     WykresKolowy.getData().addAll(daneWykresKolowy);
-                    WykresSlupkowy.getData().addAll(s_wtrysk,s_wybrak,s_brak_operatora,s_awaria_m,s_awaria_f,s_przezbrajanie,s_proby_tech,s_brak_zaop,s_postoj); 
+                    //KOLEJNOŚĆ wykres słupkowy
+                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_brak_operatora,s_awaria_m,s_awaria_f,s_brak_zaop,s_wybrak); 
                     WykresLiniowy.getData().addAll(l_czas_cykl);
                     WykresNormy.getData().addAll(Nbrak,Nnorma, Npraca);
                     
                     TableCykle.setSelectionModel(null);
                     TableCykle.setItems(daneSlupkoweDoTabeli);
-                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk,TBCwybrak,TBCbrak_operatora,TBCawaria_m,TBCawaria_f,TBCprzezbrajanie,TBCproby_tech,TBCbrak_zaop,TBCpostoj,TBCczas_cyklu);
+                    //KOLEJNOŚĆ TABELA wykres słupkowy
+                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk, TBCproby_tech,TBCpostoj,TBCprzezbrajanie,TBCbrak_operatora,TBCawaria_m,TBCawaria_f,TBCbrak_zaop,TBCwybrak,TBCczas_cyklu);
                     TableCykle.setMinWidth(1000);
                     TableCykle.setMinHeight(325);
                     TableCykle.autosize();
@@ -3281,7 +3291,7 @@ public class cykleFXController implements Initializable {
             rowhead.createCell(0).setCellValue("Czas");
             rowhead.createCell(1).setCellValue("Wtrysk");
             rowhead.createCell(2).setCellValue("Wybrak");
-            rowhead.createCell(3).setCellValue("Postój nieuzasadniony");
+            rowhead.createCell(3).setCellValue("Nie zgłoszono");
             rowhead.createCell(4).setCellValue("Awaria maszyny");
             rowhead.createCell(5).setCellValue("Awaria formy");
             rowhead.createCell(6).setCellValue("Przezbrajanie");

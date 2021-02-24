@@ -23,21 +23,21 @@
     -fx-graphic: url("img/search_black.png");
 }
 
-/*00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
+/*WTRYSK 00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000*/
 .default-color0.chart-area-symbol{
-     -fx-background-color: rgba(34, 186, 217,1), white;
+     -fx-background-color: rgba(50, 205, 50,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color0.chart-series-area-line{
-     -fx-stroke: rgba(34, 186, 217,0.5);
+     -fx-stroke: rgba(50, 205, 50,0.5);
 }
 
 .default-color0.chart-series-area-fill{
     
-    -fx-fill:  rgba(34, 186, 217,0.4); 
+    -fx-fill:  rgba(50, 205, 50,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
@@ -45,22 +45,22 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111*/
+/*PROBY 111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111*/
 
 .default-color1.chart-area-symbol{
-     -fx-background-color: rgba(255, 102, 0,1), white;
+     -fx-background-color: rgba(141, 182, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color1.chart-series-area-line{
-     -fx-stroke: rgba(255, 102, 0,0.5);
+     -fx-stroke: rgba(141, 182, 0,0.5);
 }
 
 .default-color1.chart-series-area-fill{
     
-    -fx-fill:  rgba(255, 102, 0,0.4); 
+    -fx-fill:  rgba(141, 182, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
@@ -68,20 +68,66 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222*/
+/*POSTÓJ ZAPLANOWANY 222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222*/
 
 .default-color2.chart-area-symbol{
-     -fx-background-color: rgba(0, 0, 0,1), white;
+     -fx-background-color: rgba(204, 204, 204,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color2.chart-series-area-line{
-     -fx-stroke: rgba(0, 0, 0,0.5);
+     -fx-stroke: rgba(204, 204, 204,0.5);
 }
 
 .default-color2.chart-series-area-fill{
+    
+    -fx-fill:  rgba(204, 204, 204,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+/*PRZEZBRAJANIE 3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333*/
+
+.default-color3.chart-area-symbol{
+     -fx-background-color: rgba(34, 168, 217,1), white;
+     -fx-background-insets: 0, 3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color3.chart-series-area-line{
+     -fx-stroke: rgba(34, 168, 217,0.5);
+}
+
+.default-color3.chart-series-area-fill{
+    
+    -fx-fill:  rgba(34, 168, 217,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+
+/*NIE ZGLOSZONO 444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444*/
+.default-color4.chart-area-symbol{
+    -fx-background-color: rgba(0, 0, 0,1), white;
+    -fx-background-insets: 0, 3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color4.chart-series-area-line{
+     -fx-stroke: rgba(0, 0, 0,0.5);
+}
+
+.default-color4.chart-series-area-fill{
     
     -fx-fill:  rgba(0, 0, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -91,69 +137,23 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*3333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333*/
 
-.default-color3.chart-area-symbol{
-     -fx-background-color: rgba(204, 0, 0,1), white;
-     -fx-background-insets: 0, 3;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
-
-}
-.default-color3.chart-series-area-line{
-     -fx-stroke: rgba(204, 0, 0,0.5);
-}
-
-.default-color3.chart-series-area-fill{
-    
-    -fx-fill:  rgba(204, 0, 0,0.4); 
-    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-    -fx-blend-mode: MULTIPLY;
-}
-
-/*444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444*/
-.default-color4.chart-area-symbol{
-     -fx-background-color: rgba(184, 77, 255,1), white;
-     -fx-background-insets: 0, 3;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
-
-}
-.default-color4.chart-series-area-line{
-     -fx-stroke: rgba(184, 77, 255,0.5);
-}
-
-.default-color4.chart-series-area-fill{
-    
-    -fx-fill:  rgba(184, 77, 255,0.4); 
-    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
-                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
-                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
-    -fx-insets: 0,1,2;
-    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
-    -fx-blend-mode: MULTIPLY;
-}
-
-/*555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555*/
+/*AWARIA MASZYNY 555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555*/
 
 .default-color5.chart-area-symbol{
-     -fx-background-color: rgba(57, 230, 0,1), white;
+     -fx-background-color: rgba(220, 20, 60,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color5.chart-series-area-line{
-     -fx-stroke: rgba(57, 230, 0,0.5);
+     -fx-stroke: rgba(220, 20, 60,0.5);
 }
 
 .default-color5.chart-series-area-fill{
     
-    -fx-fill:  rgba(57, 230, 0,0.4); 
+    -fx-fill:  rgba(220, 20, 60,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
@@ -161,22 +161,22 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666*/
+/*AWARIA FORMY 666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666*/
 
 .default-color6.chart-area-symbol{
-     -fx-background-color: rgba(51, 51, 153,1), white;
+     -fx-background-color: rgba(255, 99, 71,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color6.chart-series-area-line{
-     -fx-stroke: rgba(51, 51, 153,0.5);
+     -fx-stroke: rgba(255, 99, 71,0.5);
 }
 
 .default-color6.chart-series-area-fill{
     
-    -fx-fill:  rgba(51, 51, 153,0.4); 
+    -fx-fill:  rgba(255, 99, 71,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
@@ -184,21 +184,21 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777*/
+/*BRAK ZAOPATRZENIA 77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777*/
 .default-color7.chart-area-symbol{
-     -fx-background-color: rgba(245, 245, 61,1), white;
+     -fx-background-color: rgba(255, 215, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color7.chart-series-area-line{
-     -fx-stroke: rgba(245, 245, 61,0.5);
+     -fx-stroke: rgba(255, 215, 0,0.5);
 }
 
 .default-color7.chart-series-area-fill{
     
-    -fx-fill:  rgba(245, 245, 61,0.4); 
+    -fx-fill:  rgba(255, 215, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
@@ -206,22 +206,22 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+/*WYBRAK 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
 
 .default-color8.chart-area-symbol{
-     -fx-background-color: rgba(230, 230, 230,1), white;
+     -fx-background-color: rgba(255, 140, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color8.chart-series-area-line{
-     -fx-stroke: rgba(230, 230, 230,0.5);
+     -fx-stroke: rgba(255, 140, 0,0.5);
 }
 
 .default-color8.chart-series-area-fill{
     
-    -fx-fill:  rgba(230, 230, 230,0.4); 
+    -fx-fill:  rgba(255, 140, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
                           linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
                           linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
