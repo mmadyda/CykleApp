@@ -31,7 +31,8 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_57");
         CBmaszyna.getItems().add("ST_58");
         CBmaszyna.getItems().add("ST_59");
-        CBmaszyna.getItems().add("ST_60");  
+        CBmaszyna.getItems().add("ST_60"); 
+        CBmaszyna.getItems().add("ST_62"); 
         CBmaszyna.getItems().add("ST_63");
         CBmaszyna.getItems().add("ST_65");
         CBmaszyna.getItems().add("ST_66");
@@ -39,6 +40,9 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_68");
         CBmaszyna.getItems().add("ST_69");
         CBmaszyna.getItems().add("ST_70");
+        CBmaszyna.getItems().add("ST_71");
+        CBmaszyna.getItems().add("ST_72");
+        CBmaszyna.getItems().add("ST_73");
 
         
         CBmaszyna.setValue("ST_04");
@@ -67,6 +71,7 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_58"));
         maszyny.add(new Maszyna("ST_59"));
         maszyny.add(new Maszyna("ST_60"));
+        maszyny.add(new Maszyna("ST_62"));
         maszyny.add(new Maszyna("ST_63"));
         maszyny.add(new Maszyna("ST_65"));
         maszyny.add(new Maszyna("ST_66"));
@@ -74,6 +79,9 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_68"));
         maszyny.add(new Maszyna("ST_69"));
         maszyny.add(new Maszyna("ST_70"));
+        maszyny.add(new Maszyna("ST_71"));
+        maszyny.add(new Maszyna("ST_72"));
+        maszyny.add(new Maszyna("ST_73"));
      
         return maszyny;
         
