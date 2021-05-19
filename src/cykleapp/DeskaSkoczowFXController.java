@@ -211,7 +211,9 @@ public class DeskaSkoczowFXController implements Initializable {
         borderPane.setMinWidth(640);
         borderPane.setMinHeight(480);
         System.out.println("jestem w initialize DeskaSkoczowFXController");
+
         conn = mysqlconnect.ConnecrDb();
+ 
 
         Platform.runLater(new Runnable(){
 

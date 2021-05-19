@@ -9,7 +9,7 @@ package cykleapp;
 import java.sql.*;
 public class mysqlconnect {
     Connection conn = null;
-    private static miejsce m = miejsce.SKOCZOW;
+    private static miejsce m = miejsce.FIRMA;
     public static void setMiejsce(miejsce mi)
     {
         m = mi;
@@ -23,23 +23,21 @@ public class mysqlconnect {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn;
+            
 
             switch(m){
-                case SKOCZOW:
+                case FIRMA:
                     conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=no","obiady","technitools192");
-                    System.out.println("Połączono z serwerem MySQL SKOCZÓW IP: 10.0.1.215:3306");
+                    System.out.println("Połączono z serwerem MySQL sieć firmowa IP: 10.0.1.215:3306");
                     break;
-                case USTRON:
-                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
-                    System.out.println("Połączono z serwerem MySQL USTROŃ IP: 10.0.1.215:3306");
-                    break;
-                case KONIAKOW:
-                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
-                    System.out.println("Połączono z serwerem MySQL KONIAKÓW IP: 10.0.1.215:3306");
+                case DOM:
+                    //połączenie poza siecią firmową
+                    conn = DriverManager.getConnection("jdbc:mysql://91.225.157.226:6666?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
+                    System.out.println("Połączono z serwerem MySQL sieć zewnętrzna IP: 91.225.157.226:6666");
                     break;
                 default:
                     conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");     
-                    System.out.println("Połączono z serwerem MySQL DEFAULT SKOCZÓW IP: 10.0.1.215:3306");
+                    System.out.println("Połączono z serwerem MySQL sieć firmowa IP: 10.0.1.215:3306");
             }
             
             //Connection conn = DriverManager.getConnection("jdbc:mysql://89.161.232.241:3306/14443643_projekt?useSSL=false&autoReconnect=true&useUnicode=yes","14443643_projekt","Pro2017#");
@@ -52,7 +50,7 @@ public class mysqlconnect {
         }
     }
     public static enum miejsce{
-        SKOCZOW,USTRON,KONIAKOW
+        FIRMA, DOM
     }
     
     

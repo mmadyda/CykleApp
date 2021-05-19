@@ -91,12 +91,6 @@ public class startFXController implements Initializable {
     private MenuItem pomocMIT;
     @FXML
     private MenuItem oProgramieMIT;
-    @FXML
-    private RadioMenuItem rMenuSkoczow;
-    @FXML
-    private ToggleGroup serwer;
-    @FXML
-    private RadioMenuItem rMenuUstron;
     
     public static Stage stageDeskaUstron;
     public static Stage stageDeskaSkoczow;
@@ -104,7 +98,7 @@ public class startFXController implements Initializable {
     public static Stage stageAnalizujWiele;
     public static Stage stageModulAutomatyka;
     @FXML
-    private MenuButton CBserwer;
+    private JFXComboBox<String> CBserwer;
     @FXML
     private JFXComboBox<String> CBmiejsce;
 
@@ -140,8 +134,8 @@ public class startFXController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        mysqlconnect.setMiejsce(mysqlconnect.miejsce.SKOCZOW);
-        CBserwer.setVisible(false);
+        
+        CBserwer.setVisible(true);
         progressDeska.setVisible(false);
         progressWtryskarka.setVisible(false);
         progressWtryskarki.setVisible(false);
@@ -150,17 +144,37 @@ public class startFXController implements Initializable {
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
         
-         switch (CykleApp.rootPref.get("START_MIEJSCE", "")) {
-            case "SKOCZOW":
-                CBmiejsce.setValue("Skoczów");
-                        break;
-            case "USTRON":
-                CBmiejsce.setValue("Ustroń");
-                break;
-            default:
-                CBmiejsce.setValue("Skoczów");
-                break;
-         }
+        switch (CykleApp.rootPref.get("START_MIEJSCE", "")) {
+           case "SKOCZOW":
+               CBmiejsce.setValue("Skoczów");
+                       break;
+           case "USTRON":
+               CBmiejsce.setValue("Ustroń");
+               break;
+           default:
+               CBmiejsce.setValue("Skoczów");
+               break;
+        }
+        
+        CBserwer.getItems().add("Firma");
+        CBserwer.getItems().add("Dom");
+        
+        switch (CykleApp.rootPref.get("START_SERWER", "")) {
+           case "FIRMA":
+               CBserwer.setValue("Firma");
+               mysqlconnect.setMiejsce(mysqlconnect.miejsce.FIRMA);
+               break;
+           case "DOM":
+               CBserwer.setValue("Dom");
+               mysqlconnect.setMiejsce(mysqlconnect.miejsce.DOM);
+               break;
+           default:
+               CBserwer.setValue("Firma");
+               mysqlconnect.setMiejsce(mysqlconnect.miejsce.FIRMA);
+               break;
+        }
+         
+
 
         
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -864,15 +878,6 @@ public class startFXController implements Initializable {
           alert.showAndWait();
     }
 
-    @FXML
-    private void rMenuSkoczowAction(ActionEvent event) {
-        mysqlconnect.setMiejsce(mysqlconnect.miejsce.SKOCZOW);
-    }
-
-    @FXML
-    private void rMenuUstronAction(ActionEvent event) {
-        mysqlconnect.setMiejsce(mysqlconnect.miejsce.USTRON);
-    }
 
     @FXML
     private void CBmiejsceAction(ActionEvent event) {
@@ -883,6 +888,22 @@ public class startFXController implements Initializable {
         if(CBmiejsce.getValue().equals("Skoczów"))
         {
             CykleApp.rootPref.put("START_MIEJSCE", "SKOCZOW");
+        }
+    }
+
+    @FXML
+    private void CBserwerAction(ActionEvent event) {
+        if(CBserwer.getValue().equals("Firma"))
+        {
+            CykleApp.rootPref.put("START_SERWER", "FIRMA");
+            mysqlconnect.setMiejsce(mysqlconnect.miejsce.FIRMA);
+            System.out.println("ustawiono firma");
+        }
+        if(CBserwer.getValue().equals("Dom"))
+        {
+            CykleApp.rootPref.put("START_SERWER", "DOM");
+            mysqlconnect.setMiejsce(mysqlconnect.miejsce.DOM);
+            System.out.println("ustawiono dom");
         }
     }
     

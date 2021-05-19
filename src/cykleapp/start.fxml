@@ -8,8 +8,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.RadioMenuItem?>
-<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -115,25 +113,16 @@
             <GridPane alignment="CENTER" prefHeight="43.0" prefWidth="630.0">
                <columnConstraints>
                   <ColumnConstraints fillWidth="false" halignment="LEFT" hgrow="NEVER" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
-                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints halignment="LEFT" hgrow="NEVER" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                   <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" maxWidth="1.7976931348623157E308" minWidth="10.0" />
-                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="120.0" minWidth="120.0" prefWidth="120.0" />
+                  <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" />
                   <ColumnConstraints halignment="RIGHT" hgrow="NEVER" maxWidth="35.0" minWidth="35.0" prefWidth="35.0" />
                </columnConstraints>
                <rowConstraints>
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
                <children>
-                  <MenuButton fx:id="CBserwer" mnemonicParsing="false" text="Serwer danych" GridPane.columnIndex="1">
-                     <items>
-                        <RadioMenuItem fx:id="rMenuSkoczow" mnemonicParsing="false" onAction="#rMenuSkoczowAction" selected="true" text="Skoczów">
-                           <toggleGroup>
-                              <ToggleGroup fx:id="serwer" />
-                           </toggleGroup>
-                        </RadioMenuItem>
-                        <RadioMenuItem fx:id="rMenuUstron" mnemonicParsing="false" onAction="#rMenuUstronAction" text="Ustroń" toggleGroup="$serwer" />
-                     </items>
-                  </MenuButton>
+                  <JFXComboBox fx:id="CBserwer" onAction="#CBserwerAction" prefHeight="25.0" prefWidth="119.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
                   <MenuButton id="BTNmenu" fx:id="BTNmenu" mnemonicParsing="false">
                     <items>
                         <MenuItem fx:id="pomocMIT" mnemonicParsing="false" onAction="#pomocMITaction" text="Pomoc" />

@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>C:\Users\marek\Documents\NetBeansProjects\CykleApp\dist\CykleApp.jar</jar>
-  <outfile>C:\Users\marek\Documents\NetBeansProjects\CykleApp\dist\Analizator Wtryskarek-Skoczow.exe</outfile>
+  <jar>D:\NetBeansProjects\CykleApp\dist\CykleApp.jar</jar>
+  <outfile>D:\NetBeansProjects\CykleApp\dist\Techniplast MES.exe</outfile>
   <errTitle>Java nie jest zainstalowana na tym komputerze</errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
@@ -13,7 +13,7 @@
   <stayAlive>false</stayAlive>
   <restartOnCrash>false</restartOnCrash>
   <manifest></manifest>
-  <icon>C:\Users\marek\Documents\NetBeansProjects\CykleApp\src\cykleapp\img\icon48.ico</icon>
+  <icon>D:\NetBeansProjects\CykleApp\src\cykleapp\img\icon48.ico</icon>
   <jre>
     <path></path>
     <bundledJre64Bit>false</bundledJre64Bit>
