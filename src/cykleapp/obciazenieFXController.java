@@ -570,7 +570,10 @@ public class obciazenieFXController implements  Initializable {
             String sql = "";
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                sql ="SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_wolne where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+ "' UNION SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"' LIMIT 1;";
+                sql = "SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM( "
+                        + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') "
+                        + "UNION "
+                        + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"')) AS T ";
             }
             else
             {

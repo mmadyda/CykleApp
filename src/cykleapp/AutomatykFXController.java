@@ -290,8 +290,10 @@ public class AutomatykFXController implements Initializable {
         {
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,proby_tech,brak_zaop,postoj, czas_cyklu FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"' UNION SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,proby_tech,brak_zaop,postoj, czas_cyklu FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"';";
-
+                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,proby_tech,brak_zaop,postoj, czas_cyklu FROM ( "
+                        + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"') "
+                        + "UNION "
+                        + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"')) AS T ";
             }
             else
             {
