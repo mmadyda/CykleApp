@@ -599,7 +599,7 @@ public class cykleFXController implements Initializable {
             //!!!!!!wykres dni do poprawy
             // !!!!!problem w dniu zmiany tabeli
             //String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM 14443643_projekt.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
-            if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
+            if(localDateTime_od.plusDays(i).isBefore(LocalDateTime.now().minusDays(7)))
             {
                 //DWIE TABELE
                 sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
@@ -1334,7 +1334,7 @@ public class cykleFXController implements Initializable {
             
             //Wykres godzin
             String sql = "";
-            if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
+            if(localDateTime_od.plusHours(i).isBefore(LocalDateTime.now().minusDays(7)))
             {
                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
                         + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"') "
