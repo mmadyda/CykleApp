@@ -805,7 +805,7 @@ public class startFXController implements Initializable {
          alertStage.getIcons().add(new Image(this.getClass().getResource("img/icon48.png").toString()));
          alert.setTitle("TECHNIPLAST Analizator pracy wtryskarek");
          
-         alert.setHeaderText("System analizy pracy wtryskarek\nwersja 2020");
+         alert.setHeaderText("System analizy pracy wtryskarek\nwersja 2021");
          
          
          VBox vbox = new VBox();
@@ -833,7 +833,7 @@ public class startFXController implements Initializable {
 			}
 		}
 	});
-         Hyperlink email_techniplast = new Hyperlink("marek_madyda@techniplast.pl");
+         Hyperlink email_techniplast = new Hyperlink("marek_madyda@technitools.pl");
          email_techniplast.setOnAction(new EventHandler<ActionEvent>()
 	{
 		@Override
@@ -843,7 +843,7 @@ public class startFXController implements Initializable {
 			{
                             Desktop desktop;
 				if (Desktop.isDesktopSupported() && (desktop = Desktop.getDesktop()).isSupported(Desktop.Action.MAIL)) {
-                                  URI mailto = new URI("mailto:marek_madyda@techniplast.pl?subject=Analizator_pracy_wtryskarek");
+                                  URI mailto = new URI("mailto:marek_madyda@technitools.pl?subject=Analizator_pracy_wtryskarek");
                                   desktop.mail(mailto);
                                 } else {
                                   // TODO fallback to some Runtime.exec(..) voodoo?

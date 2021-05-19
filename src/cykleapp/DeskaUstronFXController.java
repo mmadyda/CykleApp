@@ -79,7 +79,7 @@ public class DeskaUstronFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private final static int czas_odswierzania = 30;
+    private final static int czas_odswierzania = 15;
     private static int czas_animacji = 2;
     private static int obecnyKomunikat = 0;
     private static int liczbaKomunikatow = 0;

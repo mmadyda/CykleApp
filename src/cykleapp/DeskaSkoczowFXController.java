@@ -79,7 +79,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private final static int czas_odswierzania = 30;
+    private final static int czas_odswierzania = 15;
     private final static int czas_animacji = 2;
     private final static int obecnyKomunikat = 0;
     private final static int liczbaKomunikatow = 0;
