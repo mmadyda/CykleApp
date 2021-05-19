@@ -595,19 +595,27 @@ public class cykleFXController implements Initializable {
              postoj = 0;
              
             String sql = "";
+            //wykres dni
             //!!!!!!wykres dni do poprawy
             // !!!!!problem w dniu zmiany tabeli
             //String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM 14443643_projekt.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                sql = "(SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"' GROUP BY 'min(data_g)' order BY NULL) UNION ALL (SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"' GROUP BY 'min(data_g)' order BY NULL);";
+                //DWIE TABELE
+                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
+                        + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"') "
+                        + "UNION "
+                        + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"')) AS T ";
             }
             else
             {
+                //JEDNA TABELA
                 sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"';";
             }
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))";
             String sqlNow = "select NOW() as teraz";
+            System.out.println("zapytanie wykres dni: ");
+            System.out.println(sql);
             if(DEBUG)
             {
                 System.out.println(sql);
@@ -1323,26 +1331,27 @@ public class cykleFXController implements Initializable {
              proby_tech = 0;
              brak_zaop = 0;
              postoj = 0;
-             
+            
+            //Wykres godzin
             String sql = "";
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                //System.out.println(Timestamp.valueOf(localDateTime_od.plusHours(i)));
-               //String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
-               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"' UNION SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"'LIMIT 1;";
-               //System.out.println(sql);
-
+               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
+                        + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"') "
+                        + "UNION "
+                        + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"')) AS T ";
             }
             else
             {
                //System.out.println(Timestamp.valueOf(localDateTime_od.plusHours(i)));
                //String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
-               //System.out.println(sql);
+               System.out.println(sql);
 
             }
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))";
             String sqlNow = "select NOW() as teraz";
+            System.out.println(sql);
             if(DEBUG)
             {
                 System.out.println(sqlNorma);
