@@ -888,14 +888,14 @@ public class cykleFXController implements Initializable {
              
                 daneWykresKolowy = FXCollections.observableArrayList(
                 new PieChart.Data("wtrysk", kol_wtrysk),
-                new PieChart.Data("wybrak", kol_wybrak),
+                new PieChart.Data("próby technologiczne", kol_proby_tech),
+                new PieChart.Data("postój zaplanowany", kol_postoj),
+                new PieChart.Data("przezbrajanie", kol_przezbrajanie),
                 new PieChart.Data("nie zgłoszono", kol_brak_operatora),
                 new PieChart.Data("awaria maszyny", kol_awaria_m),
                 new PieChart.Data("awaria formy", kol_awaria_f),
-                new PieChart.Data("przezbrajanie", kol_przezbrajanie),
-                new PieChart.Data("próby technologiczne", kol_proby_tech),
                 new PieChart.Data("brak zaopatrzenia", kol_brak_zaop),
-                new PieChart.Data("postój zaplanowany", kol_postoj));
+                new PieChart.Data("wybrak", kol_wybrak));
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wtrysk",kol_wtrysk+""));
@@ -967,7 +967,7 @@ public class cykleFXController implements Initializable {
                     {
                     
                     WykresKolowy.getData().addAll(daneWykresKolowy);
-                    WykresSlupkowy.getData().addAll(s_wtrysk,s_wybrak,s_brak_operatora,s_awaria_m,s_awaria_f,s_przezbrajanie,s_proby_tech,s_brak_zaop,s_postoj); 
+                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_brak_operatora,s_awaria_m,s_awaria_f,s_brak_zaop,s_wybrak);
                     WykresLiniowy.getData().addAll(l_czas_cykl);
                     WykresNormy.getData().addAll(Nbrak, Nnorma, Npraca);
                     
