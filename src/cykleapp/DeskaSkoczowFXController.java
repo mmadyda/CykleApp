@@ -140,8 +140,6 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private ScrollPane ScrollPane;
     @FXML
-    private Button btnST_29;
-    @FXML
     private Button btnST_49;
     @FXML
     private Button btnST_50;
@@ -163,9 +161,6 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnST_27;
     @FXML
     private Button btnST_23;
-    private Button btnST_25;
-    @FXML
-    private Button btnST_47;
     @FXML
     private Button btnST_55;
     @FXML
@@ -499,12 +494,6 @@ public class DeskaSkoczowFXController implements Initializable {
             case "ST_23":
                 btnST_23.setStyle(mas.getStyl());
                 break;
-            case "ST_25":
-                btnST_25.setStyle(mas.getStyl());
-                break;
-            case "ST_47":
-                btnST_47.setStyle(mas.getStyl());
-                break;
             case "ST_55":
                 btnST_55.setStyle(mas.getStyl());
                 break;
@@ -543,9 +532,6 @@ public class DeskaSkoczowFXController implements Initializable {
                 break;
             case "ST_51":
                 btnST_51.setStyle(mas.getStyl());
-                break;
-            case "ST_29":
-                btnST_29.setStyle(mas.getStyl());
                 break;
             case "ST_66":
                 btnST_66.setStyle(mas.getStyl());

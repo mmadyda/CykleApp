@@ -28,11 +28,6 @@
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
-                        <Button fx:id="btnST_29" layoutX="1309.0" layoutY="484.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="130.0" rotate="-90.0" styleClass="wtryskarki" text="ST 29">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                         <HBox alignment="CENTER" layoutX="2.0" layoutY="950.0" prefHeight="100.0" prefWidth="1900.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -185,11 +180,6 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_47" layoutX="436.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="btnST_55" layoutX="501.0" layoutY="72.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="110.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
                            <font>
                               <Font name="System Bold" size="18.0" />
@@ -267,7 +257,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_62" layoutX="1475.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 62">
+                        <Button fx:id="btnST_62" layoutX="775.0" layoutY="776.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 62">
                            <font>
                               <Font size="18.0" />
                            </font>
