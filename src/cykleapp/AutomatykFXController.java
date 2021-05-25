@@ -184,6 +184,7 @@ public class AutomatykFXController implements Initializable {
         
         CBmiejsce.getItems().add("Skoczów");
         CBmiejsce.getItems().add("Ustroń");
+        CBmiejsce.getItems().add("Koniaków");
         switch (CykleApp.rootPref.get("AUTOMA_MIEJSCE", "")) {
             case "SKOCZOW":
                 CBmiejsce.setValue("Skoczów");
@@ -192,6 +193,10 @@ public class AutomatykFXController implements Initializable {
             case "USTRON":
                 CBmiejsce.setValue("Ustroń");
                 IstniejaceMaszynyUstron.LadujIstniejaceMaszyny(CBmaszyna);
+                break;
+            case "KONIAKOW":
+                CBmiejsce.setValue("Koniaków");
+                IstniejaceMaszynyKoniakow.LadujIstniejaceMaszyny(CBmaszyna);
                 break;
             default:
                 CBmiejsce.setValue("Skoczów");
@@ -857,6 +862,11 @@ public class AutomatykFXController implements Initializable {
         {
             IstniejaceMaszynySkoczow.LadujIstniejaceMaszyny(CBmaszyna);
             CykleApp.rootPref.put("AUTOMA_MIEJSCE", "SKOCZOW");
+        }
+        if(CBmiejsce.getValue().equals("Koniaków"))
+        {
+            IstniejaceMaszynyKoniakow.LadujIstniejaceMaszyny(CBmaszyna);
+            CykleApp.rootPref.put("AUTOMA_MIEJSCE", "KONIAKOW");
         }
         
         wybranaMaszyna = CBmaszyna.getValue();
