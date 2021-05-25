@@ -2418,13 +2418,14 @@ public class obciazenieFXController implements  Initializable {
     CheckBoxTreeItem<String> ustron = new CheckBoxTreeItem<String>("Ustroń");
     CheckBoxTreeItem<String> skoczow = new CheckBoxTreeItem<String>("Skoczów");
     CheckBoxTreeItem<String> koniakow = new CheckBoxTreeItem<String>("Koniaków");
-     
-    wtryskarki.getChildren().add(ustron);
+    
     wtryskarki.getChildren().add(skoczow);
+    wtryskarki.getChildren().add(ustron);
+    wtryskarki.getChildren().add(koniakow);
     //wtryskarki.getChildren().add(koniakow);
 
     wtryskarki.setExpanded(true);
-    ustron.setExpanded(true);
+    //ustron.setExpanded(true);
    
     for(Maszyna analizowanaMaszyna:IstniejaceMaszynyUstron.LadujNazwyMaszyn())
     {
@@ -2434,6 +2435,11 @@ public class obciazenieFXController implements  Initializable {
     for(Maszyna analizowanaMaszyna:IstniejaceMaszynySkoczow.LadujNazwyMaszyn())
     {
          skoczow.getChildren().add(new CheckBoxTreeItem<String>(analizowanaMaszyna.getNazwa()));
+
+    }
+    for(Maszyna analizowanaMaszyna:IstniejaceMaszynyKoniakow.LadujNazwyMaszyn())
+    {
+         koniakow.getChildren().add(new CheckBoxTreeItem<String>(analizowanaMaszyna.getNazwa()));
 
     }
             

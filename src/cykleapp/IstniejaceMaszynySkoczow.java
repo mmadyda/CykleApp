@@ -18,9 +18,7 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_04");
         CBmaszyna.getItems().add("ST_23");
         CBmaszyna.getItems().add("ST_27"); 
-        CBmaszyna.getItems().add("ST_29");
         CBmaszyna.getItems().add("ST_46");
-        CBmaszyna.getItems().add("ST_47");
         CBmaszyna.getItems().add("ST_48");
         CBmaszyna.getItems().add("ST_49");
         CBmaszyna.getItems().add("ST_50");
@@ -57,9 +55,7 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_04"));
         maszyny.add(new Maszyna("ST_23"));
         maszyny.add(new Maszyna("ST_27"));
-        maszyny.add(new Maszyna("ST_29"));
         maszyny.add(new Maszyna("ST_46"));
-        maszyny.add(new Maszyna("ST_47"));
         maszyny.add(new Maszyna("ST_48"));
         maszyny.add(new Maszyna("ST_49"));
         maszyny.add(new Maszyna("ST_50"));
