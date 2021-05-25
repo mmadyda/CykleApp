@@ -125,12 +125,12 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <Button fx:id="btnST_49" layoutX="1393.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 49">
+                        <Button fx:id="btnST_49" layoutX="1369.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 49">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_50" layoutX="1309.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 50">
+                        <Button fx:id="btnST_50" layoutX="1279.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 50">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -140,17 +140,17 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_59" layoutX="1127.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 59">
+                        <Button fx:id="btnST_59" layoutX="1097.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 59">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_68" layoutX="1222.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 68">
+                        <Button fx:id="btnST_68" layoutX="1187.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 68">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_57" layoutX="1042.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
+                        <Button fx:id="btnST_57" layoutX="1012.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -210,7 +210,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_58" layoutX="953.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 58">
+                        <Button fx:id="btnST_58" layoutX="923.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 58">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -220,7 +220,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_69" layoutX="865.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 69">
+                        <Button fx:id="btnST_69" layoutX="835.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 69">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -235,7 +235,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_60" layoutX="524.0" layoutY="774.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="241.0" styleClass="wtryskarki" text="ST 60">
+                        <Button fx:id="btnST_60" layoutX="531.0" layoutY="761.0" mnemonicParsing="false" prefHeight="79.0" prefWidth="241.0" styleClass="wtryskarki" text="ST 60">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -252,12 +252,12 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_72" layoutX="1383.0" layoutY="511.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" rotate="-90.0" styleClass="wtryskarki" text="ST 72">
+                        <Button fx:id="btnST_72" layoutX="1389.0" layoutY="511.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="200.0" rotate="-90.0" styleClass="wtryskarki" text="ST 72">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_62" layoutX="775.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 62">
+                        <Button fx:id="btnST_62" layoutX="745.0" layoutY="770.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 62">
                            <font>
                               <Font size="18.0" />
                            </font>
