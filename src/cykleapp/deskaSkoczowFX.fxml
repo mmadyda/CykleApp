@@ -17,6 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.ColorAdjust?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaSkoczowFXController">
    <center>
@@ -32,23 +33,23 @@
                            </image>
                         </ImageView>
                         
-                        <Polyline fill="#80ff0000" layoutX="741.0" layoutY="509.0" points="-469.0, -75.0, 521.0, -75.0, 521.0, 139.0, -358.0, 139.0, -469.0, -75.0" stroke="#00a1ff65" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0">
+                         <Polyline fill="#00a1ff1a" layoutX="741.0" layoutY="509.0" points="-469.0, -75.0, 576.0, -75.0, 576.0, 139.0, -358.0, 139.0, -469.0, -75.0" stroke="#00a1ff66" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
-                        <Polyline fill="#80ff0000" layoutX="1005.0" layoutY="510.0" points="360.0, -76.0, 522.0, -76.0, 522.0, 138.0, 360.0, 138.0, 360.0, -76.0" stroke="#ffe50067" strokeType="INSIDE" strokeWidth="4.0">
+                        <Polyline fill="#ffe1001b" layoutX="1005.0" layoutY="510.0" points="317.0, -76.0, 576.0, -75.0, 585.0, 138.0, 360.0, 139.0, 317.0, 139.0, 317.0, -75.0" stroke="#ffe50066" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
-                        <Polyline fill="#80ff0000" layoutX="932.0" layoutY="769.0" points="-144.0, -67.0, 566.0, -67.0, 566.0, 127.0, -144.0, 127.0, -144.0, -67.0" stroke="#ffe50067" strokeType="INSIDE" strokeWidth="4.0">
+                        <Polyline fill="#ffe1001a" layoutX="932.0" layoutY="769.0" points="-144.0, -67.0, 661.0, -67.0, 672.0, 127.0, -144.0, 127.0, -144.0, 57.0, -144.0, -67.0" stroke="#ffe50066" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
-                        <Polyline fill="#80ff0000" layoutX="206.0" layoutY="769.0" points="210.0, -66.0, 576.0, -66.0, 576.0, 125.0, 308.0, 125.0, 210.0, -66.0" stroke="#00a1ff65" strokeType="INSIDE" strokeWidth="4.0">
+                        <Polyline fill="#00a1ff1b" layoutX="206.0" layoutY="769.0" points="207.0, -67.0, 576.0, -67.0, 576.0, 127.0, 307.0, 127.0, 207.0, -67.0" stroke="#00a1ff66" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
-                        <Polyline fill="#80ff0000" layoutX="541.0" layoutY="113.0" points="-128.0, -72.99999237060547, 510.0, -72.99998474121094, 510.0, 75.00003051757812, -128.0, 75.00003051757812, -128.0, -72.99999237060547" stroke="#ffa50066" strokeType="INSIDE" strokeWidth="4.0">
+                        <Polyline fill="#ffa1001a" layoutX="541.0" layoutY="113.0" points="-128.0, -72.99999237060547, 560.0, -72.99999237060547, 560.0, 36.0, 503.0, 77.0, -128.0, 77.0, -128.00003051757812, -72.99999237060547" stroke="#ffa50066" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
@@ -287,28 +288,28 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="1719.0" layoutY="737.0" text="Linia 1" textFill="#ffe700">
+                        <Label layoutX="1719.0" layoutY="737.0" text="Linia 1" textFill="#ffe500" underline="true">
                            <font>
                               <Font size="34.0" />
                            </font>
                            <effect>
-                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                              <ColorAdjust brightness="-0.69" contrast="1.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="1719.0" layoutY="797.0" text="Linia 2" textFill="#00a1ff">
+                        <Label layoutX="1719.0" layoutY="797.0" text="Linia 2" textFill="#00a1ff" underline="true">
                            <font>
                               <Font size="34.0" />
                            </font>
                            <effect>
-                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                              <ColorAdjust contrast="-0.21" />
                            </effect>
                         </Label>
-                        <Label layoutX="1719.0" layoutY="862.0" text="Linia 3" textFill="ORANGE">
+                        <Label layoutX="1719.0" layoutY="862.0" text="Linia 3" textFill="ORANGE" underline="true">
                            <font>
                               <Font size="34.0" />
                            </font>
                            <effect>
-                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                              <ColorAdjust contrast="-0.29" />
                            </effect>
                         </Label>
                      </children>
