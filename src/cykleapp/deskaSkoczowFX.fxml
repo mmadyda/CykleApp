@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -13,6 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Polyline?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaSkoczowFXController">
@@ -28,6 +31,28 @@
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
+                        
+                        <Polyline fill="#80ff0000" layoutX="741.0" layoutY="509.0" points="-469.0, -75.0, 521.0, -75.0, 521.0, 139.0, -358.0, 139.0, -469.0, -75.0" stroke="#00a1ff65" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0">
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect></Polyline>
+                        <Polyline fill="#80ff0000" layoutX="1005.0" layoutY="510.0" points="360.0, -76.0, 522.0, -76.0, 522.0, 138.0, 360.0, 138.0, 360.0, -76.0" stroke="#ffe50067" strokeType="INSIDE" strokeWidth="4.0">
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect></Polyline>
+                        <Polyline fill="#80ff0000" layoutX="932.0" layoutY="769.0" points="-144.0, -67.0, 566.0, -67.0, 566.0, 127.0, -144.0, 127.0, -144.0, -67.0" stroke="#ffe50067" strokeType="INSIDE" strokeWidth="4.0">
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect></Polyline>
+                        <Polyline fill="#80ff0000" layoutX="206.0" layoutY="769.0" points="210.0, -66.0, 576.0, -66.0, 576.0, 125.0, 308.0, 125.0, 210.0, -66.0" stroke="#00a1ff65" strokeType="INSIDE" strokeWidth="4.0">
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect></Polyline>
+                        <Polyline fill="#80ff0000" layoutX="541.0" layoutY="113.0" points="-128.0, -72.99999237060547, 510.0, -72.99998474121094, 510.0, 75.00003051757812, -128.0, 75.00003051757812, -128.0, -72.99999237060547" stroke="#ffa50066" strokeType="INSIDE" strokeWidth="4.0">
+                           <effect>
+                              <Glow level="1.0" />
+                           </effect></Polyline>
+                           
                         <HBox alignment="CENTER" layoutX="2.0" layoutY="950.0" prefHeight="100.0" prefWidth="1900.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -165,37 +190,37 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_04" layoutX="868.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 04">
+                        <Button fx:id="btnST_04" layoutX="875.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 04">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_27" layoutX="943.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 27">
+                        <Button fx:id="btnST_27" layoutX="950.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 27">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_23" layoutX="793.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 23">
+                        <Button fx:id="btnST_23" layoutX="802.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 23">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_55" layoutX="493.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
+                        <Button fx:id="btnST_55" layoutX="502.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_48" layoutX="568.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
+                        <Button fx:id="btnST_48" layoutX="577.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_52" layoutX="642.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 52">
+                        <Button fx:id="btnST_52" layoutX="651.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 52">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_53" layoutX="717.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 53">
+                        <Button fx:id="btnST_53" layoutX="726.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 53">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -242,7 +267,7 @@
                         </Button>
                         <Clock fx:id="clock" backgroundPaint="BLACK" discreteSeconds="false" layoutX="1172.0" layoutY="12.0" minHeight="340.0" minWidth="662.0" prefHeight="400.0" prefWidth="695.0" running="true" skinType="MINIMAL" />
                         <JFXSpinner fx:id="progressBar" layoutX="14.0" layoutY="12.0" progress="0.0" radius="40.0" startingAngle="0.0" />
-                        <Button fx:id="btnST_73" layoutX="368.0" layoutY="85.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="140.0" rotate="-90.0" styleClass="wtryskarki" text="ST 73">
+                        <Button fx:id="btnST_73" layoutX="377.0" layoutY="87.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 73">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
@@ -262,6 +287,30 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
+                        <Label layoutX="1719.0" layoutY="737.0" text="Linia 1" textFill="#ffe700">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="1719.0" layoutY="797.0" text="Linia 2" textFill="#00a1ff">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="1719.0" layoutY="862.0" text="Linia 3" textFill="ORANGE">
+                           <font>
+                              <Font size="34.0" />
+                           </font>
+                           <effect>
+                              <DropShadow height="10.0" radius="4.5" width="10.0" />
+                           </effect>
+                        </Label>
                      </children>
                   </AnchorPane>
               </content>
