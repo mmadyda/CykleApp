@@ -690,6 +690,34 @@
               </content>
             </ScrollPane>
         <Pane prefHeight="-1.0" prefWidth="-1.0" />
+            <Label text="L2" textFill="#5dade2">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
+               </effect>
+            </Label>
+            <Label text="L3" textFill="#a569bd">
+               <font>
+                  <Font name="Calibri Bold" size="20.0" />
+               </font>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
+               </effect>
+            </Label>
          </children>
       </VBox>
    </center>
