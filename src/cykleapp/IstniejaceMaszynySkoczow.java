@@ -15,8 +15,6 @@ public class IstniejaceMaszynySkoczow {
     {
         CBmaszyna.getItems().add("TEST");
         //SKOCZÓW
-        CBmaszyna.getItems().add("ST_04");
-        CBmaszyna.getItems().add("ST_23");
         CBmaszyna.getItems().add("ST_27"); 
         CBmaszyna.getItems().add("ST_46");
         CBmaszyna.getItems().add("ST_48");
@@ -29,8 +27,7 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_57");
         CBmaszyna.getItems().add("ST_58");
         CBmaszyna.getItems().add("ST_59");
-        CBmaszyna.getItems().add("ST_60"); 
-        CBmaszyna.getItems().add("ST_62"); 
+        CBmaszyna.getItems().add("ST_60");  
         CBmaszyna.getItems().add("ST_63");
         CBmaszyna.getItems().add("ST_65");
         CBmaszyna.getItems().add("ST_66");
@@ -41,6 +38,10 @@ public class IstniejaceMaszynySkoczow {
         CBmaszyna.getItems().add("ST_71");
         CBmaszyna.getItems().add("ST_72");
         CBmaszyna.getItems().add("ST_73");
+        
+        CBmaszyna.getItems().add("ST_74");
+        CBmaszyna.getItems().add("ST_75");
+        CBmaszyna.getItems().add("ST_76");
 
         
         CBmaszyna.setValue("ST_04");
@@ -52,8 +53,6 @@ public class IstniejaceMaszynySkoczow {
         
         //SKOCŻÓW
         
-        maszyny.add(new Maszyna("ST_04"));
-        maszyny.add(new Maszyna("ST_23"));
         maszyny.add(new Maszyna("ST_27"));
         maszyny.add(new Maszyna("ST_46"));
         maszyny.add(new Maszyna("ST_48"));
@@ -67,7 +66,6 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_58"));
         maszyny.add(new Maszyna("ST_59"));
         maszyny.add(new Maszyna("ST_60"));
-        maszyny.add(new Maszyna("ST_62"));
         maszyny.add(new Maszyna("ST_63"));
         maszyny.add(new Maszyna("ST_65"));
         maszyny.add(new Maszyna("ST_66"));
@@ -78,6 +76,10 @@ public class IstniejaceMaszynySkoczow {
         maszyny.add(new Maszyna("ST_71"));
         maszyny.add(new Maszyna("ST_72"));
         maszyny.add(new Maszyna("ST_73"));
+        
+        maszyny.add(new Maszyna("ST_74"));
+        maszyny.add(new Maszyna("ST_75"));
+        maszyny.add(new Maszyna("ST_76"));
      
         return maszyny;
         

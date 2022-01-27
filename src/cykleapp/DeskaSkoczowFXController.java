@@ -156,11 +156,7 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private Button btnST_51;
     @FXML
-    private Button btnST_04;
-    @FXML
     private Button btnST_27;
-    @FXML
-    private Button btnST_23;
     @FXML
     private Button btnST_55;
     @FXML
@@ -192,7 +188,11 @@ public class DeskaSkoczowFXController implements Initializable {
     @FXML
     private Button btnST_72;
     @FXML
-    private Button btnST_62;
+    private Button btnST_74;
+    @FXML
+    private Button btnST_75;
+    @FXML
+    private Button btnST_76;
   
 
     /**
@@ -491,9 +491,6 @@ public class DeskaSkoczowFXController implements Initializable {
         
         
         switch (mas.getNazwa()) {
-            case "ST_23":
-                btnST_23.setStyle(mas.getStyl());
-                break;
             case "ST_55":
                 btnST_55.setStyle(mas.getStyl());
                 break;
@@ -505,9 +502,6 @@ public class DeskaSkoczowFXController implements Initializable {
                 break;
             case "ST_53":
                 btnST_53.setStyle(mas.getStyl());
-                break;
-            case "ST_04":
-                btnST_04.setStyle(mas.getStyl());
                 break;
             case "ST_27":
                 btnST_27.setStyle(mas.getStyl());
@@ -557,9 +551,6 @@ public class DeskaSkoczowFXController implements Initializable {
             case "ST_69":
                 btnST_69.setStyle(mas.getStyl());
                 break;
-            case "ST_62":
-                btnST_62.setStyle(mas.getStyl());
-                break;
             case "ST_71":
                 btnST_71.setStyle(mas.getStyl());
                 break;
@@ -569,7 +560,17 @@ public class DeskaSkoczowFXController implements Initializable {
             case "ST_73":
                 btnST_73.setStyle(mas.getStyl());
                 break;
+            case "ST_74":
+                btnST_74.setStyle(mas.getStyl());
+                break;
+            case "ST_75":
+                btnST_75.setStyle(mas.getStyl());
+                break;
+            case "ST_76":
+                btnST_76.setStyle(mas.getStyl());
+                break;
             default:
+                
                 break;    
         }
         //maszyny nie podłączone
