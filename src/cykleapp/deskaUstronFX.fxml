@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaUstronFXController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaUstronFXController">
    <center>
       <VBox prefHeight="910.0" prefWidth="1846.0">
          <children>
@@ -43,16 +43,6 @@
                               <GaussianBlur radius="18.25" />
                            </effect>
                         </Circle>
-                        <Button fx:id="btnARBURG_35" layoutX="214.0" layoutY="758.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARB 35">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_34" layoutX="214.0" layoutY="689.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 34">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
                         <HBox alignment="CENTER" layoutX="39.0" layoutY="960.0" prefHeight="100.0" prefWidth="1770.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -151,37 +141,12 @@
                            </opaqueInsets>
                         </HBox>
                         <Clock fx:id="clock" backgroundPaint="BLACK" dateVisible="true" discreteSeconds="false" layoutX="1370.0" layoutY="10.0" lcdDesign="BLUE" lcdFont="LCD" minHeight="360.0" prefHeight="400.0" prefWidth="454.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="MINIMAL" />
-                        <Button fx:id="btnARBURG_33" layoutX="247.0" layoutY="584.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 33">
+                        <Button fx:id="btnUST_33" layoutX="247.0" layoutY="584.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ST 33">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnARBURG_32" layoutX="247.0" layoutY="510.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 32">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_31" layoutX="247.0" layoutY="437.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ARB 31">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnARBURG_36" layoutX="214.0" layoutY="825.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="127.0" styleClass="wtryskarki" text="ARB 36">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_39" layoutX="1129.0" layoutY="716.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="205.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 39">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_41" layoutX="1355.0" layoutY="702.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 41">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnHAITIAN_42" layoutX="1513.0" layoutY="702.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="230.0" rotate="-90.0" styleClass="wtryskarki" text="HAI 42">
+                        <Button fx:id="btnUST_44" layoutX="423.0" layoutY="746.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="185.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -198,6 +163,11 @@
                            </image>
                         </ImageView>
                         <JFXSpinner fx:id="progressBar" layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="61.0" progress="0.0" radius="40.0" startingAngle="0.0" />
+                        <Button fx:id="btnUST_45" layoutX="506.0" layoutY="746.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="185.0" rotate="-90.0" styleClass="wtryskarki" text="ST 45">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>

@@ -16,17 +16,10 @@ public class IstniejaceMaszynyUstron {
         CBmaszyna.getItems().clear();
         CBmaszyna.getItems().add("TEST");
         ////////////////////////////////////////////////////////////////////////
-        CBmaszyna.getItems().add("ARBURG_34");
-        CBmaszyna.getItems().add("ARBURG_35");
-        CBmaszyna.getItems().add("ARBURG_36");
+        CBmaszyna.getItems().add("UST_33");
+        CBmaszyna.getItems().add("UST_44");
+        CBmaszyna.getItems().add("UST_45");
         ////////////////////////////////////////////////////////////////////////
-        CBmaszyna.getItems().add("ARBURG_31");
-        CBmaszyna.getItems().add("ARBURG_32");
-        CBmaszyna.getItems().add("ARBURG_33");
-        ////////////////////////////////////////////////////////////////////////
-        CBmaszyna.getItems().add("HAITIAN_39");
-        CBmaszyna.getItems().add("HAITIAN_41");
-        CBmaszyna.getItems().add("HAITIAN_42");
         
         ////////////////////////////////////////////////////////////////////////
         
@@ -36,17 +29,11 @@ public class IstniejaceMaszynyUstron {
     {
         ArrayList<Maszyna> maszyny = new ArrayList<Maszyna>();
         ////////////////////////////////////////////////////////////////////////
-        maszyny.add(new Maszyna("ARBURG_34"));
-        maszyny.add(new Maszyna("ARBURG_35"));
-        maszyny.add(new Maszyna("ARBURG_36"));
+        maszyny.add(new Maszyna("UST_33"));
+        maszyny.add(new Maszyna("UST_44"));
+        maszyny.add(new Maszyna("UST_45"));
         ////////////////////////////////////////////////////////////////////////
-        maszyny.add(new Maszyna("ARBURG_31"));
-        maszyny.add(new Maszyna("ARBURG_32"));
-        maszyny.add(new Maszyna("ARBURG_33"));
-        ///////////////////////////////////////////////////////////////////////
-        maszyny.add(new Maszyna("HAITIAN_39"));
-        maszyny.add(new Maszyna("HAITIAN_41"));
-        maszyny.add(new Maszyna("HAITIAN_42"));
+
        
         return maszyny;
         

@@ -144,23 +144,10 @@ public class DeskaUstronFXController implements Initializable {
    
     @FXML
     private Circle cien_zegar111;
-    @FXML
-    private Button btnARBURG_35;
-    @FXML
-    private Button btnARBURG_34;
     
     
     @FXML
     private ScrollPane ScrollPane;
-    @FXML
-    private Button btnARBURG_36;
-    @FXML
-    private Button btnARBURG_33;
-    @FXML
-    private Button btnARBURG_32;
-    @FXML
-    private Button btnARBURG_31;
-    @FXML
     private Button btnHAITIAN_39;
     @FXML
     private Button btnHAITIAN_41;
@@ -168,6 +155,12 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnHAITIAN_42;
     @FXML
     private Clock clock;
+    @FXML
+    private Button btnUST_33;
+    @FXML
+    private Button btnUST_44;
+    @FXML
+    private Button btnUST_45;
 
     /**
      * Initializes the controller class.
@@ -466,36 +459,16 @@ public class DeskaUstronFXController implements Initializable {
         
         
         switch (mas.getNazwa()) {
-            case "ARBURG_34":
-                btnARBURG_34.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_35":
-                btnARBURG_35.setStyle(mas.getStyl());
-                break;
-            case "ARBURG_36":
-                btnARBURG_36.setStyle(mas.getStyl());
-                break;
 
-            ////////////////////////////////////////////////////////////////////
-            case "ARBURG_31":
-                btnARBURG_31.setStyle(mas.getStyl());
+            case "UST_33":
+                btnUST_33.setStyle(mas.getStyl());
                 break;
-            case "ARBURG_32":
-                btnARBURG_32.setStyle(mas.getStyl());
+            case "UST_44":
+                btnUST_44.setStyle(mas.getStyl());
                 break;
-            case "ARBURG_33":
-                btnARBURG_33.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_39":
-                btnHAITIAN_39.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_41":
-                btnHAITIAN_41.setStyle(mas.getStyl());
-                break;
-            case "HAITIAN_42":
-                btnHAITIAN_42.setStyle(mas.getStyl());
-                break;
-              
+            case "UST_45":
+                btnUST_45.setStyle(mas.getStyl());
+                break; 
             default:
                 break;
         }
