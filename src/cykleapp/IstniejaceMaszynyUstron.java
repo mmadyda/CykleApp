@@ -20,7 +20,11 @@ public class IstniejaceMaszynyUstron {
         CBmaszyna.getItems().add("UST_44");
         CBmaszyna.getItems().add("UST_45");
         ////////////////////////////////////////////////////////////////////////
-        
+        CBmaszyna.getItems().add("UST_46");
+        CBmaszyna.getItems().add("UST_43");
+        CBmaszyna.getItems().add("UST_53");
+        CBmaszyna.getItems().add("UST_50");
+        CBmaszyna.getItems().add("UST_52");
         ////////////////////////////////////////////////////////////////////////
         
         CBmaszyna.setValue("ARBURG_34");
@@ -33,6 +37,11 @@ public class IstniejaceMaszynyUstron {
         maszyny.add(new Maszyna("UST_44"));
         maszyny.add(new Maszyna("UST_45"));
         ////////////////////////////////////////////////////////////////////////
+        maszyny.add(new Maszyna("UST_46"));
+        maszyny.add(new Maszyna("UST_43"));
+        maszyny.add(new Maszyna("UST_53"));
+        maszyny.add(new Maszyna("UST_50"));
+        maszyny.add(new Maszyna("UST_52"));
 
        
         return maszyny;

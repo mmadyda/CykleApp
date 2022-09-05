@@ -150,10 +150,6 @@ public class DeskaUstronFXController implements Initializable {
     private ScrollPane ScrollPane;
     private Button btnHAITIAN_39;
     @FXML
-    private Button btnHAITIAN_41;
-    @FXML
-    private Button btnHAITIAN_42;
-    @FXML
     private Clock clock;
     @FXML
     private Button btnUST_33;
@@ -161,6 +157,16 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnUST_44;
     @FXML
     private Button btnUST_45;
+    @FXML
+    private Button btnUST_46;
+    @FXML
+    private Button btnUST_43;
+    @FXML
+    private Button btnUST_53;
+    @FXML
+    private Button btnUST_50;
+    @FXML
+    private Button btnUST_52;
 
     /**
      * Initializes the controller class.
@@ -468,7 +474,22 @@ public class DeskaUstronFXController implements Initializable {
                 break;
             case "UST_45":
                 btnUST_45.setStyle(mas.getStyl());
+                break;
+            case "UST_46":
+                btnUST_46.setStyle(mas.getStyl());
                 break; 
+            case "UST_43":
+                btnUST_43.setStyle(mas.getStyl());
+                break;
+            case "UST_53":
+                btnUST_53.setStyle(mas.getStyl());
+                break;
+            case "UST_50":
+                btnUST_50.setStyle(mas.getStyl());
+                break;
+            case "UST_52":
+                btnUST_52.setStyle(mas.getStyl());
+                break;
             default:
                 break;
         }

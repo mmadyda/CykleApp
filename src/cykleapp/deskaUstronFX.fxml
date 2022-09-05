@@ -18,7 +18,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.241" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaUstronFXController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaUstronFXController">
    <center>
       <VBox prefHeight="910.0" prefWidth="1846.0">
          <children>
@@ -28,7 +28,7 @@
                      <children>
                         <ImageView id="TLO" fx:id="imgHala" fitHeight="795.0" fitWidth="1785.0" layoutX="73.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/hala1.png" />
+                              <Image url="@img/Technipro_layout.png" />
                            </image>
                            <effect>
                               <Glow level="0.0">
@@ -141,29 +141,57 @@
                            </opaqueInsets>
                         </HBox>
                         <Clock fx:id="clock" backgroundPaint="BLACK" dateVisible="true" discreteSeconds="false" layoutX="1370.0" layoutY="10.0" lcdDesign="BLUE" lcdFont="LCD" minHeight="360.0" prefHeight="400.0" prefWidth="454.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="MINIMAL" />
-                        <Button fx:id="btnUST_33" layoutX="247.0" layoutY="584.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="126.0" styleClass="wtryskarki" text="ST 33">
+                        <Button fx:id="btnUST_33" layoutX="340.0" layoutY="610.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 33">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_44" layoutX="423.0" layoutY="746.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="185.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
+                        <Button fx:id="btnUST_44" layoutX="581.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="226.0" layoutY="642.0" prefHeight="17.0" prefWidth="103.0" text="Jesteś tutaj" textFill="#ff8400">
+                        <Label layoutX="319.0" layoutY="662.0" prefHeight="17.0" prefWidth="103.0" text="Jesteś tutaj" textFill="#ff8400">
                            <font>
                               <Font name="Ebrima Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Circle fill="#ff8400" layoutX="201.0" layoutY="640.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
-                        <ImageView fitHeight="106.0" fitWidth="1056.0" layoutX="199.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                        <Circle fill="#ff8400" layoutX="294.0" layoutY="660.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <ImageView fitHeight="130.0" fitWidth="700.0" layoutX="199.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@img/techniplast_big.png" />
+                              <Image url="@img/logo_TECHNIPRO.png" />
                            </image>
+                           <effect>
+                              <Glow />
+                           </effect>
                         </ImageView>
                         <JFXSpinner fx:id="progressBar" layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="61.0" progress="0.0" radius="40.0" startingAngle="0.0" />
-                        <Button fx:id="btnUST_45" layoutX="506.0" layoutY="746.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="185.0" rotate="-90.0" styleClass="wtryskarki" text="ST 45">
+                        <Button fx:id="btnUST_45" layoutX="494.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 45">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_46" layoutX="959.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 46">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_43" layoutX="553.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="176.0" styleClass="wtryskarki" text="ST 43">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_53" layoutX="1180.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="206.0" styleClass="wtryskarki" text="ST 53">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_50" layoutX="363.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="180.0" styleClass="wtryskarki" text="ST 50">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_52" layoutX="740.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 52">
                            <font>
                               <Font size="18.0" />
                            </font>
