@@ -74,6 +74,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private int przezbrajanie;
     private int proby_tech;
     private int brak_zaop;
+    private int brak_oper;
     private int postoj;
     private Timeline updater;
     private Timeline animacja;
@@ -136,6 +137,10 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnLEG_BRAK_DANYCH;
     @FXML
     private Label labLEG_BRAK_DANYCH;
+    @FXML
+    private Button btnLEG_BRAK_OPER;
+    @FXML
+    private Label labLEG_BRAK_OPER;
     
     @FXML
     private ScrollPane ScrollPane;
@@ -193,6 +198,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnST_75;
     @FXML
     private Button btnST_76;
+    
   
 
     /**
@@ -364,9 +370,10 @@ public class DeskaSkoczowFXController implements Initializable {
                 przezbrajanie =0;
                 proby_tech =0;
                 brak_zaop =0;
+                brak_oper =0;
                 postoj =0;
 
-                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
+                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, brak_oper, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
                 //String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' ORDER BY lp DESC LIMIT 1;";
                 
                 ResultSet rs_a;
@@ -381,15 +388,86 @@ public class DeskaSkoczowFXController implements Initializable {
                     brakDanych=false;
                     data = rs_a.getString("data_g").substring(10,19);
 
+                    try
+                    {
                     wtrysk += Integer.parseInt(rs_a.getString("wtrysk"));
+                    }
+                    catch(Exception ex)
+                    {
+                        wtrysk += 0;
+                    }
+                    try
+                    {
                     wybrak += Integer.parseInt(rs_a.getString("wybrak"));
+                    }
+                    catch(Exception ex)
+                    {
+                        wybrak += 0;
+                    }
+                    try
+                    {
                     postoj_n += (int)Float.parseFloat(rs_a.getString("postoj_n"));
+                    }
+                    catch(Exception ex)
+                    {
+                        postoj_n += 0;
+                    }
+                    try
+                    {
                     awaria_m += (int)Float.parseFloat(rs_a.getString("awaria_m"));
+                    }
+                    catch(Exception ex)
+                    {
+                        awaria_m += 0;
+                    }
+                    try
+                    {
                     awaria_f += (int)Float.parseFloat(rs_a.getString("awaria_f"));
+                    }
+                    catch(Exception ex)
+                    {
+                        awaria_f += 0;
+                    }
+                    try
+                    {
                     przezbrajanie += (int)Float.parseFloat(rs_a.getString("przezbrajanie"));
+                    }
+                    catch(Exception ex)
+                    {
+                        przezbrajanie += 0;
+                    }
+                    try
+                    {
                     proby_tech += (int)Float.parseFloat(rs_a.getString("proby_tech"));
-                    brak_zaop += (int)Float.parseFloat(rs_a.getString("brak_zaop"));
+                    }
+                    catch(Exception ex)
+                    {
+                        proby_tech += 0;
+                    }
+                    try
+                    {
+                        brak_zaop += (int)Float.parseFloat(rs_a.getString("brak_zaop"));
+                    }
+                    catch(Exception ex)
+                    {
+                        brak_zaop += 0;
+                    }
+                    try
+                    {
+                    brak_oper += (int)Float.parseFloat(rs_a.getString("brak_oper"));
+                    }
+                    catch(Exception ex)
+                    {
+                        brak_oper += 0;
+                    }
+                    try
+                    {
                     postoj += (int)Float.parseFloat(rs_a.getString("postoj"));
+                    }
+                    catch(Exception ex)
+                    {
+                        postoj += 0;
+                    }
                 }
                 
                 }
@@ -431,6 +509,10 @@ public class DeskaSkoczowFXController implements Initializable {
                         if(brak_zaop > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.BRAK_ZAOPATRZENIA);
+                        }
+                        if(brak_oper > 0)
+                        {
+                             masfor.setStatus(Maszyna.Stan.BRAK_OPERATORA);
                         }
                         if(postoj > 0)
                         {
@@ -573,15 +655,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 
                 break;    
         }
-        //maszyny nie podłączone
-        //btnST_63.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_67.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_70.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_65.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_58.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_69.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_61.setStyle(Maszyna.getStylNiePodlaczone());
-        //btnST_60.setStyle(Maszyna.getStylNiePodlaczone());
+
     }
     public void shutdown(){
         //System.out.println("zamykanie okna");
@@ -622,6 +696,8 @@ public class DeskaSkoczowFXController implements Initializable {
         btnLEG_PROBY.setStyle(Maszyna.STYL_PROBY_TECHNOLOGICZNE);
 
         btnLEG_BRAK_Z.setStyle(Maszyna.STYL_BRAK_ZAOPATRZENIA);
+        
+        btnLEG_BRAK_OPER.setStyle(Maszyna.STYL_BRAK_OPERATORA);
 
         btnLEG_POSTOJ_P.setStyle(Maszyna.STYL_POSTOJ_PLANOWANY);
 

@@ -27,6 +27,7 @@ public class Maszyna {
         AWARIA_M,
         AWARIA_F,
         BRAK_ZAOPATRZENIA,
+        BRAK_OPERATORA,
         WYBRAK,
         
         NIE_PODLACZONE;
@@ -90,6 +91,12 @@ public class Maszyna {
                                 "    -fx-background-color: linear-gradient(derive(#ffd700,+30%), derive(#ffd700,+40%)),\n" +
                                 "                          linear-gradient(derive(#ffd700,80%), derive(#ffd700, 80%)),\n" +
                                 "                          linear-gradient(derive(#ffd700,30%), derive(#ffd700,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+     public static String STYL_BRAK_OPERATORA = (
+                                "    -fx-background-color: linear-gradient(derive(#8e44ad,+30%), derive(#8e44ad,+40%)),\n" +
+                                "                          linear-gradient(derive(#8e44ad,80%), derive(#8e44ad, 80%)),\n" +
+                                "                          linear-gradient(derive(#8e44ad,30%), derive(#8e44ad,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
      
