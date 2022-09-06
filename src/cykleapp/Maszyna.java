@@ -87,13 +87,13 @@ public class Maszyna {
                                 "                          linear-gradient(derive(#ff6347,30%), derive(#ff6347,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     public static String STYL_BRAK_ZAOPATRZENIA = (
+    public static String STYL_BRAK_ZAOPATRZENIA = (
                                 "    -fx-background-color: linear-gradient(derive(#ffd700,+30%), derive(#ffd700,+40%)),\n" +
                                 "                          linear-gradient(derive(#ffd700,80%), derive(#ffd700, 80%)),\n" +
                                 "                          linear-gradient(derive(#ffd700,30%), derive(#ffd700,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
-     public static String STYL_BRAK_OPERATORA = (
+    public static String STYL_BRAK_OPERATORA = (
                                 "    -fx-background-color: linear-gradient(derive(#8e44ad,+30%), derive(#8e44ad,+40%)),\n" +
                                 "                          linear-gradient(derive(#8e44ad,80%), derive(#8e44ad, 80%)),\n" +
                                 "                          linear-gradient(derive(#8e44ad,30%), derive(#8e44ad,-10%));\n" +
@@ -178,6 +178,10 @@ public class Maszyna {
         if(statu.equals(Stan.BRAK_ZAOPATRZENIA))
         {
             styl = Maszyna.STYL_BRAK_ZAOPATRZENIA + Maszyna.STYL_TEKST;
+        }
+        if(statu.equals(Stan.BRAK_OPERATORA))
+        {
+            styl = Maszyna.STYL_BRAK_OPERATORA + Maszyna.STYL_TEKST;
         }
         if(statu.equals(Stan.POSTOJ_PLANOWANY))
         {
