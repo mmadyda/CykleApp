@@ -175,12 +175,13 @@ public class obciazenieFXController implements  Initializable {
     private String maszyna;
     private int wtrysk;
     private int wybrak;
-    private int brak_operatora;
+    private int postoj_n;
     private int awaria_m;
     private int awaria_f;
     private int przezbrajanie;
     private int proby_tech;
     private int brak_zaop;
+    private int brak_oper;
     private int postoj;
     
     
@@ -188,12 +189,13 @@ public class obciazenieFXController implements  Initializable {
     private String kol_data;
     private int kol_wtrysk;
     private int kol_wybrak;
-    private int kol_brak_operatora;
+    private int kol_postoj_n;
     private int kol_awaria_m;
     private int kol_awaria_f;
     private int kol_przezbrajanie;
     private int kol_proby_tech;
     private int kol_brak_zaop;
+    private int kol_brak_oper;
     private int kol_postoj;
     
     
@@ -203,12 +205,13 @@ public class obciazenieFXController implements  Initializable {
     
     private XYChart.Series s_wtrysk;
     private XYChart.Series s_wybrak;
-    private XYChart.Series s_brak_operatora;
+    private XYChart.Series s_postoj_n;
     private XYChart.Series s_awaria_m;
     private XYChart.Series s_awaria_f;
     private XYChart.Series s_przezbrajanie;
     private XYChart.Series s_proby_tech;
     private XYChart.Series s_brak_zaop;
+    private XYChart.Series s_brak_oper;
     private XYChart.Series s_postoj;
     
     private XYChart.Series l_czas_cykl;
@@ -254,12 +257,13 @@ public class obciazenieFXController implements  Initializable {
     private TableColumn TBCmaszyna;
     private TableColumn TBCwtrysk;
     private TableColumn TBCwybrak;
-    private TableColumn TBCbrak_operatora;
+    private TableColumn TBCpostoj_n;
     private TableColumn TBCawaria_m;
     private TableColumn TBCawaria_f;
     private TableColumn TBCprzezbrajanie;
     private TableColumn TBCproby_tech;
     private TableColumn TBCbrak_zaop;
+    private TableColumn TBCbrak_oper;
     private TableColumn TBCpostoj;
     private TableColumn TBCczas_cyklu;
     
@@ -394,24 +398,26 @@ public class obciazenieFXController implements  Initializable {
             maszyna = "";
             wtrysk = 0;
             wybrak = 0;
-            brak_operatora = 0;
+            postoj_n = 0;
             awaria_m = 0;
             awaria_f =0;
             przezbrajanie = 0;
             proby_tech = 0;
             brak_zaop = 0;
+            brak_oper = 0;
             postoj = 0;
             
             
             kol_data = "";
             kol_wtrysk = 0;
             kol_wybrak = 0;
-            kol_brak_operatora = 0;
+            kol_postoj_n = 0;
             kol_awaria_m = 0;
             kol_awaria_f =0;
             kol_przezbrajanie = 0;
             kol_proby_tech = 0;
             kol_brak_zaop = 0;
+            kol_brak_oper = 0;
             kol_postoj = 0;
             
             //RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ RUNNABLE_ 
@@ -428,8 +434,8 @@ public class obciazenieFXController implements  Initializable {
                 s_wybrak.setName("wybrak");
 
                 //////////////////////////////////////
-                s_brak_operatora = new XYChart.Series();
-                s_brak_operatora.setName("Nie zgłoszono");
+                s_postoj_n = new XYChart.Series();
+                s_postoj_n.setName("Nie zgłoszono");
 
                 s_awaria_m = new XYChart.Series();
                 s_awaria_m.setName("awaria maszyny");
@@ -445,6 +451,9 @@ public class obciazenieFXController implements  Initializable {
 
                 s_brak_zaop = new XYChart.Series();
                 s_brak_zaop.setName("brak zaopatrzenia");
+                
+                s_brak_oper = new XYChart.Series();
+                s_brak_oper.setName("brak operatora");
 
                 s_postoj = new XYChart.Series();
                 s_postoj.setName("postój");
@@ -460,24 +469,26 @@ public class obciazenieFXController implements  Initializable {
                 TBCmaszyna = new TableColumn("nazwa\nmaszyny");
                 TBCwtrysk = new TableColumn("wtrysk");
                 TBCwybrak = new TableColumn("wybrak");
-                TBCbrak_operatora = new TableColumn("postój\nnieuzasadniony");
+                TBCpostoj_n = new TableColumn("nie\nzgłoszono");
                 TBCawaria_m = new TableColumn("awaria\nmaszyny");
                 TBCawaria_f = new TableColumn("awaria\nformy");
                 TBCprzezbrajanie = new TableColumn("przezbrajanie");
                 TBCproby_tech = new TableColumn("próby\ntechnologiczne");
                 TBCbrak_zaop = new TableColumn("brak\nzaopatrzenia");
+                TBCbrak_oper = new TableColumn("brak\noperatora");
                 TBCpostoj = new TableColumn("postój");
                 TBCczas_cyklu = new TableColumn("średni czas\ncyklu [s]");
 
                 TBCmaszyna.setCellValueFactory(new PropertyValueFactory<>("maszyna"));
                 TBCwtrysk.setCellValueFactory(new PropertyValueFactory<>("wtrysk"));
                 TBCwybrak.setCellValueFactory(new PropertyValueFactory<>("wybrak"));
-                TBCbrak_operatora.setCellValueFactory(new PropertyValueFactory<>("postoj_n"));
+                TBCpostoj_n.setCellValueFactory(new PropertyValueFactory<>("postoj_n"));
                 TBCawaria_m.setCellValueFactory(new PropertyValueFactory<>("awaria_m"));
                 TBCawaria_f.setCellValueFactory(new PropertyValueFactory<>("awaria_f"));
                 TBCprzezbrajanie.setCellValueFactory(new PropertyValueFactory<>("przezbrajanie"));
                 TBCproby_tech.setCellValueFactory(new PropertyValueFactory<>("proby_tech"));
                 TBCbrak_zaop.setCellValueFactory(new PropertyValueFactory<>("brak_zaop"));
+                TBCbrak_oper.setCellValueFactory(new PropertyValueFactory<>("brak_oper"));
                 TBCpostoj.setCellValueFactory(new PropertyValueFactory<>("postoj"));
                 TBCczas_cyklu.setCellValueFactory(new PropertyValueFactory<>("czas_cyklu"));
 
@@ -548,12 +559,13 @@ public class obciazenieFXController implements  Initializable {
              maszyna = "";
              wtrysk = 0;
              wybrak = 0;
-             brak_operatora = 0;
+             postoj_n = 0;
              awaria_m = 0;
              awaria_f =0;
              przezbrajanie = 0;
              proby_tech = 0;
              brak_zaop = 0;
+             brak_oper = 0;
              postoj = 0;
              
 
@@ -570,14 +582,14 @@ public class obciazenieFXController implements  Initializable {
             String sql = "";
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                sql = "SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM( "
+                sql = "SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM( "
                         + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') "
                         + "UNION "
                         + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"')) AS T ";
             }
             else
             {
-                sql = "SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"';";
+                sql = "SELECT maszyna, sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+nazwaAnalizowanejMaszyny+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"';";
             }
             System.out.println("DZIEŃ SQL: "+sql);
             
@@ -598,27 +610,99 @@ public class obciazenieFXController implements  Initializable {
                     wtrysk = 0;
                     wtrysk = 0;
                     wybrak = 0;
-                    brak_operatora = 0;
+                    postoj_n = 0;
                     awaria_m = 0;
                     awaria_f = 0;
                     przezbrajanie = 0;
                     proby_tech = 0;
                     brak_zaop = 0;
+                    brak_oper = 0;
                     postoj = 0;
                     
                 }
                 else
                 {
                     maszyna = rs.getString("maszyna");
+                    try
+                    {
                     wtrysk = Integer.parseInt(rs.getString("sum(wtrysk)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        wtrysk = 0;
+                    }
+                    try
+                    {
                     wybrak = Integer.parseInt(rs.getString("sum(wybrak)"));
-                    brak_operatora = (int)Float.parseFloat(rs.getString("sum(postoj_n)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        wybrak = 0;
+                    }
+                    try
+                    {
+                    postoj_n = (int)Float.parseFloat(rs.getString("sum(postoj_n)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        postoj_n = 0;
+                    }
+                    try
+                    {
                     awaria_m = (int)Float.parseFloat(rs.getString("sum(awaria_m)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        awaria_m = 0;
+                    }
+                    try
+                    {
                     awaria_f = (int)Float.parseFloat(rs.getString("sum(awaria_f)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        awaria_f = 0;
+                    }
+                    try
+                    {
                     przezbrajanie = (int)Float.parseFloat(rs.getString("sum(przezbrajanie)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        przezbrajanie = 0;
+                    }
+                    try
+                    {    
                     proby_tech = (int)Float.parseFloat(rs.getString("sum(proby_tech)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        proby_tech = 0;
+                    }
+                    try
+                    {
                     brak_zaop = (int)Float.parseFloat(rs.getString("sum(brak_zaop)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        brak_zaop = 0;
+                    }
+                    try
+                    {
+                    brak_oper = (int)Float.parseFloat(rs.getString("sum(brak_oper)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        brak_oper = 0;
+                    }
+                    try
+                    {
                     postoj = (int)Float.parseFloat(rs.getString("sum(postoj)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        postoj = 0;
+                    }
 
                     String svg_czas_cykl = rs.getString("avg(czas_cyklu)");
                     if(svg_czas_cykl != null)
@@ -634,12 +718,13 @@ public class obciazenieFXController implements  Initializable {
                 //kol_data = "";
                 kol_wtrysk += wtrysk;
                 kol_wybrak += wybrak;
-                kol_brak_operatora += brak_operatora;
+                kol_postoj_n += postoj_n;
                 kol_awaria_m += awaria_m ;
                 kol_awaria_f += awaria_f;
                 kol_przezbrajanie += przezbrajanie;
                 kol_proby_tech += proby_tech;
                 kol_brak_zaop += brak_zaop;
+                kol_brak_oper += brak_oper;
                 kol_postoj += postoj;
                 
                 infoDateTime_do = localDateTime_do;
@@ -647,7 +732,7 @@ public class obciazenieFXController implements  Initializable {
             }
             
             
-            daneSlupkoweDoTabeli.add(new daneObciazenieWtryskarki(maszyna+"",wtrysk+"",wybrak+"",brak_operatora+"",awaria_m+"",awaria_f+"",przezbrajanie+"",proby_tech+"",brak_zaop+"",postoj+"",(round(sr_czas_cykl,3)+"").replace(".", ",")));
+            daneSlupkoweDoTabeli.add(new daneObciazenieWtryskarki(maszyna+"",wtrysk+"",wybrak+"",postoj_n+"",awaria_m+"",awaria_f+"",przezbrajanie+"",proby_tech+"",brak_zaop+"",brak_oper+"",postoj+"",(round(sr_czas_cykl,3)+"").replace(".", ",")));
             
             
             
@@ -656,13 +741,14 @@ public class obciazenieFXController implements  Initializable {
             
             s_wtrysk.getData().add(new XYChart.Data(maszyna, wtrysk));
             s_wybrak.getData().add(new XYChart.Data(maszyna, wybrak));
-            s_brak_operatora.getData().add(new XYChart.Data(maszyna, brak_operatora));
+            s_postoj_n.getData().add(new XYChart.Data(maszyna, postoj_n));
             
             s_awaria_m.getData().add(new XYChart.Data(maszyna, awaria_m));
             s_awaria_f.getData().add(new XYChart.Data(maszyna, awaria_f));
             s_przezbrajanie.getData().add(new XYChart.Data(maszyna, przezbrajanie));
             s_proby_tech.getData().add(new XYChart.Data(maszyna, proby_tech));
             s_brak_zaop.getData().add(new XYChart.Data(maszyna, brak_zaop));
+            s_brak_oper.getData().add(new XYChart.Data(maszyna, brak_oper));
             s_postoj.getData().add(new XYChart.Data(maszyna, postoj));
             
             
@@ -675,15 +761,15 @@ public class obciazenieFXController implements  Initializable {
             }
             }
              
-                daneWykresKolowy = FXCollections.observableArrayList(
-                new PieChart.Data("wtrysk", kol_wtrysk),
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk", kol_wtrysk),
                 new PieChart.Data("próby technologiczne", kol_proby_tech),
                 new PieChart.Data("postój zaplanowany", kol_postoj),
                 new PieChart.Data("przezbrajanie", kol_przezbrajanie),
-                new PieChart.Data("nie zgłoszono", kol_brak_operatora),
+                new PieChart.Data("nie zgłoszono", kol_postoj_n),
                 new PieChart.Data("awaria maszyny", kol_awaria_m),
                 new PieChart.Data("awaria formy", kol_awaria_f),
                 new PieChart.Data("brak zaopatrzenia", kol_brak_zaop),
+                new PieChart.Data("brak operatora", kol_brak_oper),
                 new PieChart.Data("wybrak", kol_wybrak));
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 
@@ -691,10 +777,11 @@ public class obciazenieFXController implements  Initializable {
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("próby technologiczne",kol_proby_tech+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój zaplanowany",kol_postoj+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("przezbrajanie",kol_przezbrajanie+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",kol_brak_operatora+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",kol_postoj_n+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria maszyny",kol_awaria_m+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria formy",kol_awaria_f+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak zaopatrzenia",kol_brak_zaop+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak operatora",kol_brak_oper+""));
                 daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wybrak",kol_wybrak+""));
                 
                 
@@ -752,13 +839,13 @@ public class obciazenieFXController implements  Initializable {
                     
                     WykresKolowy.getData().addAll(daneWykresKolowy);
                     //KOLEJNOŚĆ wykres słupkowy
-                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_brak_operatora,s_awaria_m,s_awaria_f,s_brak_zaop,s_wybrak); 
+                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_postoj_n,s_awaria_m,s_awaria_f,s_brak_zaop,s_brak_oper,s_wybrak); 
                     WykresLiniowy.getData().addAll(l_czas_cykl);
                     
                     TableCykle.setSelectionModel(null);
                     TableCykle.setItems(daneSlupkoweDoTabeli);
                     //KOLEJNOŚĆ TABELA wykres słupkowy
-                    TableCykle.getColumns().addAll(TBCmaszyna,TBCwtrysk,TBCproby_tech,TBCpostoj,TBCprzezbrajanie,TBCbrak_operatora,TBCawaria_m,TBCawaria_f,TBCbrak_zaop,TBCwybrak,TBCczas_cyklu);
+                    TableCykle.getColumns().addAll(TBCmaszyna,TBCwtrysk,TBCproby_tech,TBCpostoj,TBCprzezbrajanie,TBCpostoj_n,TBCawaria_m,TBCawaria_f,TBCbrak_zaop,TBCbrak_oper,TBCwybrak,TBCczas_cyklu);
                     TableCykle.setMinWidth(1000);
                     TableCykle.setMinHeight(325);
                     TableCykle.autosize();
@@ -2179,8 +2266,9 @@ public class obciazenieFXController implements  Initializable {
             rowhead.createCell(6).setCellValue("Przezbrajanie");
             rowhead.createCell(7).setCellValue("Próby technologiczne");
             rowhead.createCell(8).setCellValue("Brak zaopatrzenia");
-            rowhead.createCell(9).setCellValue("Postój zaplanowany");
-            rowhead.createCell(10).setCellValue("Średni czas cyklu, s");
+            rowhead.createCell(9).setCellValue("Brak operatora");
+            rowhead.createCell(10).setCellValue("Postój zaplanowany");
+            rowhead.createCell(11).setCellValue("Średni czas cyklu, s");
             
             int i = 0;
              for (daneObciazenieWtryskarki dane : daneSlupkoweDoTabeli) {
@@ -2194,8 +2282,9 @@ public class obciazenieFXController implements  Initializable {
                 row.createCell(6).setCellValue(dane.getPrzezbrajanie());
                 row.createCell(7).setCellValue(dane.getProby_tech());
                 row.createCell(8).setCellValue(dane.getBrak_zaop());
-                row.createCell(9).setCellValue(dane.getPostoj());
-                row.createCell(10).setCellValue(dane.getCzas_cyklu());
+                row.createCell(9).setCellValue(dane.getBrak_oper());
+                row.createCell(10).setCellValue(dane.getPostoj());
+                row.createCell(11).setCellValue(dane.getCzas_cyklu());
                 
                 //row.getCell(0).setCellStyle(styleNumber);
                 row.getCell(1).setCellStyle(styleNumber);
@@ -2208,6 +2297,7 @@ public class obciazenieFXController implements  Initializable {
                 row.getCell(8).setCellStyle(styleNumber);
                 row.getCell(9).setCellStyle(styleNumber);
                 row.getCell(10).setCellStyle(styleNumber);
+                row.getCell(11).setCellStyle(styleNumber);
                 
                 i++;
             }

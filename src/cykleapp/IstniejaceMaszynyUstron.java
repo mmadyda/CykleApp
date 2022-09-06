@@ -25,9 +25,10 @@ public class IstniejaceMaszynyUstron {
         CBmaszyna.getItems().add("UST_53");
         CBmaszyna.getItems().add("UST_50");
         CBmaszyna.getItems().add("UST_52");
+        CBmaszyna.getItems().add("UST_41");
         ////////////////////////////////////////////////////////////////////////
         
-        CBmaszyna.setValue("ARBURG_34");
+        CBmaszyna.setValue("UST_41");
     }
     public static ArrayList<Maszyna> LadujNazwyMaszyn()
     {
@@ -42,6 +43,7 @@ public class IstniejaceMaszynyUstron {
         maszyny.add(new Maszyna("UST_53"));
         maszyny.add(new Maszyna("UST_50"));
         maszyny.add(new Maszyna("UST_52"));
+        maszyny.add(new Maszyna("UST_41"));
 
        
         return maszyny;

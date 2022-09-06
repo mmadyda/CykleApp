@@ -68,7 +68,7 @@ public class DeskaSkoczowFXController implements Initializable {
     private String data;
     private int wtrysk;
     private int wybrak;
-    private int brak_operatora;
+    private int postoj_n;
     private int awaria_m;
     private int awaria_f;
     private int przezbrajanie;
@@ -358,7 +358,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 Boolean brakDanych = true;
                 wtrysk =0;
                 wybrak =0;
-                brak_operatora =0;
+                postoj_n =0;
                 awaria_m =0;
                 awaria_f =0;
                 przezbrajanie =0;
@@ -383,7 +383,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
                     wtrysk += Integer.parseInt(rs_a.getString("wtrysk"));
                     wybrak += Integer.parseInt(rs_a.getString("wybrak"));
-                    brak_operatora += (int)Float.parseFloat(rs_a.getString("postoj_n"));
+                    postoj_n += (int)Float.parseFloat(rs_a.getString("postoj_n"));
                     awaria_m += (int)Float.parseFloat(rs_a.getString("awaria_m"));
                     awaria_f += (int)Float.parseFloat(rs_a.getString("awaria_f"));
                     przezbrajanie += (int)Float.parseFloat(rs_a.getString("przezbrajanie"));
@@ -408,7 +408,7 @@ public class DeskaSkoczowFXController implements Initializable {
                         {
                              masfor.setStatus(Maszyna.Stan.PRACA);
                         }
-                        if(brak_operatora > 0)
+                        if(postoj_n > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.POSTOJ_NIEUZASADNIONY);
                         }

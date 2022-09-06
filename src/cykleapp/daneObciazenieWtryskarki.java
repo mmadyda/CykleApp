@@ -22,6 +22,7 @@ public class daneObciazenieWtryskarki {
         private final SimpleStringProperty przezbrajanie;
         private final SimpleStringProperty proby_tech;
         private final SimpleStringProperty brak_zaop;
+        private final SimpleStringProperty brak_oper;
         private final SimpleStringProperty postoj;
         private final SimpleStringProperty czas_cyklu;
  
@@ -38,7 +39,7 @@ public class daneObciazenieWtryskarki {
      * @param Ipostoj liczba cykli postoju
      * @param Iczas_cyklu średni czas cyklu
      */
-    public daneObciazenieWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Iproby_tech,String Ibrak_zaop,String Ipostoj,String Iczas_cyklu) {
+    public daneObciazenieWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Iproby_tech,String Ibrak_zaop,String Ibrak_oper,String Ipostoj,String Iczas_cyklu) {
             this.maszyna = new SimpleStringProperty(Idata);
             this.wtrysk = new SimpleStringProperty(Iwtrysk);
             this.wybrak = new SimpleStringProperty(Iwybrak);
@@ -48,6 +49,7 @@ public class daneObciazenieWtryskarki {
             this.przezbrajanie = new SimpleStringProperty(Iprzezbrajanie);
             this.proby_tech = new SimpleStringProperty(Iproby_tech);
             this.brak_zaop = new SimpleStringProperty(Ibrak_zaop);
+            this.brak_oper = new SimpleStringProperty(Ibrak_oper);
             this.postoj = new SimpleStringProperty(Ipostoj);
             this.czas_cyklu = new SimpleStringProperty(Iczas_cyklu);
             
@@ -123,6 +125,14 @@ public class daneObciazenieWtryskarki {
  
         public void setBrak_zaop(String Ibrak_zaop) {
             brak_zaop.set(Ibrak_zaop);
+        }
+        //BRAK OPERATORA
+         public String getBrak_oper() {
+            return brak_oper.get();
+        }
+ 
+        public void setBrak_oper(String Ibrak_oper) {
+            brak_oper.set(Ibrak_oper);
         }
         //POSTÓJ
          public String getPostoj() {

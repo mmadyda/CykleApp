@@ -206,20 +206,43 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*WYBRAK 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+/*BRAK OPERATORA 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
 
 .default-color8.chart-area-symbol{
-     -fx-background-color: rgba(255, 140, 0,1), white;
+     -fx-background-color: rgba(142, 68, 173,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color8.chart-series-area-line{
-     -fx-stroke: rgba(255, 140, 0,0.5);
+     -fx-stroke: rgba(142, 68, 173,0.5);
 }
 
 .default-color8.chart-series-area-fill{
+    
+    -fx-fill:  rgba(142, 68, 173,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+/*WYBRAK 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+
+.default-color9.chart-area-symbol{
+     -fx-background-color: rgba(255, 140, 0,1), white;
+     -fx-background-insets: 0, 3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color9.chart-series-area-line{
+     -fx-stroke: rgba(255, 140, 0,0.5);
+}
+
+.default-color9.chart-series-area-fill{
     
     -fx-fill:  rgba(255, 140, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
