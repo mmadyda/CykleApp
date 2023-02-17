@@ -41,7 +41,7 @@
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
-                        <Polyline fill="#00a1ff1a" layoutX="541.0" layoutY="113.0" points="-128.0, -72.99999237060547, 560.0, -72.99999237060547, 560.0, 109.0, 525.0, 140.0, -128.00003051757812, 140.0, -128.00003051757812, -72.99999237060547" stroke="#00a1ff66" strokeType="INSIDE" strokeWidth="4.0">
+                        <Polyline fill="#00a1ff1a" layoutX="540.0" layoutY="113.0" points="-128.0, -72.99999237060547, 567.0, -72.99999237060547, 567.0, 104.0, 525.0, 140.0, -128.00003051757812, 140.0, -128.00003051757812, -72.99999237060547" stroke="#00a1ff66" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>
                               <Glow level="1.0" />
                            </effect></Polyline>
@@ -203,17 +203,7 @@
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnST_48" layoutX="1223.0" layoutY="155.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
-                           <font>
-                              <Font name="System Bold" size="18.0" />
-                           </font>
-                        </Button>
                         <Button fx:id="btnST_52" layoutX="1187.0" layoutY="771.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" rotate="-90.0" styleClass="wtryskarki" text="ST 52">
-                           <font>
-                              <Font size="18.0" />
-                           </font>
-                        </Button>
-                        <Button fx:id="btnST_53" layoutX="1134.0" layoutY="156.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="135.0" rotate="-90.0" styleClass="wtryskarki" text="ST 53">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -299,21 +289,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="1369.0" layoutY="442.0" text="L1" textFill="#f5b041">
-                           <font>
-                              <Font name="Calibri Bold" size="20.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <effect>
-                              <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="1459.0" layoutY="442.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="1429.0" layoutY="442.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -356,20 +332,6 @@
                            </effect>
                         </Label>
                         <Label layoutX="1429.0" layoutY="710.0" text="L1" textFill="#f5b041">
-                           <font>
-                              <Font name="Calibri Bold" size="20.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <padding>
-                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                           </padding>
-                           <effect>
-                              <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
-                           </effect>
-                        </Label>
-                        <Label layoutX="1073.0" layoutY="710.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -537,7 +499,7 @@
                               <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="418.0" layoutY="48.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="484.0" layoutY="57.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -551,7 +513,7 @@
                               <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="533.0" layoutY="48.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="562.0" layoutY="57.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -565,7 +527,7 @@
                               <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="767.0" layoutY="48.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="780.0" layoutY="46.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -579,7 +541,7 @@
                               <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="882.0" layoutY="48.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="866.0" layoutY="46.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -593,7 +555,7 @@
                               <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
                            </effect>
                         </Label>
-                        <Label layoutX="991.0" layoutY="48.0" text="L1" textFill="#f5b041">
+                        <Label layoutX="941.0" layoutY="46.0" text="L1" textFill="#f5b041">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
@@ -664,6 +626,48 @@
                            </effect>
                         </Label>
                         <Label layoutX="807.0" layoutY="710.0" text="L2" textFill="#5dade2">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="1020.0" layoutY="46.0" text="L1" textFill="#f5b041">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="562.0" layoutY="178.0" text="L1" textFill="#f5b041">
+                           <font>
+                              <Font name="Calibri Bold" size="20.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                           <effect>
+                              <DropShadow blurType="ONE_PASS_BOX" height="13.0" radius="6.0" spread="1.0" width="13.0" />
+                           </effect>
+                        </Label>
+                        <Label layoutX="1073.0" layoutY="710.0" text="L2" textFill="#5dade2">
                            <font>
                               <Font name="Calibri Bold" size="20.0" />
                            </font>
