@@ -20,6 +20,7 @@ public class daneWtryskarki {
         private final SimpleStringProperty awaria_m;
         private final SimpleStringProperty awaria_f;
         private final SimpleStringProperty przezbrajanie;
+        private final SimpleStringProperty susz_m;
         private final SimpleStringProperty proby_tech;
         private final SimpleStringProperty brak_zaop;
         private final SimpleStringProperty brak_oper;
@@ -39,7 +40,7 @@ public class daneWtryskarki {
      * @param Ipostoj liczba cykli postoju
      * @param Iczas_cyklu średni czas cyklu
      */
-    public daneWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Iproby_tech,String Ibrak_zaop,String Ibrak_oper,String Ipostoj,String Iczas_cyklu) {
+    public daneWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Isusz_m,String Iproby_tech,String Ibrak_zaop,String Ibrak_oper,String Ipostoj,String Iczas_cyklu) {
             this.data = new SimpleStringProperty(Idata);
             this.wtrysk = new SimpleStringProperty(Iwtrysk);
             this.wybrak = new SimpleStringProperty(Iwybrak);
@@ -47,6 +48,7 @@ public class daneWtryskarki {
             this.awaria_m = new SimpleStringProperty(Iawaria_m);
             this.awaria_f = new SimpleStringProperty(Iawaria_f);
             this.przezbrajanie = new SimpleStringProperty(Iprzezbrajanie);
+            this.susz_m = new SimpleStringProperty(Isusz_m);
             this.proby_tech = new SimpleStringProperty(Iproby_tech);
             this.brak_zaop = new SimpleStringProperty(Ibrak_zaop);
             this.brak_oper = new SimpleStringProperty(Ibrak_oper);
@@ -109,6 +111,14 @@ public class daneWtryskarki {
  
         public void setPrzezbrajanie(String Iprzezbrajanie) {
             przezbrajanie.set(Iprzezbrajanie);
+        }
+        //SUSZENIE MATERIAŁU
+         public String getSusz_m() {
+            return susz_m.get();
+        }
+ 
+        public void setSusz_m(String Isusz_m) {
+            susz_m.set(Isusz_m);
         }
         //PRÓBY TECHNOLOGICZNE
          public String getProby_tech() {

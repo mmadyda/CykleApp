@@ -494,6 +494,9 @@ public class cykleFXController implements Initializable {
 
                 s_przezbrajanie = new XYChart.Series();
                 s_przezbrajanie.setName("przezbrajanie");
+                
+                s_susz_m = new XYChart.Series();
+                s_susz_m.setName("susz_m");
 
                 s_proby_tech = new XYChart.Series();
                 s_proby_tech.setName("próby technologiczne");
@@ -531,6 +534,7 @@ public class cykleFXController implements Initializable {
                 TBCawaria_m = new TableColumn("awaria\nmaszyny");
                 TBCawaria_f = new TableColumn("awaria\nformy");
                 TBCprzezbrajanie = new TableColumn("przezbrajanie");
+                TBCprzezbrajanie = new TableColumn("suszenie\nmateriału");
                 TBCproby_tech = new TableColumn("próby\ntechnologiczne");
                 TBCbrak_zaop = new TableColumn("brak\nzaopatrzenia");
                 TBCbrak_oper = new TableColumn("brak\noperatora");
@@ -544,6 +548,7 @@ public class cykleFXController implements Initializable {
                 TBCawaria_m.setCellValueFactory(new PropertyValueFactory<>("awaria_m"));
                 TBCawaria_f.setCellValueFactory(new PropertyValueFactory<>("awaria_f"));
                 TBCprzezbrajanie.setCellValueFactory(new PropertyValueFactory<>("przezbrajanie"));
+                TBCsusz_m.setCellValueFactory(new PropertyValueFactory<>("susz_m"));
                 TBCproby_tech.setCellValueFactory(new PropertyValueFactory<>("proby_tech"));
                 TBCbrak_zaop.setCellValueFactory(new PropertyValueFactory<>("brak_zaop"));
                 TBCbrak_oper.setCellValueFactory(new PropertyValueFactory<>("brak_oper"));
@@ -615,6 +620,7 @@ public class cykleFXController implements Initializable {
              awaria_m = 0;
              awaria_f =0;
              przezbrajanie = 0;
+             susz_m = 0;
              proby_tech = 0;
              brak_zaop = 0;
              brak_oper = 0;
@@ -629,7 +635,7 @@ public class cykleFXController implements Initializable {
             if(localDateTime_od.plusDays(i).isBefore(LocalDateTime.now().minusDays(7)))
             {
                 //DWIE TABELE
-                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
+                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(susz_m),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
                         + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"') "
                         + "UNION "
                         + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"')) AS T ";
@@ -641,7 +647,7 @@ public class cykleFXController implements Initializable {
             else
             {
                 //JEDNA TABELA
-                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"';";
+                sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(susz_m),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"';";
                 
                 
                 //SQL czas wykres kołowy
@@ -677,6 +683,7 @@ public class cykleFXController implements Initializable {
                     awaria_m = 0;
                     awaria_f = 0;
                     przezbrajanie = 0;
+                    susz_m = 0;
                     proby_tech = 0;
                     brak_zaop = 0;
                     brak_oper = 0;
@@ -739,6 +746,14 @@ public class cykleFXController implements Initializable {
                     catch(Exception ex)
                     {
                         przezbrajanie = 0;
+                    }
+                    try
+                    {
+                    susz_m = (int)Float.parseFloat(rs.getString("sum(susz_m)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        susz_m = 0;
                     }
                     try
                     {
@@ -965,7 +980,7 @@ public class cykleFXController implements Initializable {
             //END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA 
             
             
-            daneSlupkoweDoTabeli.add(new daneWtryskarki(data+"",wtrysk+"",wybrak+"",postoj_n+"",awaria_m+"",awaria_f+"",przezbrajanie+"",proby_tech+"",brak_zaop+"",brak_oper+"",postoj+"",(round(sr_czas_cykl[i],3)+"").replace(".", ",")));
+            daneSlupkoweDoTabeli.add(new daneWtryskarki(data+"",wtrysk+"",wybrak+"",postoj_n+"",awaria_m+"",awaria_f+"",przezbrajanie+"",susz_m+"",proby_tech+"",brak_zaop+"",brak_oper+"",postoj+"",(round(sr_czas_cykl[i],3)+"").replace(".", ",")));
             int brakujaceCykle = (int)norma-(int)wtrysk; 
             if(brakujaceCykle<0)
             {
@@ -984,6 +999,7 @@ public class cykleFXController implements Initializable {
             s_awaria_m.getData().add(new XYChart.Data(data, awaria_m));
             s_awaria_f.getData().add(new XYChart.Data(data, awaria_f));
             s_przezbrajanie.getData().add(new XYChart.Data(data, przezbrajanie));
+            s_susz_m.getData().add(new XYChart.Data(data, susz_m));
             s_proby_tech.getData().add(new XYChart.Data(data, proby_tech));
             s_brak_zaop.getData().add(new XYChart.Data(data, brak_zaop));
             s_brak_oper.getData().add(new XYChart.Data(data, brak_oper));
@@ -1080,7 +1096,7 @@ public class cykleFXController implements Initializable {
                     {
                     
                     WykresKolowy.getData().addAll(daneWykresKolowy);
-                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_postoj_n,s_awaria_m,s_awaria_f,s_brak_zaop,s_brak_oper,s_wybrak);
+                    WykresSlupkowy.getData().addAll(s_wtrysk,s_proby_tech,s_postoj,s_przezbrajanie,s_susz_m,s_postoj_n,s_awaria_m,s_awaria_f,s_brak_zaop,s_brak_oper,s_wybrak);
                     WykresLiniowy.getData().addAll(l_czas_cykl);
                     WykresNormy.getData().addAll(Nbrak, Nnorma, Npraca);
                     
@@ -1815,18 +1831,6 @@ public class cykleFXController implements Initializable {
                        //dzielnikCzasuCyklu = dzielnikCzasuCyklu-1;
                     }
                 }
-                //kol_data = "";
-                /*
-                kol_wtrysk += wtrysk;
-                kol_wybrak += wybrak;
-                kol_postoj_n += postoj_n;
-                kol_awaria_m += awaria_m ;
-                kol_awaria_f += awaria_f;
-                kol_przezbrajanie += przezbrajanie;
-                kol_proby_tech += proby_tech;
-                kol_brak_zaop += brak_zaop;
-                kol_brak_oper += brak_oper;
-                kol_postoj += postoj;*/
                 
                 infoDateTime_do = localDateTime_od.plusHours(i+1);
                 
@@ -1877,16 +1881,7 @@ public class cykleFXController implements Initializable {
                 tab.add(new DataNorma(localNorma,localData));
                 
                 
-                /*
-                System.out.println("NORMA: "+localNorma);
-                System.out.println(dataString);
-                System.out.println("ROK: "+dataWpisaniaNormy.getYear());
-                System.out.println("MIES: "+dataWpisaniaNormy.getMonth());
-                System.out.println("DZIEN: "+dataWpisaniaNormy.getDayOfMonth());
-                System.out.println("GODZINA: "+dataWpisaniaNormy.getHour());
-                System.out.println("MINUTA: "+dataWpisaniaNormy.getMinute());
-                System.out.println("SEKUNDA: "+dataWpisaniaNormy.getSecond());
-*/
+
                 
             }
             //Sprawdzenie czy ostatnia godzina w danych to obezna godzina
@@ -1907,15 +1902,7 @@ public class cykleFXController implements Initializable {
                  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
                  nowSqlDate = LocalDateTime.parse(nowSqlString, formatter);
             }
-            /*
-            System.out.println("NOW SQL DATE: "+localNorma);
-            System.out.println("ROK: "+nowSqlDate.getYear());
-            System.out.println("MIES: "+nowSqlDate.getMonth());
-            System.out.println("DZIEN: "+nowSqlDate.getDayOfMonth());
-            System.out.println("GODZINA: "+nowSqlDate.getHour());
-            System.out.println("MINUTA: "+nowSqlDate.getMinute());
-            System.out.println("SEKUNDA: "+nowSqlDate.getSecond());
-            */
+
             //dodanie ostatniego elementu (jeśli ostatnia godzina to norma*minuty/60)
             tab.add(new DataNorma(localNorma,LocalDateTime.from(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))));//DODANIE OSTATNIEGO ELEMENTU Z KOŃCOWĄ GODZINĄ
             norma = 0;
@@ -1980,7 +1967,7 @@ public class cykleFXController implements Initializable {
             
             //END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA END NORMA 
             
-            daneSlupkoweDoTabeli.add(new daneWtryskarki(data+"",wtrysk+"",wybrak+"",postoj_n+"",awaria_m+"",awaria_f+"",przezbrajanie+"",proby_tech+"",brak_zaop+"",brak_oper+"",postoj+"",(round(sr_czas_cykl[i],3)+"").replace(".", ",")));
+            daneSlupkoweDoTabeli.add(new daneWtryskarki(data+"",wtrysk+"",wybrak+"",postoj_n+"",awaria_m+"",awaria_f+"",przezbrajanie+"",susz_m+"",proby_tech+"",brak_zaop+"",brak_oper+"",postoj+"",(round(sr_czas_cykl[i],3)+"").replace(".", ",")));
             int brakujaceCykle = (int)norma-(int)wtrysk; 
             if(brakujaceCykle<0)
             {
@@ -2118,7 +2105,7 @@ public class cykleFXController implements Initializable {
                     TableCykle.setSelectionModel(null);
                     TableCykle.setItems(daneSlupkoweDoTabeli);
                     //KOLEJNOŚĆ TABELA wykres słupkowy
-                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk, TBCproby_tech,TBCpostoj,TBCprzezbrajanie,TBCpostoj_n,TBCawaria_m,TBCawaria_f,TBCbrak_zaop,TBCbrak_oper,TBCwybrak,TBCczas_cyklu);
+                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk, TBCproby_tech,TBCpostoj,TBCprzezbrajanie,TBCsusz_m,TBCpostoj_n,TBCawaria_m,TBCawaria_f,TBCbrak_zaop,TBCbrak_oper,TBCwybrak,TBCczas_cyklu);
                     TableCykle.setMinWidth(1000);
                     TableCykle.setMinHeight(325);
                     TableCykle.autosize();
@@ -3735,11 +3722,12 @@ public class cykleFXController implements Initializable {
             rowhead.createCell(4).setCellValue("Awaria maszyny");
             rowhead.createCell(5).setCellValue("Awaria formy");
             rowhead.createCell(6).setCellValue("Przezbrajanie");
-            rowhead.createCell(7).setCellValue("Próby technologiczne");
-            rowhead.createCell(8).setCellValue("Brak zaopatrzenia");
-            rowhead.createCell(9).setCellValue("Brak operatora");
-            rowhead.createCell(10).setCellValue("Postój zaplanowany");
-            rowhead.createCell(11).setCellValue("Średni czas cyklu, s");
+            rowhead.createCell(7).setCellValue("Suszenie materiału");
+            rowhead.createCell(8).setCellValue("Próby technologiczne");
+            rowhead.createCell(9).setCellValue("Brak zaopatrzenia");
+            rowhead.createCell(10).setCellValue("Brak operatora");
+            rowhead.createCell(11).setCellValue("Postój zaplanowany");
+            rowhead.createCell(12).setCellValue("Średni czas cyklu, s");
             
             int i = 0;
              for (daneWtryskarki dane : daneSlupkoweDoTabeli) {
@@ -3751,11 +3739,12 @@ public class cykleFXController implements Initializable {
                 row.createCell(4).setCellValue(dane.getAwaria_m());
                 row.createCell(5).setCellValue(dane.getAwaria_f());
                 row.createCell(6).setCellValue(dane.getPrzezbrajanie());
-                row.createCell(7).setCellValue(dane.getProby_tech());
-                row.createCell(8).setCellValue(dane.getBrak_zaop());
-                row.createCell(9).setCellValue(dane.getBrak_oper());
-                row.createCell(10).setCellValue(dane.getPostoj());
-                row.createCell(11).setCellValue(dane.getCzas_cyklu());
+                row.createCell(7).setCellValue(dane.getSusz_m());
+                row.createCell(8).setCellValue(dane.getProby_tech());
+                row.createCell(9).setCellValue(dane.getBrak_zaop());
+                row.createCell(10).setCellValue(dane.getBrak_oper());
+                row.createCell(11).setCellValue(dane.getPostoj());
+                row.createCell(12).setCellValue(dane.getCzas_cyklu());
                 
                 //row.getCell(0).setCellStyle(styleNumber);
                 row.getCell(0).setCellStyle(styleNumber);
@@ -3770,6 +3759,7 @@ public class cykleFXController implements Initializable {
                 row.getCell(9).setCellStyle(styleNumber);
                 row.getCell(10).setCellStyle(styleNumber);
                 row.getCell(11).setCellStyle(styleNumber);
+                row.getCell(12).setCellStyle(styleNumber);
                 
                 i++;
             }
