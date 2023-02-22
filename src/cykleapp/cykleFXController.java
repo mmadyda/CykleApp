@@ -534,7 +534,7 @@ public class cykleFXController implements Initializable {
                 TBCawaria_m = new TableColumn("awaria\nmaszyny");
                 TBCawaria_f = new TableColumn("awaria\nformy");
                 TBCprzezbrajanie = new TableColumn("przezbrajanie");
-                TBCprzezbrajanie = new TableColumn("suszenie\nmateriału");
+                TBCsusz_m = new TableColumn("suszenie\nmateriału");
                 TBCproby_tech = new TableColumn("próby\ntechnologiczne");
                 TBCbrak_zaop = new TableColumn("brak\nzaopatrzenia");
                 TBCbrak_oper = new TableColumn("brak\noperatora");
@@ -600,7 +600,181 @@ public class cykleFXController implements Initializable {
             try {
             
             conn = mysqlconnect.ConnecrDb();
-           
+             String sqlCzas = "";
+            if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
+            { //SQL czas wykres kołowy
+                sqlCzas = "SELECT\n" +
+                        "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T where maszyna = 'ST_60' and wtrysk > 0) as wtrysk,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and wybrak > 0)  as wybrak,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and postoj_n > 0) as postoj_n,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and awaria_m > 0) as awaria_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and awaria_f > 0) as awaria_f,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and przezbrajanie > 0) as przezbrajanie,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and proby_tech > 0) as proby_tech,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and brak_zaop > 0) as brak_zaop,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and brak_oper > 0) as brak_oper,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and susz_m > 0) as susz_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and postoj > 0) as postoj,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM ((SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') union (SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"')) as T  where maszyna = 'ST_60' and data_g) as sum_czas";
+
+            }
+            else
+            {
+               //SQL czas wykres kołowy
+                sqlCzas = "SELECT\n" +
+                        "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and wtrysk > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as wtrysk,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and wybrak > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as wybrak,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and postoj_n > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as postoj_n,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and awaria_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as awaria_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and awaria_f > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as awaria_f,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and przezbrajanie > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as przezbrajanie,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and proby_tech > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as proby_tech,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and brak_zaop > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as brak_zaop,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and brak_oper > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as brak_oper,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and susz_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as susz_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and postoj > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as postoj,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(0))+"' and '"+ Timestamp.valueOf(localDateTime_od.plusDays(liczba_godzin))+"') as sum_czas;";
+
+
+            }
+            if(DEBUG)
+            {
+                System.out.println(sqlCzas);
+            }
+            pst = conn.prepareStatement(sqlCzas);
+            
+            rs = pst.executeQuery(sqlCzas);
+            
+            while(rs.next()) {
+                if(rs.getString("sum_czas") == null)
+                {
+                    //koniec = true;
+                    //break;
+
+                    kol_wtrysk = 0;
+                    kol_wtrysk = 0;
+                    kol_wybrak = 0;
+                    kol_postoj_n = 0;
+                    kol_awaria_m = 0;
+                    kol_awaria_f = 0;
+                    kol_przezbrajanie = 0;
+                    kol_susz_m = 0;
+                    kol_proby_tech = 0;
+                    kol_brak_zaop = 0;
+                    kol_brak_oper = 0;
+                    kol_postoj = 0;
+                    kol_calkowity_czas = 0;
+
+                    
+                }
+                else
+                {
+                    try
+                    {
+                    kol_wtrysk = Integer.parseInt(rs.getString("wtrysk"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_wtrysk = 0;
+                    }
+                    try
+                    {
+                    kol_wybrak = Integer.parseInt(rs.getString("wybrak"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_wybrak = 0;
+                    }
+                    try
+                    {
+                    kol_postoj_n = (int)Float.parseFloat(rs.getString("postoj_n"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_postoj_n = 0;
+                    }
+                    try
+                    {
+                    kol_awaria_m = (int)Float.parseFloat(rs.getString("awaria_m"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_awaria_m = 0;
+                    }
+                    try
+                    {
+                    kol_awaria_f = (int)Float.parseFloat(rs.getString("awaria_f"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_awaria_f = 0;
+                    }
+                    try
+                    {
+                    kol_przezbrajanie = (int)Float.parseFloat(rs.getString("przezbrajanie"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_przezbrajanie = 0;
+                    }
+                    try
+                    {
+                    kol_susz_m = (int)Float.parseFloat(rs.getString("susz_m"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_susz_m = 0;
+                    }
+                    try
+                    {
+                    kol_proby_tech = (int)Float.parseFloat(rs.getString("proby_tech"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_proby_tech = 0;
+                    }
+                    try
+                    {
+                    kol_brak_zaop = (int)Float.parseFloat(rs.getString("brak_zaop"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_brak_zaop = 0;
+                    }
+                    
+                    try
+                    {
+                    kol_brak_oper = (int)Float.parseFloat(rs.getString("brak_oper"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_brak_oper = 0;
+                    }
+                    
+                    try
+                    {
+                    kol_postoj = (int)Float.parseFloat(rs.getString("postoj"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_postoj = 0;
+                    }
+                    try
+                    {
+                    kol_calkowity_czas = (int)Float.parseFloat(rs.getString("sum_czas"));
+                    }
+                    catch(Exception ex)
+                    {
+                        kol_calkowity_czas = 0;
+                    }
+
+                  
+                }
+
+                
+                infoDateTime_do = localDateTime_od.plusHours(liczba_godzin);
+                
+            }
             
             sr_czas_cykl = new double[liczba_godzin];
             for(int i = 0;i<liczba_godzin; i++)
@@ -627,7 +801,6 @@ public class cykleFXController implements Initializable {
              postoj = 0;
              
             String sql = "";
-            String sqlCzas = "";
             //wykres dni
             //!!!!!!wykres dni do poprawy
             // !!!!!problem w dniu zmiany tabeli
@@ -640,18 +813,13 @@ public class cykleFXController implements Initializable {
                         + "UNION "
                         + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"')) AS T ";
                 
-                //SQL czas wykres kołowy
-                sqlCzas = "";
             
             }
             else
             {
                 //JEDNA TABELA
                 sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(susz_m),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i+1))+"';";
-                
-                
-                //SQL czas wykres kołowy
-                sqlCzas = "";
+
                 
             }
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusDays(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusDays(i).plusHours(23).plusMinutes(59).plusSeconds(59))+"'))";
@@ -806,6 +974,7 @@ public class cykleFXController implements Initializable {
                     }
                 }
                 //kol_data = "";
+                /*
                 kol_wtrysk += wtrysk;
                 kol_wybrak += wybrak;
                 kol_postoj_n += postoj_n;
@@ -816,7 +985,7 @@ public class cykleFXController implements Initializable {
                 kol_brak_zaop += brak_zaop;
                 kol_brak_oper += brak_oper;
                 kol_postoj += postoj;
-                
+                */
                 infoDateTime_do = localDateTime_od.plusDays(i+1);
                 
             }
@@ -1013,30 +1182,36 @@ public class cykleFXController implements Initializable {
             
             
             }
-             
-                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk", kol_wtrysk),
-                new PieChart.Data("próby technologiczne", kol_proby_tech),
-                new PieChart.Data("postój zaplanowany", kol_postoj),
-                new PieChart.Data("przezbrajanie", kol_przezbrajanie),
-                new PieChart.Data("nie zgłoszono", kol_postoj_n),
-                new PieChart.Data("awaria maszyny", kol_awaria_m),
-                new PieChart.Data("awaria formy", kol_awaria_f),
-                new PieChart.Data("brak zaopatrzenia", kol_brak_zaop),
-                new PieChart.Data("brak operatora", kol_brak_oper),
-                new PieChart.Data("wybrak", kol_wybrak));
+
+            
+             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+            
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString(), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString(), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString(), kol_postoj),
+                new PieChart.Data("przezbrajanie "+LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString(), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString(), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString(), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString(), kol_awaria_m),
+                new PieChart.Data("awaria formy "+LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString(), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString(), kol_brak_zaop),
+                new PieChart.Data("brak operatora "+LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString(), kol_brak_oper),
+                new PieChart.Data("wybrak "+LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString(), kol_wybrak));
+                
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wtrysk",kol_wtrysk+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("wybrak",kol_wybrak+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("nie zgłoszono",kol_postoj_n+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria maszyny",kol_awaria_m+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("awaria formy",kol_awaria_f+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("przezbrajanie",kol_przezbrajanie+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("próby technologiczne",kol_proby_tech+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak zaopatrzenia",kol_brak_zaop+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("brak operatora",kol_brak_oper+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("postój zaplanowany",kol_postoj+""));
-                
+                ///KOLEJNOSC w tabeli wykresu kolowego
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Całkowity czas",LocalTime.MIN.plusSeconds(kol_calkowity_czas).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wtrysk",LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Próby technologiczne",LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Postój zaplanowany",LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Przezbrajanie",LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Suszenie materiału",LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria maszyny",LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria formy",LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak zaopatrzenia",LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak operatora",LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wybrak",LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString()+""));
                 
      
                 //System.out.println("DZIELNIK CZASU CYKLU przed if: "+dzielnikCzasuCyklu);
@@ -1050,12 +1225,8 @@ public class cykleFXController implements Initializable {
                     //System.out.println("DZIELNIK CZASU CYKLU po if: "+dzielnikCzasuCyklu);
                     sredniCzasCyklu = sredniCzasCyklu/dzielnikCzasuCyklu;
                     
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("czas cyklu [s]",(round(sredniCzasCyklu,3)+"").replace(".", ",")));
                 }
-                else
-                {
-                    daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("czas cyklu [s]","0"));
-                }
+
                 
                  if(brakDanych)
                 {
@@ -1103,7 +1274,7 @@ public class cykleFXController implements Initializable {
                     
                     TableCykle.setSelectionModel(null);
                     TableCykle.setItems(daneSlupkoweDoTabeli);
-                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk,TBCwybrak,TBCpostoj_n,TBCawaria_m,TBCawaria_f,TBCprzezbrajanie,TBCproby_tech,TBCbrak_zaop,TBCbrak_oper,TBCpostoj,TBCczas_cyklu);
+                    TableCykle.getColumns().addAll(TBCdata,TBCwtrysk,TBCwybrak,TBCpostoj_n,TBCawaria_m,TBCawaria_f,TBCprzezbrajanie,TBCsusz_m,TBCproby_tech,TBCbrak_zaop,TBCbrak_oper,TBCpostoj,TBCczas_cyklu);
                     TableCykle.setMinWidth(1000);
                     TableCykle.setMinHeight(325);
                     TableCykle.autosize();
