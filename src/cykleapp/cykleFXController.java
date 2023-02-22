@@ -1638,6 +1638,7 @@ public class cykleFXController implements Initializable {
              awaria_m = 0;
              awaria_f =0;
              przezbrajanie = 0;
+             susz_m = 0;
              proby_tech = 0;
              brak_zaop = 0;
              brak_oper = 0;
@@ -1649,7 +1650,7 @@ public class cykleFXController implements Initializable {
             
             if(localDateTime_od.plusHours(i).isBefore(LocalDateTime.now().minusDays(7)))
             {
-               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
+               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(susz_m),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM ( "
                         + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"') "
                         + "UNION "
                         + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"')) AS T ";
@@ -1659,7 +1660,7 @@ public class cykleFXController implements Initializable {
             {
                //System.out.println(Timestamp.valueOf(localDateTime_od.plusHours(i)));
                //String sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
-               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
+               sql = "SELECT min(data_g), sum(wtrysk) ,sum(wybrak), sum(postoj_n), sum(awaria_m), sum(awaria_f),sum(przezbrajanie),sum(susz_m),sum(proby_tech),sum(brak_zaop),sum(brak_oper),sum(postoj), avg(nullif(czas_cyklu,0)) as 'avg(czas_cyklu)' FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i+1))+"';";
 
             }
             String sqlNorma = "SELECT lp,norma , data_n  FROM techniplast.normy where maszyna = '"+wybranaMaszyna+"' and (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"') or lp = ifnull((select if((select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))is not null,(select min(lp) from techniplast.normy where (data_n  between '"+ Timestamp.valueOf(localDateTime_od.plusHours(i))+"' and '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))-1,null)),(select max(lp) from techniplast.normy where maszyna = '"+wybranaMaszyna+"' and data_n < '"+Timestamp.valueOf(localDateTime_od.plusHours(i).plusMinutes(59).plusSeconds(59))+"'))";
@@ -1755,6 +1756,14 @@ public class cykleFXController implements Initializable {
                     catch(Exception ex)
                     {
                         przezbrajanie = 0;
+                    }
+                    try
+                    {
+                    susz_m = (int)Float.parseFloat(rs.getString("sum(susz_m)"));
+                    }
+                    catch(Exception ex)
+                    {
+                        susz_m = 0;
                     }
                     try
                     {
