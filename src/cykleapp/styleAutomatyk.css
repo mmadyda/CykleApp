@@ -114,20 +114,42 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
+/*SUSZENIE 44444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444*/
 
-/*NIE ZGLOSZONO 444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444*/
 .default-color4.chart-area-symbol{
+     -fx-background-color: rgba(141, 110, 99,1), white;
+     -fx-background-insets: 0, 3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color4.chart-series-area-line{
+     -fx-stroke: rgba(141, 110, 99,0.5);
+}
+
+.default-color4.chart-series-area-fill{
+    
+    -fx-fill:  rgba(141, 110, 99,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+/*NIE ZGLOSZONO 555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555*/
+.default-color5.chart-area-symbol{
     -fx-background-color: rgba(0, 0, 0,1), white;
     -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color4.chart-series-area-line{
+.default-color5.chart-series-area-line{
      -fx-stroke: rgba(0, 0, 0,0.5);
 }
 
-.default-color4.chart-series-area-fill{
+.default-color5.chart-series-area-fill{
     
     -fx-fill:  rgba(0, 0, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -138,20 +160,20 @@
     -fx-blend-mode: MULTIPLY;
 }
 
-/*AWARIA MASZYNY 555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555*/
+/*AWARIA MASZYNY 66666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666*/
 
-.default-color5.chart-area-symbol{
+.default-color6.chart-area-symbol{
      -fx-background-color: rgba(220, 20, 60,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color5.chart-series-area-line{
+.default-color6.chart-series-area-line{
      -fx-stroke: rgba(220, 20, 60,0.5);
 }
 
-.default-color5.chart-series-area-fill{
+.default-color6.chart-series-area-fill{
     
     -fx-fill:  rgba(220, 20, 60,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -161,20 +183,20 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*AWARIA FORMY 666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666666*/
+/*AWARIA FORMY 777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777*/
 
-.default-color6.chart-area-symbol{
+.default-color7.chart-area-symbol{
      -fx-background-color: rgba(255, 99, 71,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color6.chart-series-area-line{
+.default-color7.chart-series-area-line{
      -fx-stroke: rgba(255, 99, 71,0.5);
 }
 
-.default-color6.chart-series-area-fill{
+.default-color7.chart-series-area-fill{
     
     -fx-fill:  rgba(255, 99, 71,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -184,19 +206,19 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*BRAK ZAOPATRZENIA 77777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777*/
-.default-color7.chart-area-symbol{
+/*BRAK ZAOPATRZENIA 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+.default-color8.chart-area-symbol{
      -fx-background-color: rgba(255, 215, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color7.chart-series-area-line{
+.default-color8.chart-series-area-line{
      -fx-stroke: rgba(255, 215, 0,0.5);
 }
 
-.default-color7.chart-series-area-fill{
+.default-color8.chart-series-area-fill{
     
     -fx-fill:  rgba(255, 215, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -206,20 +228,20 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*BRAK OPERATORA 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+/*BRAK OPERATORA 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999*/
 
-.default-color8.chart-area-symbol{
+.default-color9.chart-area-symbol{
      -fx-background-color: rgba(142, 68, 173,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color8.chart-series-area-line{
+.default-color9.chart-series-area-line{
      -fx-stroke: rgba(142, 68, 173,0.5);
 }
 
-.default-color8.chart-series-area-fill{
+.default-color9.chart-series-area-fill{
     
     -fx-fill:  rgba(142, 68, 173,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -229,20 +251,20 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*WYBRAK 8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888*/
+/*WYBRAK 10*/
 
-.default-color9.chart-area-symbol{
+.default-color10.chart-area-symbol{
      -fx-background-color: rgba(255, 140, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color9.chart-series-area-line{
+.default-color10.chart-series-area-line{
      -fx-stroke: rgba(255, 140, 0,0.5);
 }
 
-.default-color9.chart-series-area-fill{
+.default-color10.chart-series-area-fill{
     
     -fx-fill:  rgba(255, 140, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),

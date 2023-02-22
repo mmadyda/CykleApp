@@ -33,7 +33,7 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.CheckTreeView?>
 
-<BorderPane fx:id="borderPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.obciazenieFXController">
+<BorderPane fx:id="borderPane" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8.0.321" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.obciazenieFXController">
    <center>
       <VBox fx:id="vbox" focusTraversable="true" snapToPixel="false" styleClass="vbox">
         <children>
@@ -105,8 +105,8 @@
                 <content>
                   <AnchorPane id="Content" fx:id="podgladPane" minHeight="-1.0" minWidth="-1.0" onContextMenuRequested="#podgladContextMenu" prefHeight="866.0" prefWidth="1101.0">
                     <children>
-                              <PieChart fx:id="WykresKolowy" layoutX="46.0" layoutY="565.0" legendVisible="false" onContextMenuRequested="#kolowyContextMenu" onMouseEntered="#WykresKolowyMouseEntered" prefHeight="393.0" prefWidth="688.0" title="Wykres kołowy" />
-                              <StackedBarChart fx:id="WykresSlupkowy" accessibleRole="IMAGE_VIEW" alternativeColumnFillVisible="true" focusTraversable="true" layoutX="46.0" layoutY="86.0" onContextMenuRequested="#slupkowyContextMenu" prefHeight="479.0" prefWidth="694.0" title="Analiza cykli">
+                              <PieChart fx:id="WykresKolowy" layoutX="46.0" layoutY="565.0" legendVisible="false" onContextMenuRequested="#kolowyContextMenu" onMouseEntered="#WykresKolowyMouseEntered" prefHeight="393.0" prefWidth="688.0" title="Analiza czasowa" />
+                              <StackedBarChart fx:id="WykresSlupkowy" accessibleRole="IMAGE_VIEW" alternativeColumnFillVisible="true" focusTraversable="true" layoutX="46.0" layoutY="86.0" onContextMenuRequested="#slupkowyContextMenu" prefHeight="479.0" prefWidth="694.0" title="Analiza liczby cykli">
                                 <xAxis>
                                   <CategoryAxis label="Godziny" side="BOTTOM" />
                                 </xAxis>

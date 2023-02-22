@@ -41,6 +41,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
@@ -309,6 +310,19 @@ public class cykleFXController implements Initializable {
     private TableColumn TBNcykle;
     private TableColumn TBNbrak;
     private ObservableList<DataNormaCykl> daneNormaDoTabeli;
+    
+    public static String calculateTime(long seconds) {
+        long hours = TimeUnit.SECONDS.toHours(seconds);
+
+        long minute = (TimeUnit.SECONDS.toMinutes(seconds) -
+                      (TimeUnit.SECONDS.toHours(seconds)* 60));
+
+        long second = (TimeUnit.SECONDS.toSeconds(seconds) -
+                      (TimeUnit.SECONDS.toMinutes(seconds) *60));
+
+    
+    return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
+    }
 
     @FXML
     private void oknoMouseClickedAction(MouseEvent event) {
@@ -1184,34 +1198,33 @@ public class cykleFXController implements Initializable {
             }
 
             
-             DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
             
-                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString(), kol_wtrysk),
-                new PieChart.Data("próby technologiczne "+LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString(), kol_proby_tech),
-                new PieChart.Data("postój zaplanowany "+LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString(), kol_postoj),
-                new PieChart.Data("przezbrajanie "+LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString(), kol_przezbrajanie),
-                new PieChart.Data("suszenie materiału "+LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString(), kol_susz_m),
-                new PieChart.Data("nie zgłoszono "+LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString(), kol_postoj_n),
-                new PieChart.Data("awaria maszyny "+LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString(), kol_awaria_m),
-                new PieChart.Data("awaria formy "+LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString(), kol_awaria_f),
-                new PieChart.Data("brak zaopatrzenia "+LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString(), kol_brak_zaop),
-                new PieChart.Data("brak operatora "+LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString(), kol_brak_oper),
-                new PieChart.Data("wybrak "+LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString(), kol_wybrak));
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+calculateTime(kol_wtrysk), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+calculateTime(kol_proby_tech), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+calculateTime(kol_postoj), kol_postoj),
+                new PieChart.Data("przezbrajanie "+calculateTime(kol_przezbrajanie), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+calculateTime(kol_susz_m), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+calculateTime(kol_postoj_n), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+calculateTime(kol_awaria_m), kol_awaria_m),
+                new PieChart.Data("awaria formy "+calculateTime(kol_awaria_f), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+calculateTime(kol_brak_zaop), kol_brak_zaop),
+                new PieChart.Data("brak operatora "+calculateTime(kol_brak_oper), kol_brak_oper),
+                new PieChart.Data("wybrak "+calculateTime(kol_wybrak), kol_wybrak));
                 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ///KOLEJNOSC w tabeli wykresu kolowego
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Całkowity czas",LocalTime.MIN.plusSeconds(kol_calkowity_czas).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wtrysk",LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Próby technologiczne",LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Postój zaplanowany",LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Przezbrajanie",LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Suszenie materiału",LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria maszyny",LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria formy",LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak zaopatrzenia",LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak operatora",LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wybrak",LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Całkowity czas",calculateTime(kol_calkowity_czas)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wtrysk",calculateTime(kol_wtrysk)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Próby technologiczne",calculateTime(kol_proby_tech)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Postój zaplanowany",calculateTime(kol_postoj)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Przezbrajanie",calculateTime(kol_przezbrajanie)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Suszenie materiału",calculateTime(kol_susz_m)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",calculateTime(kol_postoj_n)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria maszyny",calculateTime(kol_awaria_m)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria formy",calculateTime(kol_awaria_f)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak zaopatrzenia",calculateTime(kol_brak_zaop)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak operatora",calculateTime(kol_brak_oper)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wybrak",calculateTime(kol_wybrak)));
                 
      
                 //System.out.println("DZIELNIK CZASU CYKLU przed if: "+dzielnikCzasuCyklu);
@@ -2172,34 +2185,34 @@ public class cykleFXController implements Initializable {
             
             }
               ///KOLEJNOSC w wykresie kolowym
-                DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
+
             
-                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString(), kol_wtrysk),
-                new PieChart.Data("próby technologiczne "+LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString(), kol_proby_tech),
-                new PieChart.Data("postój zaplanowany "+LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString(), kol_postoj),
-                new PieChart.Data("przezbrajanie "+LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString(), kol_przezbrajanie),
-                new PieChart.Data("suszenie materiału "+LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString(), kol_susz_m),
-                new PieChart.Data("nie zgłoszono "+LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString(), kol_postoj_n),
-                new PieChart.Data("awaria maszyny "+LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString(), kol_awaria_m),
-                new PieChart.Data("awaria formy "+LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString(), kol_awaria_f),
-                new PieChart.Data("brak zaopatrzenia "+LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString(), kol_brak_zaop),
-                new PieChart.Data("brak operatora "+LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString(), kol_brak_oper),
-                new PieChart.Data("wybrak "+LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString(), kol_wybrak));
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+calculateTime(kol_wtrysk), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+calculateTime(kol_proby_tech), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+calculateTime(kol_postoj), kol_postoj),
+                new PieChart.Data("przezbrajanie "+calculateTime(kol_przezbrajanie), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+calculateTime(kol_susz_m), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+calculateTime(kol_postoj_n), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+calculateTime(kol_awaria_m), kol_awaria_m),
+                new PieChart.Data("awaria formy "+calculateTime(kol_awaria_f), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+calculateTime(kol_brak_zaop), kol_brak_zaop),
+                new PieChart.Data("brak operatora "+calculateTime(kol_brak_oper), kol_brak_oper),
+                new PieChart.Data("wybrak "+calculateTime(kol_wybrak), kol_wybrak));
                 
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ///KOLEJNOSC w tabeli wykresu kolowego
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Całkowity czas",LocalTime.MIN.plusSeconds(kol_calkowity_czas).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wtrysk",LocalTime.MIN.plusSeconds(kol_wtrysk).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Próby technologiczne",LocalTime.MIN.plusSeconds(kol_proby_tech).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Postój zaplanowany",LocalTime.MIN.plusSeconds(kol_postoj).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Przezbrajanie",LocalTime.MIN.plusSeconds(kol_przezbrajanie).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Suszenie materiału",LocalTime.MIN.plusSeconds(kol_susz_m).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",LocalTime.MIN.plusSeconds(kol_postoj_n).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria maszyny",LocalTime.MIN.plusSeconds(kol_awaria_m).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria formy",LocalTime.MIN.plusSeconds(kol_awaria_f).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak zaopatrzenia",LocalTime.MIN.plusSeconds(kol_brak_zaop).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak operatora",LocalTime.MIN.plusSeconds(kol_brak_oper).format(dtf).toString()+""));
-                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wybrak",LocalTime.MIN.plusSeconds(kol_wybrak).format(dtf).toString()+""));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Całkowity czas",calculateTime(kol_calkowity_czas)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wtrysk",calculateTime(kol_wtrysk)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Próby technologiczne",calculateTime(kol_proby_tech)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Postój zaplanowany",calculateTime(kol_postoj)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Przezbrajanie",calculateTime(kol_przezbrajanie)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Suszenie materiału",calculateTime(kol_susz_m)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Nie zgłoszono",calculateTime(kol_postoj_n)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria maszyny",calculateTime(kol_awaria_m)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Awaria formy",calculateTime(kol_awaria_f)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak zaopatrzenia",calculateTime(kol_brak_zaop)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Brak operatora",calculateTime(kol_brak_oper)));
+                daneKoloweDoTabeli.add(new zbiorczeDaneWtryskarki("Wybrak",calculateTime(kol_wybrak)));
                 
                 
                 
@@ -2844,7 +2857,7 @@ public class cykleFXController implements Initializable {
         });
        //ZAPISYWANIE JAKO OBRAZ wykres kołowy
         contextMenuWykresKolowy = new ContextMenu();
-        MenuItem zapiszJakoKolowyItem = new MenuItem("Zapisz wykres kołowy jako obraz");
+        MenuItem zapiszJakoKolowyItem = new MenuItem("Zapisz wykres czasowy jako obraz");
         contextMenuWykresKolowy.getItems().add(zapiszJakoKolowyItem);
         contextMenuWykresKolowy.getItems().add(createScrollPaneZapiszObrazMenuItem());
         
@@ -2854,8 +2867,8 @@ public class cykleFXController implements Initializable {
         public void handle(ActionEvent event) {
             WritableImage image = WykresKolowy.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Zapisz wykres kołowy jako PNG");
-            fileChooser.setInitialFileName("Wykres kołowy.png");
+            fileChooser.setTitle("Zapisz wykres czasowy jako PNG");
+            fileChooser.setInitialFileName("Wykres czasowy.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
@@ -3417,8 +3430,8 @@ public class cykleFXController implements Initializable {
         public void handle(ActionEvent event) {
             WritableImage image = WykresKolowy.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Zapisz wykres kołowy jako PNG");
-            fileChooser.setInitialFileName("Wykres kołowy.png");
+            fileChooser.setTitle("Zapisz wykres czasowy jako PNG");
+            fileChooser.setInitialFileName("Wykres czasowy.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
