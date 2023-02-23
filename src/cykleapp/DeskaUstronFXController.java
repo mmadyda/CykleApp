@@ -72,6 +72,7 @@ public class DeskaUstronFXController implements Initializable {
     private int awaria_m;
     private int awaria_f;
     private int przezbrajanie;
+    private int susz_m;
     private int proby_tech;
     private int brak_zaop;
     private int brak_oper;
@@ -145,8 +146,6 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnLEG_BRAK_OPER;
     @FXML
     private Label labLEG_BRAK_OPER;
-    @FXML
-    private Button btnARBURG_49;
    
     @FXML
     private Circle cien_zegar111;
@@ -154,7 +153,6 @@ public class DeskaUstronFXController implements Initializable {
     
     @FXML
     private ScrollPane ScrollPane;
-    private Button btnHAITIAN_39;
     @FXML
     private Clock clock;
     @FXML
@@ -175,6 +173,10 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnUST_52;
     @FXML
     private Button btnUST_41;
+    @FXML
+    private Button btnLEG_SUSZ_M;
+    @FXML
+    private Label labLEG_SUSZ_M;
 
     /**
      * Initializes the controller class.
@@ -353,12 +355,13 @@ public class DeskaUstronFXController implements Initializable {
                 awaria_m =0;
                 awaria_f =0;
                 przezbrajanie =0;
+                susz_m =0;
                 proby_tech =0;
                 brak_zaop =0;
                 brak_oper =0;
                 postoj =0;
 
-                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, brak_oper, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
+                String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, susz_m, proby_tech, brak_zaop, brak_oper, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
                 //String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' ORDER BY lp DESC LIMIT 1;";
                 ResultSet rs_a;
                 PreparedStatement pst_a;
@@ -418,6 +421,14 @@ public class DeskaUstronFXController implements Initializable {
                     catch(Exception ex)
                     {
                         przezbrajanie += 0;
+                    }
+                     try
+                    {
+                    susz_m += (int)Float.parseFloat(rs_a.getString("susz_m"));
+                    }
+                    catch(Exception ex)
+                    {
+                        susz_m += 0;
                     }
                     try
                     {
@@ -489,6 +500,10 @@ public class DeskaUstronFXController implements Initializable {
                         if( przezbrajanie > 0)
                         {
                              masfor.setStatus(Maszyna.Stan.PRZEZBRAJANIE);
+                        }
+                         if( susz_m > 0)
+                        {
+                             masfor.setStatus(Maszyna.Stan.SUSZ_M);
                         }
                         if(proby_tech > 0)
                         {
@@ -618,6 +633,8 @@ public class DeskaUstronFXController implements Initializable {
         btnLEG_AWARIA_FORMY.setStyle(Maszyna.STYL_AWARIA_FORMY);
 
         btnLEG_PRZEZBRAJANIE.setStyle(Maszyna.STYL_PRZEZBRAJANIE);
+        
+        btnLEG_SUSZ_M.setStyle(Maszyna.STYL_SUSZ_M);
 
         btnLEG_PROBY.setStyle(Maszyna.STYL_PROBY_TECHNOLOGICZNE);
 

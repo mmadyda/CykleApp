@@ -86,6 +86,16 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                  <children>
+                                    <Button fx:id="btnLEG_SUSZ_M" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
+                                    <Label fx:id="labLEG_SUSZ_M" text="Suszenie materiału">
+                                       <font>
+                                          <Font name="Calibri Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                                 <children>
                                     <Button fx:id="btnLEG_POSTOJ_N" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" />
                                     <Label fx:id="labLEG_POSTOJ_N" text="Nie zgłoszono">
                                        <font>

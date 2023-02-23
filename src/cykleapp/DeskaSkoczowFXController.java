@@ -199,6 +199,10 @@ public class DeskaSkoczowFXController implements Initializable {
     private Button btnST_77;
     @FXML
     private Button btnST_78;
+    @FXML
+    private Button btnLEG_SUSZ_M;
+    @FXML
+    private Label labLEG_SUSZ_M;
     
   
 
@@ -707,7 +711,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
         btnLEG_PRZEZBRAJANIE.setStyle(Maszyna.STYL_PRZEZBRAJANIE);
         
-        //btnLEG_SUSZ_M.setStyle(Maszyna.STYL_SUSZ_M);
+        btnLEG_SUSZ_M.setStyle(Maszyna.STYL_SUSZ_M);
 
         btnLEG_PROBY.setStyle(Maszyna.STYL_PROBY_TECHNOLOGICZNE);
 
