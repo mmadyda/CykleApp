@@ -819,7 +819,7 @@ public class startFXController implements Initializable {
          alertStage.getIcons().add(new Image(this.getClass().getResource("img/icon48.png").toString()));
          alert.setTitle("TECHNIPLAST Analizator pracy wtryskarek");
          
-         alert.setHeaderText("System analizy pracy wtryskarek\nwersja 2021");
+         alert.setHeaderText("System analizy pracy wtryskarek\nwersja 03.2023");
          
          
          VBox vbox = new VBox();

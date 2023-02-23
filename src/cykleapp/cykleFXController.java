@@ -612,7 +612,7 @@ public class cykleFXController implements Initializable {
 
         });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
             try {
-            
+            ProgressBar.setProgress((1)/(new Double(liczba_godzin+1)));
             conn = mysqlconnect.ConnecrDb();
              String sqlCzas = "";
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
@@ -794,7 +794,7 @@ public class cykleFXController implements Initializable {
             for(int i = 0;i<liczba_godzin; i++)
             {
              //kolko postepu
-             ProgressBar.setProgress((i+1)/(new Double(liczba_godzin)));
+             ProgressBar.setProgress((i+1)/(new Double(liczba_godzin+1)));
 
              if(i == 0)
              {
@@ -3186,7 +3186,7 @@ public class cykleFXController implements Initializable {
             String wartosc = item.toString().substring(item.toString().indexOf(",")+1,item.toString().length()-1);
             //System.out.println(nazwa+  ": "+wartosc);
             
-            textLabelDialog = nazwa+  ": "+wartosc;
+            textLabelDialog = nazwa;
                
             labelDialog.setText(textLabelDialog);
             infoDialog.setVisible(true);
