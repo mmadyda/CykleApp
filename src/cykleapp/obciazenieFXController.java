@@ -1678,7 +1678,7 @@ public class obciazenieFXController implements  Initializable {
             WritableImage image = TableCykleZbiorczo.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę jako PNG");
-            fileChooser.setInitialFileName("Tabela danych zbiorczych.png");
+            fileChooser.setInitialFileName("Tabela danych czasowych.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
@@ -1710,7 +1710,7 @@ public class obciazenieFXController implements  Initializable {
             FileChooser fileChooser = new FileChooser();
             
             fileChooser.setTitle("Zapisz tabelę jako XLS");
-            fileChooser.setInitialFileName("Tabela danych zbiorczych.xls");
+            fileChooser.setInitialFileName("Tabela danych czasowych.xls");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XLS", "*.xls")
             );
@@ -2082,7 +2082,7 @@ public class obciazenieFXController implements  Initializable {
             WritableImage image = TableCykleZbiorczo.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę jako PNG");
-            fileChooser.setInitialFileName("Tabela danych zbiorczych.png");
+            fileChooser.setInitialFileName("Tabela danych czasowych.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
@@ -2532,7 +2532,7 @@ public class obciazenieFXController implements  Initializable {
             if(file != null)
             {
             HSSFWorkbook workbook = new HSSFWorkbook();
-            HSSFSheet sheet = workbook.createSheet("Dane zbiorcze");  
+            HSSFSheet sheet = workbook.createSheet("Dane czasowe");  
             
             //HSSFCellStyle cellStyleData = workbook.createCellStyle();
             //CreationHelper createHelper = workbook.getCreationHelper();

@@ -1304,6 +1304,7 @@ public class cykleFXController implements Initializable {
                     TableNorma.getColumns().addAll(TBNdata,TBNnorma,TBNcykle,TBNbrak);
                     TableNorma.setMinWidth(370);
                     TableNorma.setMinHeight(270);
+                    TableNorma.autosize();
             
                     WykresSlupkowy.setVisible(true);
                     WykresKolowy.setVisible(true);
@@ -2294,18 +2295,22 @@ public class cykleFXController implements Initializable {
                     TableCykle.setMinHeight(325);
                     TableCykle.autosize();
                     
-                    TableCykleZbiorczo.setSelectionModel(null);
+                    
+                    TableCykleZbiorczo.autosize();
+                    TableCykleZbiorczo.setSelectionModel(null);  
                     TableCykleZbiorczo.setItems(daneKoloweDoTabeli);
                     TableCykleZbiorczo.getColumns().addAll(TBZnazwa,TBZwartosc);
                     TableCykleZbiorczo.setMinWidth(200);
                     TableCykleZbiorczo.setMinHeight(270);
                     TableCykleZbiorczo.autosize();
+     
                     
                     TableNorma.setSelectionModel(null);
                     TableNorma.setItems(daneNormaDoTabeli);
                     TableNorma.getColumns().addAll(TBNdata,TBNnorma,TBNcykle,TBNbrak);
                     TableNorma.setMinWidth(370);
                     TableNorma.setMinHeight(270);
+                    TableNorma.autosize();
             
                     WykresSlupkowy.setVisible(true);
                     WykresKolowy.setVisible(true);
@@ -2314,6 +2319,7 @@ public class cykleFXController implements Initializable {
                     TableCykle.setVisible(true);
                     TableCykleZbiorczo.setVisible(true);
                     TableNorma.setVisible(true);
+
                     
                     
                     //POPRAWIANIE KOLOROW
@@ -3047,7 +3053,7 @@ public class cykleFXController implements Initializable {
             WritableImage image = TableCykleZbiorczo.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę jako PNG");
-            fileChooser.setInitialFileName("Tabela danych zbiorczych.png");
+            fileChooser.setInitialFileName("Tabela danych czasowych.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
@@ -3077,7 +3083,7 @@ public class cykleFXController implements Initializable {
         public void handle(ActionEvent event) { 
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę danych "+nazwaMaszynyDoExcel+" jako XLS");
-            fileChooser.setInitialFileName("Dane zbiorcze "+nazwaMaszynyDoExcel+".xls");
+            fileChooser.setInitialFileName("Dane czasowe "+nazwaMaszynyDoExcel+".xls");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XLS", "*.xls")
             );
@@ -3609,7 +3615,7 @@ public class cykleFXController implements Initializable {
             WritableImage image = TableCykleZbiorczo.snapshot(new SnapshotParameters(), null);
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę jako PNG");
-            fileChooser.setInitialFileName("Tabela danych zbiorczych.png");
+            fileChooser.setInitialFileName("Tabela danych czasowych.png");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("PNG", "*.png")
             );
@@ -3641,7 +3647,7 @@ public class cykleFXController implements Initializable {
             
             FileChooser fileChooser = new FileChooser();
             fileChooser.setTitle("Zapisz tabelę danych "+nazwaMaszynyDoExcel+" jako XLS");
-            fileChooser.setInitialFileName("Dane zbiorcze "+nazwaMaszynyDoExcel+".xls");
+            fileChooser.setInitialFileName("Dane czasowe "+nazwaMaszynyDoExcel+".xls");
              fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("XLS", "*.xls")
             );
@@ -3972,7 +3978,7 @@ public class cykleFXController implements Initializable {
           if(file != null)
             {
             HSSFWorkbook workbook = new HSSFWorkbook();
-            HSSFSheet sheet = workbook.createSheet("Zbiorcze Dane  "+nazwaMaszynyDoExcel);  
+            HSSFSheet sheet = workbook.createSheet("Dane czasowe  "+nazwaMaszynyDoExcel);  
             
             //HSSFCellStyle cellStyleData = workbook.createCellStyle();
             //CreationHelper createHelper = workbook.getCreationHelper();
