@@ -510,7 +510,7 @@ public class cykleFXController implements Initializable {
                 s_przezbrajanie.setName("przezbrajanie");
                 
                 s_susz_m = new XYChart.Series();
-                s_susz_m.setName("susz_m");
+                s_susz_m.setName("suszenie materiału");
 
                 s_proby_tech = new XYChart.Series();
                 s_proby_tech.setName("próby technologiczne");

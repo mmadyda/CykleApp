@@ -23,6 +23,7 @@ public class Maszyna {
         PROBY,
         POSTOJ_PLANOWANY,
         PRZEZBRAJANIE,
+        SUSZ_M,
         POSTOJ_NIEUZASADNIONY,
         AWARIA_M,
         AWARIA_F,
@@ -65,6 +66,13 @@ public class Maszyna {
                                 "    -fx-background-color: linear-gradient(derive(#22bad9,+30%), derive(#22bad9,+40%)),\n" +
                                 "                          linear-gradient(derive(#22bad9,80%), derive(#22bad9, 80%)),\n" +
                                 "                          linear-gradient(derive(#22bad9,30%), derive(#22bad9,-10%));\n" +
+                                "    -fx-background-insets: 0,1,2;\n" +
+                                "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
+    
+    public static String STYL_SUSZ_M = (
+                                "    -fx-background-color: linear-gradient(derive(#8d6e63,+30%), derive(#8d6e63,+40%)),\n" +
+                                "                          linear-gradient(derive(#8d6e63,80%), derive(#8d6e63, 80%)),\n" +
+                                "                          linear-gradient(derive(#8d6e63,30%), derive(#8d6e63,-10%));\n" +
                                 "    -fx-background-insets: 0,1,2;\n" +
                                 "    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;\n");
      
@@ -170,6 +178,10 @@ public class Maszyna {
         if(statu.equals(Stan.PRZEZBRAJANIE))
         {
             styl = Maszyna.STYL_PRZEZBRAJANIE + Maszyna.STYL_TEKST;
+        }
+        if(statu.equals(Stan.SUSZ_M))
+        {
+            styl = Maszyna.STYL_SUSZ_M + Maszyna.STYL_TEKST;
         }
         if(statu.equals(Stan.PROBY))
         {
