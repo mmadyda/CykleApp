@@ -565,6 +565,7 @@ public class obciazenieFXController implements  Initializable {
             }
             else
             {
+          kol_calkowity_czas = 0;
           for(TreeItem<String> analizowanaMaszyna:maszyny)
           {
               if(analizowanaMaszyna.getValue().equals("Wtryskarki")||analizowanaMaszyna.getValue().equals("Ustroń")||analizowanaMaszyna.getValue().equals("Skoczów")||analizowanaMaszyna.getValue().equals("Koniaków"))
