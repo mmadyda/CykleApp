@@ -228,20 +228,43 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*BRAK OPERATORA 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999*/
+/*PRZERWA PRACOWNIKA 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999*/
 
 .default-color9.chart-area-symbol{
-     -fx-background-color: rgba(142, 68, 173,1), white;
+     -fx-background-color: rgba(0, 128, 128,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
 .default-color9.chart-series-area-line{
-     -fx-stroke: rgba(142, 68, 173,0.5);
+     -fx-stroke: rgba(0, 128, 128,0.5);
 }
 
 .default-color9.chart-series-area-fill{
+    
+    -fx-fill:  rgba(0, 128, 128,0.4); 
+    -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 0%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+    -fx-blend-mode: MULTIPLY;
+}
+/*BRAK OPERATORA*/
+
+.default-color10.chart-area-symbol{
+     -fx-background-color: rgba(142, 68, 173,1), white;
+     -fx-background-insets: 0, 3;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+
+}
+.default-color10.chart-series-area-line{
+     -fx-stroke: rgba(142, 68, 173,0.5);
+}
+
+.default-color10.chart-series-area-fill{
     
     -fx-fill:  rgba(142, 68, 173,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),
@@ -251,20 +274,20 @@
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
     -fx-blend-mode: MULTIPLY;
 }
-/*WYBRAK 10*/
+/*WYBRAK 11*/
 
-.default-color10.chart-area-symbol{
+.default-color11.chart-area-symbol{
      -fx-background-color: rgba(255, 140, 0,1), white;
      -fx-background-insets: 0, 3;
     -fx-background-radius: 5px;
     -fx-padding: 5px;
 
 }
-.default-color10.chart-series-area-line{
+.default-color11.chart-series-area-line{
      -fx-stroke: rgba(255, 140, 0,0.5);
 }
 
-.default-color10.chart-series-area-fill{
+.default-color11.chart-series-area-fill{
     
     -fx-fill:  rgba(255, 140, 0,0.4); 
     -fx-color: linear-gradient(derive(-fx-bar-fill,-30%), derive(-fx-bar-fill,-40%)),

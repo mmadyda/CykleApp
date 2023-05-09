@@ -99,6 +99,7 @@ public class AutomatykFXController implements Initializable {
     private XYChart.Series l_susz_m;
     private XYChart.Series l_proby;
     private XYChart.Series l_brak_zaop;
+    private XYChart.Series l_przerwa_p;
     private XYChart.Series l_brak_oper;
     private XYChart.Series l_postoj;
     
@@ -112,6 +113,7 @@ public class AutomatykFXController implements Initializable {
     private int susz_m;
     private int proby_tech;
     private int brak_zaop;
+    private int przerwa_p;
     private int brak_oper;
     private int postoj;
     
@@ -269,6 +271,7 @@ public class AutomatykFXController implements Initializable {
         l_susz_m = new XYChart.Series();
         l_proby = new XYChart.Series();
         l_brak_zaop = new XYChart.Series();
+        l_przerwa_p = new XYChart.Series();
         l_brak_oper = new XYChart.Series();
         l_postoj = new XYChart.Series();
         
@@ -281,6 +284,7 @@ public class AutomatykFXController implements Initializable {
         l_susz_m.setName("suszenie materiału");
         l_proby.setName("próby technologiczne");
         l_brak_zaop.setName("brak zaopatrzenia");
+        l_przerwa_p.setName("przerwa pracownika");
         l_brak_oper.setName("brak operatora");
         l_postoj.setName("postój zaplanowany");
         
@@ -293,6 +297,7 @@ public class AutomatykFXController implements Initializable {
         susz_m = 0;
         proby_tech = 0;
         brak_zaop = 0;
+        przerwa_p = 0;
         brak_oper = 0;
         postoj = 0;
                 
@@ -305,14 +310,14 @@ public class AutomatykFXController implements Initializable {
         {
             if(localDateTime_od.isBefore(LocalDateTime.now().minusDays(7)))
             {
-                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,brak_oper,postoj, czas_cyklu FROM ( "
+                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,przerwa,brak_oper,postoj, czas_cyklu FROM ( "
                         + "(SELECT * FROM techniplast.cykle_wolne where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"') "
                         + "UNION "
                         + "(SELECT * FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"')) AS T ";
             }
             else
             {
-                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,brak_oper,postoj, czas_cyklu FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"';";
+                sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,przerwa,brak_oper,postoj, czas_cyklu FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_od.plusMinutes(liczbaMinutAnalizyFunkcja))+"';";
 
             }
         
@@ -350,7 +355,7 @@ public class AutomatykFXController implements Initializable {
 
             });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
             
-            sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,brak_oper,postoj, czas_cyklu FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od_refresh.minusMinutes(liczbaMinutAnalizyFunkcja))+"' and '"+Timestamp.valueOf(localDateTime_od_refresh)+"';";
+            sql = "SELECT data_g, wtrysk ,wybrak, postoj_n, awaria_m, awaria_f,przezbrajanie,susz_m,proby_tech,brak_zaop,przerwa,brak_oper,postoj, czas_cyklu FROM techniplast.cykle_szybkie where maszyna = '"+wybranaMaszyna+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od_refresh.minusMinutes(liczbaMinutAnalizyFunkcja))+"' and '"+Timestamp.valueOf(localDateTime_od_refresh)+"';";
         }
          //System.out.println(sql);
             pst = conn.prepareStatement(sql);
@@ -435,6 +440,14 @@ public class AutomatykFXController implements Initializable {
                 }
                 try
                 {
+                    przerwa_p += (int)Float.parseFloat(rs.getString("przerwa"));
+                }
+                catch(Exception ex)
+                {
+                    przerwa_p += 0;
+                }
+                try
+                {
                 brak_oper += (int)Float.parseFloat(rs.getString("brak_oper"));
                 }
                 catch(Exception ex)
@@ -488,6 +501,10 @@ public class AutomatykFXController implements Initializable {
                     {
                     l_brak_zaop.getData().add(new XYChart.Data(data, brak_zaop));
                     }
+                    if(przerwa_p>0)
+                    {
+                    l_przerwa_p.getData().add(new XYChart.Data(data, przerwa_p));
+                    }
                     if(brak_oper>0)
                     {
                     l_brak_oper.getData().add(new XYChart.Data(data, brak_oper));
@@ -508,6 +525,7 @@ public class AutomatykFXController implements Initializable {
                     l_susz_m.getData().add(new XYChart.Data(data, susz_m));
                     l_proby.getData().add(new XYChart.Data(data, proby_tech));
                     l_brak_zaop.getData().add(new XYChart.Data(data, brak_zaop));
+                    l_przerwa_p.getData().add(new XYChart.Data(data, przerwa_p));
                     l_brak_oper.getData().add(new XYChart.Data(data, brak_oper));
                     l_postoj.getData().add(new XYChart.Data(data, postoj));
                 }
@@ -544,7 +562,7 @@ public class AutomatykFXController implements Initializable {
                     {
                         wykresLiniowy.getData().clear();
                         //KOLEJNOŚĆ TABELA wykres liniowy
-                        wykresLiniowy.getData().addAll(l_wtrysk,l_proby,l_postoj,l_przezbrajanie,l_susz_m,l_postoj_n,l_awaria_m,l_awaria_f,l_brak_zaop,l_brak_oper,l_wybrak);
+                        wykresLiniowy.getData().addAll(l_wtrysk,l_proby,l_postoj,l_przezbrajanie,l_susz_m,l_postoj_n,l_awaria_m,l_awaria_f,l_brak_zaop,l_przerwa_p,l_brak_oper,l_wybrak);
                         poprawKolory();
                         addWykresEventsListener();
                         addWykresLegendaEventsListener();
