@@ -79,7 +79,16 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color9.chart-bar /*brak operatora*/
+.default-color9.chart-bar /*przerwa pracownika*/
+{ 
+    -fx-bar-fill: #008080;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.default-color10.chart-bar /*brak operatora*/
 { 
     -fx-bar-fill: #8e44ad;
     -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
@@ -88,7 +97,7 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.default-color10.chart-bar    /*wybrak*/
+.default-color11.chart-bar    /*wybrak*/
 { 
     -fx-bar-fill: #ff8c00;
     -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
@@ -97,7 +106,6 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-
 
 
 
@@ -181,7 +189,16 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.data9.chart-pie /*brak operatora*/
+.data9.chart-pie /*przerwa pracownika*/
+{
+    -fx-bar-fill: #008080;
+    -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
+                          linear-gradient(derive(-fx-bar-fill,80%), derive(-fx-bar-fill, 80%)),
+                          linear-gradient(derive(-fx-bar-fill,30%), derive(-fx-bar-fill,-10%));
+    -fx-background-insets: 0,1,2;
+    -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
+}
+.data10.chart-pie /*brak operatora*/
 {
     -fx-bar-fill: #8e44ad;
     -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),
@@ -190,7 +207,7 @@
     -fx-background-insets: 0,1,2;
     -fx-background-radius: 5 5 0 0, 4 4 0 0, 3 3 0 0;
 }
-.data10.chart-pie /*wybrak*/
+.data11.chart-pie /*wybrak*/
 {
     -fx-bar-fill: #ff8c00;
     -fx-background-color: linear-gradient(derive(-fx-bar-fill,+30%), derive(-fx-bar-fill,+40%)),

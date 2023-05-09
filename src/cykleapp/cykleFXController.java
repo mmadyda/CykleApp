@@ -3989,9 +3989,10 @@ public class cykleFXController implements Initializable {
             rowhead.createCell(7).setCellValue("Suszenie materiału");
             rowhead.createCell(8).setCellValue("Próby technologiczne");
             rowhead.createCell(9).setCellValue("Brak zaopatrzenia");
-            rowhead.createCell(10).setCellValue("Brak operatora");
-            rowhead.createCell(11).setCellValue("Postój zaplanowany");
-            rowhead.createCell(12).setCellValue("Średni czas cyklu, s");
+            rowhead.createCell(10).setCellValue("Przerwa pracowinika");
+            rowhead.createCell(11).setCellValue("Brak operatora");
+            rowhead.createCell(12).setCellValue("Postój zaplanowany");
+            rowhead.createCell(13).setCellValue("Średni czas cyklu, s");
             
             int i = 0;
              for (daneWtryskarki dane : daneSlupkoweDoTabeli) {
@@ -4006,9 +4007,10 @@ public class cykleFXController implements Initializable {
                 row.createCell(7).setCellValue(dane.getSusz_m());
                 row.createCell(8).setCellValue(dane.getProby_tech());
                 row.createCell(9).setCellValue(dane.getBrak_zaop());
-                row.createCell(10).setCellValue(dane.getBrak_oper());
-                row.createCell(11).setCellValue(dane.getPostoj());
-                row.createCell(12).setCellValue(dane.getCzas_cyklu());
+                row.createCell(10).setCellValue(dane.getPrzerwa_p());
+                row.createCell(11).setCellValue(dane.getBrak_oper());
+                row.createCell(12).setCellValue(dane.getPostoj());
+                row.createCell(13).setCellValue(dane.getCzas_cyklu());
                 
                 //row.getCell(0).setCellStyle(styleNumber);
                 row.getCell(0).setCellStyle(styleNumber);
@@ -4024,6 +4026,7 @@ public class cykleFXController implements Initializable {
                 row.getCell(10).setCellStyle(styleNumber);
                 row.getCell(11).setCellStyle(styleNumber);
                 row.getCell(12).setCellStyle(styleNumber);
+                row.getCell(13).setCellStyle(styleNumber);
                 
                 i++;
             }
