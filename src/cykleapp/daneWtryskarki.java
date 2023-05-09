@@ -24,6 +24,7 @@ public class daneWtryskarki {
         private final SimpleStringProperty proby_tech;
         private final SimpleStringProperty brak_zaop;
         private final SimpleStringProperty brak_oper;
+        private final SimpleStringProperty przerwa_p;
         private final SimpleStringProperty postoj;
         private final SimpleStringProperty czas_cyklu;
  
@@ -40,7 +41,7 @@ public class daneWtryskarki {
      * @param Ipostoj liczba cykli postoju
      * @param Iczas_cyklu średni czas cyklu
      */
-    public daneWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Isusz_m,String Iproby_tech,String Ibrak_zaop,String Ibrak_oper,String Ipostoj,String Iczas_cyklu) {
+    public daneWtryskarki(String Idata,String Iwtrysk,String Iwybrak,String Ipostoj_n, String Iawaria_m,String Iawaria_f,String Iprzezbrajanie,String Isusz_m,String Iproby_tech,String Ibrak_zaop,String Iprzerwa_p,String Ibrak_oper,String Ipostoj,String Iczas_cyklu) {
             this.data = new SimpleStringProperty(Idata);
             this.wtrysk = new SimpleStringProperty(Iwtrysk);
             this.wybrak = new SimpleStringProperty(Iwybrak);
@@ -51,6 +52,7 @@ public class daneWtryskarki {
             this.susz_m = new SimpleStringProperty(Isusz_m);
             this.proby_tech = new SimpleStringProperty(Iproby_tech);
             this.brak_zaop = new SimpleStringProperty(Ibrak_zaop);
+            this.przerwa_p = new SimpleStringProperty(Iprzerwa_p);
             this.brak_oper = new SimpleStringProperty(Ibrak_oper);
             this.postoj = new SimpleStringProperty(Ipostoj);
             this.czas_cyklu = new SimpleStringProperty(Iczas_cyklu);
@@ -135,6 +137,14 @@ public class daneWtryskarki {
  
         public void setBrak_zaop(String Ibrak_zaop) {
             brak_zaop.set(Ibrak_zaop);
+        }
+        //PRZERWA PRACOWNIKA
+         public String getPrzerwa_p() {
+            return przerwa_p.get();
+        }
+ 
+        public void setPrzerwa_p(String Iprzerwa_p) {
+            przerwa_p.set(Iprzerwa_p);
         }
         //BRAK OPERATORA
          public String getBrak_oper() {
