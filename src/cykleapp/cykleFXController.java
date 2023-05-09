@@ -773,7 +773,7 @@ public class cykleFXController implements Initializable {
                     }
                     try
                     {
-                    kol_brak_zaop = (int)Float.parseFloat(rs.getString("przerwa"));
+                    kol_przerwa_p = (int)Float.parseFloat(rs.getString("przerwa"));
                     }
                     catch(Exception ex)
                     {
@@ -1826,7 +1826,7 @@ public class cykleFXController implements Initializable {
                     
                     try
                     {
-                    kol_przerwa_p = (int)Float.parseFloat(rs.getString("przerwa_p"));
+                    kol_przerwa_p = (int)Float.parseFloat(rs.getString("przerwa"));
                     }
                     catch(Exception ex)
                     {
