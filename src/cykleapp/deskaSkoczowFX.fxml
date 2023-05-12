@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
-<?import eu.hansolo.medusa.Clock?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -31,7 +31,7 @@
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
-                        <Clock fx:id="clock" backgroundPaint="BLACK" discreteSeconds="false" layoutX="1172.0" layoutY="12.0" minHeight="340.0" minWidth="662.0" prefHeight="400.0" prefWidth="695.0" running="true" skinType="MINIMAL" />
+                        <PieChart fx:id="halaWykresKolowy" layoutX="1028.0" layoutY="-93.0" legendVisible="false" prefHeight="576.0" prefWidth="701.0" />
                         
                          <Polyline fill="#00a1ff1a" layoutX="741.0" layoutY="509.0" points="-469.0, -75.0, 840.0, -75.0, 850.0, 139.0, -358.0, 139.0, -469.0, -75.0" stroke="#00a1ff66" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>

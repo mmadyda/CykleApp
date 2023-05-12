@@ -22,20 +22,26 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -78,6 +84,27 @@ public class DeskaUstronFXController implements Initializable {
     private int przerwa_p;
     private int brak_oper;
     private int postoj;
+    
+    private String kol_data;
+    private int kol_wtrysk;
+    private int kol_wybrak;
+    private int kol_postoj_n;
+    private int kol_awaria_m;
+    private int kol_awaria_f;
+    private int kol_przezbrajanie;
+    private int kol_susz_m;
+    private int kol_proby_tech;
+    private int kol_brak_zaop;
+    private int kol_przerwa_p;
+    private int kol_brak_oper;
+    private int kol_postoj;
+    private int kol_calkowity_czas;
+    
+    ObservableList<PieChart.Data> daneWykresKolowy;
+    
+    private LocalDateTime localDateTime_od;
+    private LocalDateTime localDateTime_do;
+    
     private Timeline updater;
     private Timeline animacja;
     private Alert alertSQL;
@@ -182,6 +209,19 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnLEG_PRZERWA_P;
     @FXML
     private Label labLEG_PRZERWA_P;
+    
+    public static String calculateTime(long seconds) {
+        long hours = TimeUnit.SECONDS.toHours(seconds);
+
+        long minute = (TimeUnit.SECONDS.toMinutes(seconds) -
+                      (TimeUnit.SECONDS.toHours(seconds)* 60));
+
+        long second = (TimeUnit.SECONDS.toSeconds(seconds) -
+                      (TimeUnit.SECONDS.toMinutes(seconds) *60));
+
+    
+    return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
+    }
 
     /**
      * Initializes the controller class.
@@ -328,6 +368,211 @@ public class DeskaUstronFXController implements Initializable {
         if(jestInternet())
         {
             System.out.println("Aktualizowanie...");
+            try
+            {
+                kol_data = "";
+                kol_wtrysk = 0;
+                kol_wybrak = 0;
+                kol_postoj_n = 0;
+                kol_awaria_m = 0;
+                kol_awaria_f =0;
+                kol_przezbrajanie = 0;
+                kol_susz_m = 0;
+                kol_proby_tech = 0;
+                kol_brak_zaop = 0;
+                kol_przerwa_p = 0;
+                kol_brak_oper = 0;
+                kol_postoj = 0;
+                kol_calkowity_czas = 0;
+                
+                String  nazwaMiejsca = "SKOCZOW";
+                localDateTime_od = LocalDateTime.now().minusHours(8);
+                localDateTime_do = LocalDateTime.now();
+                String sqlCzas = "SELECT\n" +
+                        "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wtrysk > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wtrysk,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wybrak > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wybrak,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and postoj_n > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj_n,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and awaria_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and awaria_f > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_f,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and przezbrajanie > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przezbrajanie,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and proby_tech > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as proby_tech,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and brak_zaop > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_zaop,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and przerwa > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przerwa,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and brak_oper > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_oper,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and susz_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as susz_m,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and postoj > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj,\n" +
+                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as sum_czas;";
+
+                System.out.println(sqlCzas);
+
+                pst = conn.prepareStatement(sqlCzas);
+
+                rs = pst.executeQuery(sqlCzas);
+
+                while(rs.next()) {
+                    if(rs.getString("sum_czas") == null)
+                    {
+                        //koniec = true;
+                        //break;
+                    }
+                    else
+                    {
+                        try
+                        {
+                        kol_wtrysk += Integer.parseInt(rs.getString("wtrysk"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_wtrysk += 0;
+                        }
+                        try
+                        {
+                        kol_wybrak += Integer.parseInt(rs.getString("wybrak"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_wybrak += 0;
+                        }
+                        try
+                        {
+                        kol_postoj_n += (int)Float.parseFloat(rs.getString("postoj_n"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_postoj_n += 0;
+                        }
+                        try
+                        {
+                        kol_awaria_m += (int)Float.parseFloat(rs.getString("awaria_m"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_awaria_m += 0;
+                        }
+                        try
+                        {
+                        kol_awaria_f += (int)Float.parseFloat(rs.getString("awaria_f"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_awaria_f += 0;
+                        }
+                        try
+                        {
+                        kol_przezbrajanie += (int)Float.parseFloat(rs.getString("przezbrajanie"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_przezbrajanie += 0;
+                        }
+                        try
+                        {
+                        kol_proby_tech += (int)Float.parseFloat(rs.getString("proby_tech"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_proby_tech += 0;
+                        }
+                        try
+                        {
+                        kol_brak_zaop += (int)Float.parseFloat(rs.getString("brak_zaop"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_brak_zaop += 0;
+                        }
+                        try
+                        {
+                        kol_przerwa_p += (int)Float.parseFloat(rs.getString("przerwa"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_przerwa_p += 0;
+                        }
+
+                        try
+                        {
+                        kol_brak_oper += (int)Float.parseFloat(rs.getString("brak_oper"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_brak_oper += 0;
+                        }
+                        try
+                        {
+                        kol_susz_m += (int)Float.parseFloat(rs.getString("susz_m"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_susz_m += 0;
+                        }
+                        try
+                        {
+                        kol_postoj += (int)Float.parseFloat(rs.getString("postoj"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_postoj += 0;
+                        }
+                        try
+                        {
+                        kol_calkowity_czas += (int)Float.parseFloat(rs.getString("sum_czas"));
+                        }
+                        catch(Exception ex)
+                        {
+                            kol_calkowity_czas += 0;
+                        }
+                    }
+                }
+                 daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+calculateTime(kol_wtrysk), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+calculateTime(kol_proby_tech), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+calculateTime(kol_postoj), kol_postoj),
+                new PieChart.Data("przezbrajanie "+calculateTime(kol_przezbrajanie), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+calculateTime(kol_susz_m), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+calculateTime(kol_postoj_n), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+calculateTime(kol_awaria_m), kol_awaria_m),
+                new PieChart.Data("awaria formy "+calculateTime(kol_awaria_f), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+calculateTime(kol_brak_zaop), kol_brak_zaop),
+                new PieChart.Data("przerwa pracownika "+calculateTime(kol_przerwa_p), kol_przerwa_p),
+                new PieChart.Data("brak operatora "+calculateTime(kol_brak_oper), kol_brak_oper),
+                new PieChart.Data("wybrak "+calculateTime(kol_wybrak), kol_wybrak));
+                
+                 Platform.runLater(new Runnable()
+
+                    {
+
+                    @Override
+
+                    public void run()
+
+                    {
+                    //halaWykresKolowy.getData().clear();
+                    //halaWykresKolowy.getData().addAll(daneWykresKolowy);
+                    
+                    
+                    }
+
+                    });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
+            }
+            catch(SQLException ex)
+            {
+                    if(!alertSQL.isShowing())
+                    {
+                        Runnable task = new Runnable()
+
+                        {
+                        public void run()
+
+                        {
+                                alertSQL.show();
+                        }
+                        };
+
+                    }
+
+                    System.err.println("Błąd: " + ex.getMessage());
+            }
+            
             liczba_ppracujacych_wtryskarek_ustron = 0;
             int i =1;
             for(Maszyna masfor:istniejace_maszyny)
@@ -366,6 +611,21 @@ public class DeskaUstronFXController implements Initializable {
                 przerwa_p = 0;
                 brak_oper =0;
                 postoj =0;
+                
+                kol_data = "";
+                kol_wtrysk = 0;
+                kol_wybrak = 0;
+                kol_postoj_n = 0;
+                kol_awaria_m = 0;
+                kol_awaria_f =0;
+                kol_przezbrajanie = 0;
+                kol_susz_m = 0;
+                kol_proby_tech = 0;
+                kol_brak_zaop = 0;
+                kol_przerwa_p = 0;
+                kol_brak_oper = 0;
+                kol_postoj = 0;
+                kol_calkowity_czas = 0;
 
                 String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, susz_m, proby_tech, brak_zaop, przerwa, brak_oper, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
                 //String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' ORDER BY lp DESC LIMIT 1;";
