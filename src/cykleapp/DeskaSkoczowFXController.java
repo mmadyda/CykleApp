@@ -546,6 +546,11 @@ public class DeskaSkoczowFXController implements Initializable {
                 new PieChart.Data("brak operatora "+calculateTime(kol_brak_oper), kol_brak_oper),
                 new PieChart.Data("wybrak "+calculateTime(kol_wybrak), kol_wybrak));
                 
+                System.out.println("liczba sprawdzanych maszyn: "+istniejace_maszyny.size());
+                
+                System.out.println("całkowity czas w wykresie kołowym: "+calculateTime(kol_calkowity_czas));
+                
+                
                  Platform.runLater(new Runnable()
 
                     {
