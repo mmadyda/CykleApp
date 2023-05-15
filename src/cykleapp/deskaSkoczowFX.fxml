@@ -31,7 +31,7 @@
                               <Image url="@img/hala_skoczow.png" />
                            </image>
                         </ImageView>
-                        <PieChart fx:id="halaWykresKolowy" layoutX="1028.0" layoutY="-93.0" legendVisible="false" prefHeight="576.0" prefWidth="701.0" />
+                        <PieChart fx:id="halaWykresKolowy" layoutX="1119.0" layoutY="14.0" legendVisible="false" prefHeight="345.0" prefWidth="660.0" title="Dane ze zmiany" titleSide="BOTTOM" />
                         
                          <Polyline fill="#00a1ff1a" layoutX="741.0" layoutY="509.0" points="-469.0, -75.0, 840.0, -75.0, 850.0, 139.0, -358.0, 139.0, -469.0, -75.0" stroke="#00a1ff66" strokeLineCap="ROUND" strokeLineJoin="ROUND" strokeType="INSIDE" strokeWidth="4.0">
                            <effect>

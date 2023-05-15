@@ -23,9 +23,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -99,6 +102,7 @@ public class DeskaUstronFXController implements Initializable {
     private int kol_brak_oper;
     private int kol_postoj;
     private int kol_calkowity_czas;
+    private float kol_max;
     
     ObservableList<PieChart.Data> daneWykresKolowy;
     
@@ -116,6 +120,14 @@ public class DeskaUstronFXController implements Initializable {
     
     private int liczba_ppracujacych_wtryskarek_ustron = 0;
     private double postep;
+    
+    final static DateTimeFormatter CUSTOM_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    NumberFormat procentFormat = NumberFormat.getPercentInstance(Locale.US);
+    
+    String str_dane_od = "";
+    String str_dane_do = "";
+
+    
     List<String> komunikatyTxt;
     private boolean wczytanoKomunikaty;
     private Timeline komunikatyTimeline;
@@ -386,8 +398,33 @@ public class DeskaUstronFXController implements Initializable {
                 kol_calkowity_czas = 0;
                 
                 String  nazwaMiejsca = "SKOCZOW";
-                localDateTime_od = LocalDateTime.now().minusHours(8);
-                localDateTime_do = LocalDateTime.now();
+                
+                LocalDateTime localDateTime_teraz = LocalDateTime.now();
+                LocalDateTime localDateTime_start_pierwsza = localDateTime_teraz.withHour(6).withMinute(0).withSecond(0);
+                LocalDateTime localDateTime_koniec_pierwsza = localDateTime_start_pierwsza.plusHours(12);
+                
+                LocalDateTime localDateTime_start_druga = localDateTime_teraz.withHour(18).withMinute(0).withSecond(0);
+                LocalDateTime localDateTime_koniec_druga = localDateTime_start_druga.plusHours(12);
+                
+                localDateTime_od = localDateTime_teraz.minusHours(12);
+                localDateTime_do = localDateTime_teraz;
+                
+                if (localDateTime_teraz.isAfter(localDateTime_start_pierwsza) && localDateTime_teraz.isBefore(localDateTime_koniec_pierwsza)) {
+                    System.out.println("Pierwsza zmiana");
+                    
+                    localDateTime_od = localDateTime_start_pierwsza;
+                    localDateTime_do = localDateTime_koniec_pierwsza;
+                }
+                else if (localDateTime_teraz.isAfter(localDateTime_start_druga) && localDateTime_teraz.isBefore(localDateTime_koniec_druga)) {
+                    System.out.println("Pierwsza zmiana");
+                    
+                    localDateTime_od = localDateTime_start_druga;
+                    localDateTime_do = localDateTime_koniec_druga;
+                }
+                str_dane_od = localDateTime_od.format(CUSTOM_FORMATTER); 
+                str_dane_do = localDateTime_do.format(CUSTOM_FORMATTER); 
+                System.out.println(str_dane_od + " " + str_dane_do );
+                
                 String sqlCzas = "SELECT\n" +
                         "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wtrysk > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wtrysk,\n" +
                         "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wybrak > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wybrak,\n" +
@@ -524,18 +561,20 @@ public class DeskaUstronFXController implements Initializable {
                         }
                     }
                 }
-                 daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+calculateTime(kol_wtrysk), kol_wtrysk),
-                new PieChart.Data("próby technologiczne "+calculateTime(kol_proby_tech), kol_proby_tech),
-                new PieChart.Data("postój zaplanowany "+calculateTime(kol_postoj), kol_postoj),
-                new PieChart.Data("przezbrajanie "+calculateTime(kol_przezbrajanie), kol_przezbrajanie),
-                new PieChart.Data("suszenie materiału "+calculateTime(kol_susz_m), kol_susz_m),
-                new PieChart.Data("nie zgłoszono "+calculateTime(kol_postoj_n), kol_postoj_n),
-                new PieChart.Data("awaria maszyny "+calculateTime(kol_awaria_m), kol_awaria_m),
-                new PieChart.Data("awaria formy "+calculateTime(kol_awaria_f), kol_awaria_f),
-                new PieChart.Data("brak zaopatrzenia "+calculateTime(kol_brak_zaop), kol_brak_zaop),
-                new PieChart.Data("przerwa pracownika "+calculateTime(kol_przerwa_p), kol_przerwa_p),
-                new PieChart.Data("brak operatora "+calculateTime(kol_brak_oper), kol_brak_oper),
-                new PieChart.Data("wybrak "+calculateTime(kol_wybrak), kol_wybrak));
+                kol_max = kol_wtrysk+kol_proby_tech+kol_postoj+kol_przezbrajanie+kol_susz_m+kol_postoj_n+kol_awaria_m+kol_awaria_f+kol_brak_zaop+kol_przerwa_p+kol_brak_oper+kol_wybrak;
+                
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+procentFormat.format(kol_wtrysk/kol_max), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+procentFormat.format(kol_proby_tech/kol_max), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+procentFormat.format(kol_postoj/kol_max), kol_postoj),
+                new PieChart.Data("przezbrajanie "+procentFormat.format(kol_przezbrajanie/kol_max), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+procentFormat.format(kol_susz_m/kol_max), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+procentFormat.format(kol_postoj_n/kol_max), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+procentFormat.format(kol_awaria_m/kol_max), kol_awaria_m),
+                new PieChart.Data("awaria formy "+procentFormat.format(kol_awaria_f/kol_max), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+procentFormat.format(kol_brak_zaop/kol_max), kol_brak_zaop),
+                new PieChart.Data("przerwa pracownika "+procentFormat.format(kol_przerwa_p/kol_max), kol_przerwa_p),
+                new PieChart.Data("brak operatora "+procentFormat.format(kol_brak_oper/kol_max), kol_brak_oper),
+                new PieChart.Data("wybrak "+procentFormat.format(kol_wybrak/kol_max), kol_wybrak));
                  
                 System.out.println("liczba sprawdzanych maszyn: "+istniejace_maszyny.size());
                 
