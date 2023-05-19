@@ -69,10 +69,15 @@ import javax.imageio.ImageIO;
  */
 public class DeskaSkoczowFXController implements Initializable {
 
-    private Connection conn;
+    private Connection conn_wtryskarki;
+    private Connection conn_kolowy;
     private ResultSet rs;
     private PreparedStatement pst;
+
+    
+    
     private ArrayList<Maszyna> istniejace_maszyny;
+    private String  nazwaMiejsca = "SKOCZOW";
     
     private String data;
     private int wtrysk;
@@ -110,11 +115,13 @@ public class DeskaSkoczowFXController implements Initializable {
     private LocalDateTime localDateTime_od;
     private LocalDateTime localDateTime_do;
     
-    private Timeline updater;
+    private Timeline wtryskarkiUpdater;
+    private Timeline kolowyUpdater;
     private Timeline animacja;
     private Alert alertSQL;
     private Alert alertInternet;
-    private final static int czas_odswierzania = 15;
+    private final static int czas_odswierzania_wtryskarek = 20;
+    private final static int czas_odswierzania_kolowy = 120;
     private final static int czas_animacji = 2;
     private final static int obecnyKomunikat = 0;
     private final static int liczbaKomunikatow = 0;
@@ -273,7 +280,8 @@ public class DeskaSkoczowFXController implements Initializable {
         borderPane.setMinHeight(480);
         System.out.println("jestem w initialize DeskaSkoczowFXController");
 
-        conn = mysqlconnect.ConnecrDb();
+        conn_wtryskarki = mysqlconnect.ConnecrDb();
+        conn_kolowy = mysqlconnect.ConnecrDb();
  
 
         Platform.runLater(new Runnable(){
@@ -313,8 +321,9 @@ public class DeskaSkoczowFXController implements Initializable {
         {
                 public void run()
 
-                {
+                {              
                         aktualizuj();
+                        aktualizuj_kolowy();
                 }
         };
         Thread backgroundThread = new Thread(task);
@@ -336,7 +345,8 @@ public class DeskaSkoczowFXController implements Initializable {
 
                 }
             }));
-        updater = new Timeline(new KeyFrame(Duration.seconds(czas_odswierzania), new EventHandler<ActionEvent>() {
+        //Wtryskarki updater
+        wtryskarkiUpdater = new Timeline(new KeyFrame(Duration.seconds(czas_odswierzania_wtryskarek), new EventHandler<ActionEvent>() {
 
                 @Override
                 public void handle(ActionEvent event) {
@@ -373,10 +383,51 @@ public class DeskaSkoczowFXController implements Initializable {
                     
 
                 }
-            }));
+            }));  
+        wtryskarkiUpdater.setCycleCount(Timeline.INDEFINITE);
+        wtryskarkiUpdater.play();
         
-        updater.setCycleCount(Timeline.INDEFINITE);
-        updater.play();
+        //kolowy updater
+        kolowyUpdater = new Timeline(new KeyFrame(Duration.seconds(czas_odswierzania_kolowy), new EventHandler<ActionEvent>() {
+
+                @Override
+                public void handle(ActionEvent event) {
+                    
+                    //System.out.println("wczytuje...");
+                    //progressBar.setVisible(true);
+                    //postep = 0;
+                    Platform.runLater(new Runnable()
+                    {
+                            @Override
+                            public void run()
+                            {
+                                //progressBar.setProgress(postep);
+                                
+                            }
+
+                    });
+                    Runnable task = new Runnable()
+
+                    {
+                            public void run()
+
+                            {
+                                    aktualizuj_kolowy();
+                            }
+                    };
+                    Thread backgroundThread = new Thread(task);
+
+                    backgroundThread.setDaemon(true);
+
+                    backgroundThread.start();
+
+                    
+                    
+
+                }
+            }));  
+        kolowyUpdater.setCycleCount(Timeline.INDEFINITE);
+        kolowyUpdater.play();
   
         zaladowano_okno = true;
     }
@@ -387,247 +438,7 @@ public class DeskaSkoczowFXController implements Initializable {
     {
         if(jestInternet())
         {
-            System.out.println("Aktualizowanie...");
-            try
-            {
-                kol_data = "";
-                kol_wtrysk = 0;
-                kol_wybrak = 0;
-                kol_postoj_n = 0;
-                kol_awaria_m = 0;
-                kol_awaria_f =0;
-                kol_przezbrajanie = 0;
-                kol_susz_m = 0;
-                kol_proby_tech = 0;
-                kol_brak_zaop = 0;
-                kol_przerwa_p = 0;
-                kol_brak_oper = 0;
-                kol_postoj = 0;
-                kol_calkowity_czas = 0;
-                
-                String  nazwaMiejsca = "SKOCZOW";
-                
-                LocalDateTime localDateTime_teraz = LocalDateTime.now();
-                LocalDateTime localDateTime_start_pierwsza = localDateTime_teraz.withHour(6).withMinute(0).withSecond(0);
-                LocalDateTime localDateTime_koniec_pierwsza = localDateTime_start_pierwsza.plusHours(12);
-                
-                LocalDateTime localDateTime_start_druga = localDateTime_teraz.withHour(18).withMinute(0).withSecond(0);
-                LocalDateTime localDateTime_koniec_druga = localDateTime_start_druga.plusHours(12);
-                
-                localDateTime_od = localDateTime_teraz.minusHours(12);
-                localDateTime_do = localDateTime_teraz;
-                
-                if (localDateTime_teraz.isAfter(localDateTime_start_pierwsza) && localDateTime_teraz.isBefore(localDateTime_koniec_pierwsza)) {
-                    System.out.println("Pierwsza zmiana");
-                    
-                    localDateTime_od = localDateTime_start_pierwsza;
-                    localDateTime_do = localDateTime_koniec_pierwsza;
-                }
-                else if (localDateTime_teraz.isAfter(localDateTime_start_druga) && localDateTime_teraz.isBefore(localDateTime_koniec_druga)) {
-                    System.out.println("Pierwsza zmiana");
-                    
-                    localDateTime_od = localDateTime_start_druga;
-                    localDateTime_do = localDateTime_koniec_druga;
-                }
-                str_dane_od = localDateTime_od.format(CUSTOM_FORMATTER); 
-                str_dane_do = localDateTime_do.format(CUSTOM_FORMATTER); 
-                System.out.println(str_dane_od + " " + str_dane_do );
-                
-                
-                
-                String sqlCzas = "SELECT\n" +
-                        "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wtrysk > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wtrysk,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and wybrak > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wybrak,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and postoj_n > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj_n,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and awaria_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_m,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and awaria_f > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_f,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and przezbrajanie > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przezbrajanie,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and proby_tech > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as proby_tech,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and brak_zaop > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_zaop,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and przerwa > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przerwa,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and brak_oper > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_oper,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and susz_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as susz_m,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and postoj > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj,\n" +
-                        "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where miejsce = '"+nazwaMiejsca+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as sum_czas;";
-
-                System.out.println(sqlCzas);
-
-                pst = conn.prepareStatement(sqlCzas);
-
-                rs = pst.executeQuery(sqlCzas);
-
-                while(rs.next()) {
-                    if(rs.getString("sum_czas") == null)
-                    {
-                        //koniec = true;
-                        //break;
-                    }
-                    else
-                    {
-                        try
-                        {
-                        kol_wtrysk += Integer.parseInt(rs.getString("wtrysk"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_wtrysk += 0;
-                        }
-                        try
-                        {
-                        kol_wybrak += Integer.parseInt(rs.getString("wybrak"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_wybrak += 0;
-                        }
-                        try
-                        {
-                        kol_postoj_n += (int)Float.parseFloat(rs.getString("postoj_n"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_postoj_n += 0;
-                        }
-                        try
-                        {
-                        kol_awaria_m += (int)Float.parseFloat(rs.getString("awaria_m"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_awaria_m += 0;
-                        }
-                        try
-                        {
-                        kol_awaria_f += (int)Float.parseFloat(rs.getString("awaria_f"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_awaria_f += 0;
-                        }
-                        try
-                        {
-                        kol_przezbrajanie += (int)Float.parseFloat(rs.getString("przezbrajanie"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_przezbrajanie += 0;
-                        }
-                        try
-                        {
-                        kol_proby_tech += (int)Float.parseFloat(rs.getString("proby_tech"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_proby_tech += 0;
-                        }
-                        try
-                        {
-                        kol_brak_zaop += (int)Float.parseFloat(rs.getString("brak_zaop"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_brak_zaop += 0;
-                        }
-                        try
-                        {
-                        kol_przerwa_p += (int)Float.parseFloat(rs.getString("przerwa"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_przerwa_p += 0;
-                        }
-
-                        try
-                        {
-                        kol_brak_oper += (int)Float.parseFloat(rs.getString("brak_oper"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_brak_oper += 0;
-                        }
-                        try
-                        {
-                        kol_susz_m += (int)Float.parseFloat(rs.getString("susz_m"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_susz_m += 0;
-                        }
-                        try
-                        {
-                        kol_postoj += (int)Float.parseFloat(rs.getString("postoj"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_postoj += 0;
-                        }
-                        try
-                        {
-                        kol_calkowity_czas += (int)Float.parseFloat(rs.getString("sum_czas"));
-                        }
-                        catch(Exception ex)
-                        {
-                            kol_calkowity_czas += 0;
-                        }
-                    }
-                }
-                kol_max = kol_wtrysk+kol_proby_tech+kol_postoj+kol_przezbrajanie+kol_susz_m+kol_postoj_n+kol_awaria_m+kol_awaria_f+kol_brak_zaop+kol_przerwa_p+kol_brak_oper+kol_wybrak;
-                
-                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+procentFormat.format(kol_wtrysk/kol_max), kol_wtrysk),
-                new PieChart.Data("próby technologiczne "+procentFormat.format(kol_proby_tech/kol_max), kol_proby_tech),
-                new PieChart.Data("postój zaplanowany "+procentFormat.format(kol_postoj/kol_max), kol_postoj),
-                new PieChart.Data("przezbrajanie "+procentFormat.format(kol_przezbrajanie/kol_max), kol_przezbrajanie),
-                new PieChart.Data("suszenie materiału "+procentFormat.format(kol_susz_m/kol_max), kol_susz_m),
-                new PieChart.Data("nie zgłoszono "+procentFormat.format(kol_postoj_n/kol_max), kol_postoj_n),
-                new PieChart.Data("awaria maszyny "+procentFormat.format(kol_awaria_m/kol_max), kol_awaria_m),
-                new PieChart.Data("awaria formy "+procentFormat.format(kol_awaria_f/kol_max), kol_awaria_f),
-                new PieChart.Data("brak zaopatrzenia "+procentFormat.format(kol_brak_zaop/kol_max), kol_brak_zaop),
-                new PieChart.Data("przerwa pracownika "+procentFormat.format(kol_przerwa_p/kol_max), kol_przerwa_p),
-                new PieChart.Data("brak operatora "+procentFormat.format(kol_brak_oper/kol_max), kol_brak_oper),
-                new PieChart.Data("wybrak "+procentFormat.format(kol_wybrak/kol_max), kol_wybrak));
-                
-                
-                
-                System.out.println("liczba sprawdzanych maszyn: "+istniejace_maszyny.size());
-                
-                System.out.println("całkowity czas w wykresie kołowym: "+calculateTime(kol_calkowity_czas));
-                
-                
-                 Platform.runLater(new Runnable()
-
-                    {
-
-                    @Override
-
-                    public void run()
-
-                    {
-                        halaWykresKolowy.getData().clear();
-                        halaWykresKolowy.getData().addAll(daneWykresKolowy);
-                        halaWykresKolowy.setTitle("Dane pobierane od: "+str_dane_od+ " do: "+str_dane_do);
-
-                    }
-
-                    });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
-            }
-            catch(SQLException ex)
-            {
-                    if(!alertSQL.isShowing())
-                    {
-                        Runnable task = new Runnable()
-
-                        {
-                        public void run()
-
-                        {
-                                alertSQL.show();
-                        }
-                        };
-
-                    }
-
-                    System.err.println("Błąd: " + ex.getMessage());
-            }
+            System.out.println("Aktualizowanie wtryskarek...");
             int i =1;
             for(Maszyna masfor:istniejace_maszyny)
             {
@@ -683,7 +494,7 @@ public class DeskaSkoczowFXController implements Initializable {
                 ResultSet rs_a;
                 PreparedStatement pst_a;
                 //System.out.println(sql);
-                pst_a = conn.prepareStatement(sql);
+                pst_a = conn_wtryskarki.prepareStatement(sql);
                 
                 rs_a = pst_a.executeQuery(sql);
                 if(rs_a != null)
@@ -898,6 +709,265 @@ public class DeskaSkoczowFXController implements Initializable {
  
     }
     //DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT DODAWANIE WTRYSKAREK DO LAYOUT
+    
+    public void aktualizuj_kolowy()
+    {
+        if(jestInternet())
+        {
+            System.out.println("Aktualizowanie wykresu kolowego");
+            try
+            {
+                kol_data = "";
+                kol_wtrysk = 0;
+                kol_wybrak = 0;
+                kol_postoj_n = 0;
+                kol_awaria_m = 0;
+                kol_awaria_f =0;
+                kol_przezbrajanie = 0;
+                kol_susz_m = 0;
+                kol_proby_tech = 0;
+                kol_brak_zaop = 0;
+                kol_przerwa_p = 0;
+                kol_brak_oper = 0;
+                kol_postoj = 0;
+                kol_calkowity_czas = 0;
+                
+                
+                
+                LocalDateTime localDateTime_teraz = LocalDateTime.now();
+                LocalDateTime localDateTime_start_pierwsza = localDateTime_teraz.withHour(6).withMinute(0).withSecond(0);
+                LocalDateTime localDateTime_koniec_pierwsza = localDateTime_start_pierwsza.plusHours(12);
+                
+                LocalDateTime localDateTime_start_druga = localDateTime_teraz.withHour(18).withMinute(0).withSecond(0);
+                LocalDateTime localDateTime_koniec_druga = localDateTime_start_druga.plusHours(12);
+                
+                localDateTime_od = localDateTime_teraz.minusHours(12);
+                localDateTime_do = localDateTime_teraz;
+                
+                if (localDateTime_teraz.isAfter(localDateTime_start_pierwsza) && localDateTime_teraz.isBefore(localDateTime_koniec_pierwsza)) {
+                    System.out.println("Pierwsza zmiana");
+                    
+                    localDateTime_od = localDateTime_start_pierwsza;
+                    localDateTime_do = localDateTime_koniec_pierwsza;
+                }
+                else if (localDateTime_teraz.isAfter(localDateTime_start_druga) && localDateTime_teraz.isBefore(localDateTime_koniec_druga)) {
+                    System.out.println("Pierwsza zmiana");
+                    
+                    localDateTime_od = localDateTime_start_druga;
+                    localDateTime_do = localDateTime_koniec_druga;
+                }
+                str_dane_od = localDateTime_od.format(CUSTOM_FORMATTER); 
+                str_dane_do = localDateTime_do.format(CUSTOM_FORMATTER); 
+                System.out.println(str_dane_od + " " + str_dane_do );
+                
+                
+                for(Maszyna masfor:istniejace_maszyny)
+                {
+                    
+                
+                
+
+                    String sqlCzas = "SELECT\n" +
+                            "(SELECT (IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0))  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and wtrysk > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wtrysk,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and wybrak > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as wybrak,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and postoj_n > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj_n,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and awaria_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_m,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and awaria_f > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as awaria_f,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and przezbrajanie > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przezbrajanie,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and proby_tech > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as proby_tech,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and brak_zaop > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_zaop,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and przerwa > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as przerwa,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and brak_oper > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as brak_oper,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and susz_m > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as susz_m,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and postoj > 0 and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as postoj,\n" +
+                            "(SELECT IFNULL(sum(TIMESTAMPDIFF(second, pop_insert, data_g )), 0)  FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and miejsce = '"+nazwaMiejsca+"' and data_g between '"+ Timestamp.valueOf(localDateTime_od)+"' and '"+Timestamp.valueOf(localDateTime_do)+"') as sum_czas;";
+
+                    System.out.println(sqlCzas);
+
+                    ResultSet rs_a;
+                PreparedStatement pst_a;
+                //System.out.println(sql);
+                pst_a = conn_kolowy.prepareStatement(sqlCzas);
+                
+                rs_a = pst_a.executeQuery(sqlCzas);
+
+                    while(rs_a.next()) {
+                        if(rs_a.getString("sum_czas") == null)
+                        {
+                            //koniec = true;
+                            //break;
+                        }
+                        else
+                        {
+                            try
+                            {
+                            kol_wtrysk += Integer.parseInt(rs_a.getString("wtrysk"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_wtrysk += 0;
+                            }
+                            try
+                            {
+                            kol_wybrak += Integer.parseInt(rs_a.getString("wybrak"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_wybrak += 0;
+                            }
+                            try
+                            {
+                            kol_postoj_n += (int)Float.parseFloat(rs_a.getString("postoj_n"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_postoj_n += 0;
+                            }
+                            try
+                            {
+                            kol_awaria_m += (int)Float.parseFloat(rs_a.getString("awaria_m"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_awaria_m += 0;
+                            }
+                            try
+                            {
+                            kol_awaria_f += (int)Float.parseFloat(rs_a.getString("awaria_f"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_awaria_f += 0;
+                            }
+                            try
+                            {
+                            kol_przezbrajanie += (int)Float.parseFloat(rs_a.getString("przezbrajanie"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_przezbrajanie += 0;
+                            }
+                            try
+                            {
+                            kol_proby_tech += (int)Float.parseFloat(rs_a.getString("proby_tech"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_proby_tech += 0;
+                            }
+                            try
+                            {
+                            kol_brak_zaop += (int)Float.parseFloat(rs_a.getString("brak_zaop"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_brak_zaop += 0;
+                            }
+                            try
+                            {
+                            kol_przerwa_p += (int)Float.parseFloat(rs_a.getString("przerwa"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_przerwa_p += 0;
+                            }
+
+                            try
+                            {
+                            kol_brak_oper += (int)Float.parseFloat(rs_a.getString("brak_oper"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_brak_oper += 0;
+                            }
+                            try
+                            {
+                            kol_susz_m += (int)Float.parseFloat(rs_a.getString("susz_m"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_susz_m += 0;
+                            }
+                            try
+                            {
+                            kol_postoj += (int)Float.parseFloat(rs_a.getString("postoj"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_postoj += 0;
+                            }
+                            try
+                            {
+                            kol_calkowity_czas += (int)Float.parseFloat(rs_a.getString("sum_czas"));
+                            }
+                            catch(Exception ex)
+                            {
+                                kol_calkowity_czas += 0;
+                            }
+                        }
+                    }
+                }//KONIEC FOR
+                
+                kol_max = kol_wtrysk+kol_proby_tech+kol_postoj+kol_przezbrajanie+kol_susz_m+kol_postoj_n+kol_awaria_m+kol_awaria_f+kol_brak_zaop+kol_przerwa_p+kol_brak_oper+kol_wybrak;
+                
+                daneWykresKolowy = FXCollections.observableArrayList(new PieChart.Data("wtrysk "+procentFormat.format(kol_wtrysk/kol_max), kol_wtrysk),
+                new PieChart.Data("próby technologiczne "+procentFormat.format(kol_proby_tech/kol_max), kol_proby_tech),
+                new PieChart.Data("postój zaplanowany "+procentFormat.format(kol_postoj/kol_max), kol_postoj),
+                new PieChart.Data("przezbrajanie "+procentFormat.format(kol_przezbrajanie/kol_max), kol_przezbrajanie),
+                new PieChart.Data("suszenie materiału "+procentFormat.format(kol_susz_m/kol_max), kol_susz_m),
+                new PieChart.Data("nie zgłoszono "+procentFormat.format(kol_postoj_n/kol_max), kol_postoj_n),
+                new PieChart.Data("awaria maszyny "+procentFormat.format(kol_awaria_m/kol_max), kol_awaria_m),
+                new PieChart.Data("awaria formy "+procentFormat.format(kol_awaria_f/kol_max), kol_awaria_f),
+                new PieChart.Data("brak zaopatrzenia "+procentFormat.format(kol_brak_zaop/kol_max), kol_brak_zaop),
+                new PieChart.Data("przerwa pracownika "+procentFormat.format(kol_przerwa_p/kol_max), kol_przerwa_p),
+                new PieChart.Data("brak operatora "+procentFormat.format(kol_brak_oper/kol_max), kol_brak_oper),
+                new PieChart.Data("wybrak "+procentFormat.format(kol_wybrak/kol_max), kol_wybrak));
+                
+                
+                
+                System.out.println("liczba sprawdzanych maszyn: "+istniejace_maszyny.size());
+                
+                System.out.println("całkowity czas w wykresie kołowym: "+calculateTime(kol_calkowity_czas));
+                
+                
+                 Platform.runLater(new Runnable()
+
+                    {
+
+                    @Override
+
+                    public void run()
+
+                    {
+                        halaWykresKolowy.getData().clear();
+                        halaWykresKolowy.getData().addAll(daneWykresKolowy);
+                        halaWykresKolowy.setTitle("Dane pobierane od: "+str_dane_od+ " do: "+str_dane_do);
+
+                    }
+
+                    });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_
+            }
+            catch(SQLException ex)
+            {
+                    if(!alertSQL.isShowing())
+                    {
+                        Runnable task = new Runnable()
+
+                        {
+                        public void run()
+
+                        {
+                                alertSQL.show();
+                        }
+                        };
+
+                    }
+
+                    System.err.println("Błąd: " + ex.getMessage());
+            }
+            
+        }//koniec id conn lub internet
+    }
     public void przypiszKolory(Maszyna mas)
     {
         
@@ -989,27 +1059,38 @@ public class DeskaSkoczowFXController implements Initializable {
     }
     public void shutdown(){
         //System.out.println("zamykanie okna");
-        if(updater != null)
-        {
-            try {
-                if(conn != null)
-                {
-                conn.close();
-                }
-                if(updater != null)
-                {
-                updater.stop();
-                }
-               
+        try{
+            if(wtryskarkiUpdater != null)
+            {
 
-            } catch (SQLException ex) {
+                if(conn_wtryskarki != null)
+                {
+                conn_wtryskarki.close();
+                }
+                if(wtryskarkiUpdater != null)
+                {
+                wtryskarkiUpdater.stop();
+                }  
+            }
+            if(kolowyUpdater != null)
+            {
+                if(conn_kolowy != null)
+                {
+                conn_kolowy.close();
+                }
+                if(kolowyUpdater != null)
+                {
+                kolowyUpdater.stop();
+                }
+            }
+        }
+        catch (SQLException ex) {
                 System.err.println("Błąd: " + ex.getMessage());
             }
             finally
             {
                 zamknieto_okno = true;
             }
-        }
     }
     public void kolorLegenda()
     {
