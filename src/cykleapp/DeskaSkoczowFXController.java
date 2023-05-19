@@ -71,8 +71,6 @@ public class DeskaSkoczowFXController implements Initializable {
 
     private Connection conn_wtryskarki;
     private Connection conn_kolowy;
-    private ResultSet rs;
-    private PreparedStatement pst;
 
     
     
@@ -292,6 +290,7 @@ public class DeskaSkoczowFXController implements Initializable {
 
         // koniec wczytywania komunikatów
         kolorLegenda();
+        halaWykresKolowy.setTitle("");
         progressBar.setVisible(true);
         System.out.println("jestem w initialize DeskaSkoczowFXController 2");
         

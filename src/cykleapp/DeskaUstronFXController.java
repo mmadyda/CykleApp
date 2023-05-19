@@ -71,8 +71,6 @@ public class DeskaUstronFXController implements Initializable {
 
     private Connection conn_wtryskarki;
     private Connection conn_kolowy;
-    private ResultSet rs;
-    private PreparedStatement pst;
     private ArrayList<Maszyna> istniejace_maszyny;
     private String  nazwaMiejsca = "USTRON";
     
@@ -139,7 +137,10 @@ public class DeskaUstronFXController implements Initializable {
     private static final int czasZmianyKomunikatu = 20;
     private boolean zaladowano_okno = false;
     private boolean zamknieto_okno = false;
-            
+    
+    
+    @FXML
+    private PieChart halaWykresKolowy;        
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -191,14 +192,10 @@ public class DeskaUstronFXController implements Initializable {
     @FXML
     private Label labLEG_BRAK_OPER;
    
-    @FXML
-    private Circle cien_zegar111;
     
     
     @FXML
     private ScrollPane ScrollPane;
-    @FXML
-    private Clock clock;
     @FXML
     private Button btnUST_33;
     @FXML
@@ -226,6 +223,8 @@ public class DeskaUstronFXController implements Initializable {
     @FXML
     private Label labLEG_PRZERWA_P;
     
+    
+    
     public static String calculateTime(long seconds) {
         long hours = TimeUnit.SECONDS.toHours(seconds);
 
@@ -238,6 +237,7 @@ public class DeskaUstronFXController implements Initializable {
     
     return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
     }
+    
 
     /**
      * Initializes the controller class.
@@ -266,6 +266,7 @@ public class DeskaUstronFXController implements Initializable {
         komunikaty(komunikaty);
         // koniec wczytywania komunikatów
         kolorLegenda();
+        halaWykresKolowy.setTitle("");
         progressBar.setVisible(true);
         System.out.println("jestem w initialize DeskaFXController 2");
         
@@ -297,6 +298,7 @@ public class DeskaUstronFXController implements Initializable {
 
                 {
                         aktualizuj();
+                        aktualizuj_kolowy();
                 }
         };
         Thread backgroundThread = new Thread(task);
@@ -467,20 +469,6 @@ public class DeskaUstronFXController implements Initializable {
                 brak_oper =0;
                 postoj =0;
                 
-                kol_data = "";
-                kol_wtrysk = 0;
-                kol_wybrak = 0;
-                kol_postoj_n = 0;
-                kol_awaria_m = 0;
-                kol_awaria_f =0;
-                kol_przezbrajanie = 0;
-                kol_susz_m = 0;
-                kol_proby_tech = 0;
-                kol_brak_zaop = 0;
-                kol_przerwa_p = 0;
-                kol_brak_oper = 0;
-                kol_postoj = 0;
-                kol_calkowity_czas = 0;
 
                 String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, susz_m, proby_tech, brak_zaop, przerwa, brak_oper, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE) and lp=(SELECT max(lp) FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' and data_g > DATE_SUB(NOW(), INTERVAL 5 MINUTE));";
                 //String sql = " SELECT data_g, wtrysk, wybrak, postoj_n, awaria_m, awaria_f, przezbrajanie, proby_tech, brak_zaop, postoj FROM techniplast.cykle_szybkie where maszyna = '"+masfor.getNazwa()+"' ORDER BY lp DESC LIMIT 1;";
@@ -919,11 +907,11 @@ public class DeskaUstronFXController implements Initializable {
 
                     public void run()
 
-                    {/*
+                    {
                         halaWykresKolowy.getData().clear();
                         halaWykresKolowy.getData().addAll(daneWykresKolowy);
                         halaWykresKolowy.setTitle("Dane pobierane od: "+str_dane_od+ " do: "+str_dane_do);
-*/
+
                     }
 
                     });//END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_END_RUNNABLE_

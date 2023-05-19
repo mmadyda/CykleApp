@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXSpinner?>
-<?import eu.hansolo.medusa.Clock?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.Bloom?>
-<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.BoxBlur?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,6 +16,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#oknoMouseClickedAction" prefHeight="1080.0" prefWidth="1920.0" styleClass="clientarea-background" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cykleapp.DeskaUstronFXController">
@@ -38,11 +39,6 @@
                               </Glow>
                            </effect>
                         </ImageView>
-                        <Circle fx:id="cien_zegar111" fill="#f2f2f2" layoutX="1615.0" layoutY="151.0" radius="228.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0">
-                           <effect>
-                              <GaussianBlur radius="18.25" />
-                           </effect>
-                        </Circle>
                         <HBox alignment="CENTER" layoutX="39.0" layoutY="960.0" prefHeight="100.0" prefWidth="1770.0" spacing="10.0">
                            <children>
                               <VBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
@@ -170,7 +166,6 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <Clock fx:id="clock" backgroundPaint="BLACK" dateVisible="true" discreteSeconds="false" layoutX="1370.0" layoutY="10.0" lcdDesign="BLUE" lcdFont="LCD" minHeight="360.0" prefHeight="400.0" prefWidth="454.0" running="true" secondsVisible="true" shadowsEnabled="true" skinType="MINIMAL" />
                         <Button fx:id="btnUST_33" layoutX="340.0" layoutY="610.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 33">
                            <font>
                               <Font size="18.0" />
@@ -231,6 +226,17 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="346.0" layoutX="1185.0" layoutY="45.0" stroke="TRANSPARENT" strokeType="INSIDE" width="766.0">
+                           <effect>
+                              <BoxBlur height="96.07" width="115.36" />
+                           </effect>
+                        </Rectangle>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="219.0" layoutX="1448.0" layoutY="286.0" stroke="TRANSPARENT" strokeType="INSIDE" width="702.0">
+                           <effect>
+                              <BoxBlur height="96.07" width="115.36" />
+                           </effect>
+                        </Rectangle>
+                        <PieChart fx:id="halaWykresKolowy" layoutX="1198.0" layoutY="-2.0" legendVisible="false" prefHeight="442.0" prefWidth="660.0" title="Dane ze zmiany" titleSide="BOTTOM" />
                      </children>
                   </AnchorPane>
               </content>
