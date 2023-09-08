@@ -17,8 +17,12 @@ public class IstniejaceMaszynyKoniakow {
         CBmaszyna.getItems().add("TEST");
         ////////////////////////////////////////////////////////////////////////
         CBmaszyna.getItems().add("KO_1");
-
         ////////////////////////////////////////////////////////////////////////
+        CBmaszyna.getItems().add("KO_4");
+        CBmaszyna.getItems().add("KO_5");
+        CBmaszyna.getItems().add("KO_8");
+        CBmaszyna.getItems().add("KO_12");
+        CBmaszyna.getItems().add("KO_13");
 
         
         ////////////////////////////////////////////////////////////////////////
@@ -30,8 +34,12 @@ public class IstniejaceMaszynyKoniakow {
         ArrayList<Maszyna> maszyny = new ArrayList<Maszyna>();
         ////////////////////////////////////////////////////////////////////////
         maszyny.add(new Maszyna("KO_1"));
-
         ////////////////////////////////////////////////////////////////////////
+        maszyny.add(new Maszyna("KO_4"));
+        maszyny.add(new Maszyna("KO_5"));
+        maszyny.add(new Maszyna("KO_8"));
+        maszyny.add(new Maszyna("KO_12"));
+        maszyny.add(new Maszyna("KO_13"));
 
         return maszyny;
         
