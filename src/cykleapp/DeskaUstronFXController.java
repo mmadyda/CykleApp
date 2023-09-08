@@ -237,6 +237,42 @@ public class DeskaUstronFXController implements Initializable {
     
     return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
     }
+    @FXML
+    private Button btnUST_14;
+    @FXML
+    private Button btnUST_11;
+    @FXML
+    private Button btnUST_51;
+    @FXML
+    private Button btnUST_48;
+    @FXML
+    private Button btnUST_55;
+    @FXML
+    private Button btnUST_39;
+    @FXML
+    private Button btnUST_40;
+    @FXML
+    private Button btnUST_47;
+    @FXML
+    private Button btnUST_57;
+    @FXML
+    private Button btnUST_54;
+    @FXML
+    private Button btnUST_42;
+    @FXML
+    private Button btnUST_16;
+    @FXML
+    private Button btnUST_15;
+    @FXML
+    private Button btnUST_38;
+    @FXML
+    private Button btnUST_56;
+    @FXML
+    private Button btnUST_37;
+    @FXML
+    private Button btnUST_18;
+    @FXML
+    private Button btnUST_17;
     
 
     /**

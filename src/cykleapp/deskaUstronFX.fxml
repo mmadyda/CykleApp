@@ -171,7 +171,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_44" layoutX="581.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
+                        <Button fx:id="btnUST_44" layoutX="711.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -221,7 +221,7 @@
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_41" layoutX="1185.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 41">
+                        <Button fx:id="btnUST_41" layoutX="1203.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 41">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -237,6 +237,96 @@
                            </effect>
                         </Rectangle>
                         <PieChart fx:id="halaWykresKolowy" layoutX="1198.0" layoutY="-2.0" legendVisible="false" prefHeight="442.0" prefWidth="660.0" title="Dane ze zmiany" titleSide="BOTTOM" />
+                        <Button fx:id="btnUST_14" layoutX="340.0" layoutY="563.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 14">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_11" layoutX="340.0" layoutY="518.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 11">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_51" layoutX="307.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 51">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_48" layoutX="583.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_55" layoutX="676.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_39" layoutX="766.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 39">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_40" layoutX="852.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 40">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_47" layoutX="936.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_57" layoutX="1023.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_54" layoutX="1113.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 54">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_42" layoutX="1286.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 42">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_16" layoutX="453.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 16">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_15" layoutX="541.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 15">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_38" layoutX="629.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 38">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_56" layoutX="794.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 56">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_37" layoutX="876.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 37">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_18" layoutX="963.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 18">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="btnUST_17" layoutX="1095.0" layoutY="518.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" styleClass="wtryskarki" text="ST 17">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Button>
                      </children>
                   </AnchorPane>
               </content>
