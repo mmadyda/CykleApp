@@ -222,21 +222,6 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnLEG_PRZERWA_P;
     @FXML
     private Label labLEG_PRZERWA_P;
-    
-    
-    
-    public static String calculateTime(long seconds) {
-        long hours = TimeUnit.SECONDS.toHours(seconds);
-
-        long minute = (TimeUnit.SECONDS.toMinutes(seconds) -
-                      (TimeUnit.SECONDS.toHours(seconds)* 60));
-
-        long second = (TimeUnit.SECONDS.toSeconds(seconds) -
-                      (TimeUnit.SECONDS.toMinutes(seconds) *60));
-
-    
-    return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
-    }
     @FXML
     private Button btnUST_14;
     @FXML
@@ -273,6 +258,22 @@ public class DeskaUstronFXController implements Initializable {
     private Button btnUST_18;
     @FXML
     private Button btnUST_17;
+    
+    
+    
+    public static String calculateTime(long seconds) {
+        long hours = TimeUnit.SECONDS.toHours(seconds);
+
+        long minute = (TimeUnit.SECONDS.toMinutes(seconds) -
+                      (TimeUnit.SECONDS.toHours(seconds)* 60));
+
+        long second = (TimeUnit.SECONDS.toSeconds(seconds) -
+                      (TimeUnit.SECONDS.toMinutes(seconds) *60));
+
+    
+    return String.format("%02d", hours)+":" +String.format("%02d", minute)+":" + String.format("%02d", second);
+    }
+
     
 
     /**
@@ -333,8 +334,8 @@ public class DeskaUstronFXController implements Initializable {
                 public void run()
 
                 {
-                        aktualizuj();
-                        aktualizuj_kolowy();
+                    aktualizuj();
+                    aktualizuj_kolowy();
                 }
         };
         Thread backgroundThread = new Thread(task);
@@ -705,12 +706,10 @@ public class DeskaUstronFXController implements Initializable {
                                 przypiszKolory(masfor);
                                 
                             }
-
                     });                   
                 }
             }
-            animacja.play();
-            
+            animacja.play(); 
         }
         System.out.println("liczba pracujących wtryskarek: "+liczba_pracujacych_wtryskarek_ustron);
     }
@@ -946,7 +945,7 @@ public class DeskaUstronFXController implements Initializable {
                     {
                         halaWykresKolowy.getData().clear();
                         halaWykresKolowy.getData().addAll(daneWykresKolowy);
-                        halaWykresKolowy.setTitle("Dane pobierane od: "+str_dane_od+ " do: "+str_dane_do);
+                        halaWykresKolowy.setTitle("Dane pobierane\nod: "+str_dane_od+ "\ndo: "+str_dane_do);
 
                     }
 
@@ -959,11 +958,10 @@ public class DeskaUstronFXController implements Initializable {
                         Runnable task = new Runnable()
 
                         {
-                        public void run()
-
-                        {
-                                alertSQL.show();
-                        }
+                            public void run()
+                            {
+                                    alertSQL.show();
+                            }
                         };
 
                     }
@@ -975,9 +973,7 @@ public class DeskaUstronFXController implements Initializable {
         }//koniec id conn lub internet
     }
     public void przypiszKolory(Maszyna mas)
-    {
-        
-        
+    {   
         switch (mas.getNazwa()) {
 
             case "UST_33":
@@ -1007,6 +1003,61 @@ public class DeskaUstronFXController implements Initializable {
             case "UST_41":
                 btnUST_41.setStyle(mas.getStyl());
                 break;
+            case "UST_14":
+                btnUST_14.setStyle(mas.getStyl());
+                break;                
+            case "UST_11":
+                btnUST_11.setStyle(mas.getStyl());
+                break; 
+            case "UST_51":
+                btnUST_51.setStyle(mas.getStyl());
+                break; 
+            case "UST_48":
+                btnUST_48.setStyle(mas.getStyl());
+                break;
+            case "UST_55":
+                btnUST_55.setStyle(mas.getStyl());
+                break;
+            case "UST_39":
+                btnUST_39.setStyle(mas.getStyl());
+                break;
+            case "UST_40":
+                btnUST_40.setStyle(mas.getStyl());
+                break;
+            case "UST_47":
+                btnUST_47.setStyle(mas.getStyl());
+                break;
+            case "UST_57":
+                btnUST_57.setStyle(mas.getStyl());
+                break;
+            case "UST_54":
+                btnUST_54.setStyle(mas.getStyl());
+                break;
+            case "UST_42":
+                btnUST_42.setStyle(mas.getStyl());
+                break;
+            case "UST_16":
+                btnUST_16.setStyle(mas.getStyl());
+                break;
+            case "UST_15":
+                btnUST_15.setStyle(mas.getStyl());
+                break;
+            case "UST_38":
+                btnUST_38.setStyle(mas.getStyl());
+                break;
+            case "UST_56":
+                btnUST_56.setStyle(mas.getStyl());
+                break;
+            case "UST_37":
+                btnUST_37.setStyle(mas.getStyl());
+                break;
+            case "UST_18":
+                btnUST_18.setStyle(mas.getStyl());
+                break;
+            case "UST_17":
+                btnUST_17.setStyle(mas.getStyl());
+                break;
+      
             default:
                 break;
         }
@@ -1093,10 +1144,7 @@ public class DeskaUstronFXController implements Initializable {
            {
                alertInternet.show();
            }
-
            return false;
-
-
         } 
     }
      private void komunikaty(File plik)
@@ -1166,8 +1214,4 @@ public class DeskaUstronFXController implements Initializable {
             }
         }
     }
-
-  
-    
-    
 }

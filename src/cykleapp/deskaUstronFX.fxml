@@ -27,7 +27,7 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1075.0" prefWidth="1781.0">
                      <children>
-                        <ImageView id="TLO" fx:id="imgHala" fitHeight="795.0" fitWidth="1785.0" layoutX="73.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView id="TLO" fx:id="imgHala" fitHeight="797.0" fitWidth="2138.0" layoutX="27.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/Technipro_layout.png" />
                            </image>
@@ -166,22 +166,22 @@
                               <Insets />
                            </opaqueInsets>
                         </HBox>
-                        <Button fx:id="btnUST_33" layoutX="340.0" layoutY="610.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 33">
+                        <Button fx:id="btnUST_33" layoutX="340.0" layoutY="630.0" maxHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 33">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_44" layoutX="711.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
+                        <Button fx:id="btnUST_44" layoutX="762.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 44">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Label layoutX="319.0" layoutY="662.0" prefHeight="17.0" prefWidth="103.0" text="Jesteś tutaj" textFill="#ff8400">
+                        <Label layoutX="245.0" layoutY="586.0" prefHeight="17.0" prefWidth="103.0" rotate="-90.0" text="Jesteś tutaj" textFill="#ff8400">
                            <font>
                               <Font name="Ebrima Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Circle fill="#ff8400" layoutX="294.0" layoutY="660.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
+                        <Circle fill="#ff8400" layoutX="296.0" layoutY="676.0" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="3.0" />
                         <ImageView fitHeight="130.0" fitWidth="700.0" layoutX="199.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/logo_TECHNIPRO.png" />
@@ -191,37 +191,37 @@
                            </effect>
                         </ImageView>
                         <JFXSpinner fx:id="progressBar" layoutX="14.0" layoutY="14.0" prefHeight="61.0" prefWidth="61.0" progress="0.0" radius="40.0" startingAngle="0.0" />
-                        <Button fx:id="btnUST_45" layoutX="494.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 45">
+                        <Button fx:id="btnUST_45" layoutX="495.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 45">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_46" layoutX="959.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 46">
+                        <Button fx:id="btnUST_46" layoutX="936.0" layoutY="409.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 46">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_43" layoutX="553.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="176.0" styleClass="wtryskarki" text="ST 43">
+                        <Button fx:id="btnUST_43" layoutX="530.0" layoutY="409.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="176.0" styleClass="wtryskarki" text="ST 43">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_53" layoutX="1180.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="206.0" styleClass="wtryskarki" text="ST 53">
+                        <Button fx:id="btnUST_53" layoutX="1157.0" layoutY="409.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="206.0" styleClass="wtryskarki" text="ST 53">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_50" layoutX="363.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="180.0" styleClass="wtryskarki" text="ST 50">
+                        <Button fx:id="btnUST_50" layoutX="340.0" layoutY="409.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="180.0" styleClass="wtryskarki" text="ST 50">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_52" layoutX="740.0" layoutY="441.0" mnemonicParsing="false" prefHeight="53.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 52">
+                        <Button fx:id="btnUST_52" layoutX="717.0" layoutY="409.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="208.0" styleClass="wtryskarki" text="ST 52">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_41" layoutX="1203.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 41">
+                        <Button fx:id="btnUST_41" layoutX="1267.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 41">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -231,98 +231,98 @@
                               <BoxBlur height="96.07" width="115.36" />
                            </effect>
                         </Rectangle>
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="219.0" layoutX="1448.0" layoutY="286.0" stroke="TRANSPARENT" strokeType="INSIDE" width="702.0">
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f4f4f4" height="219.0" layoutX="1458.0" layoutY="344.0" stroke="TRANSPARENT" strokeType="INSIDE" width="702.0">
                            <effect>
                               <BoxBlur height="96.07" width="115.36" />
                            </effect>
                         </Rectangle>
-                        <PieChart fx:id="halaWykresKolowy" layoutX="1198.0" layoutY="-2.0" legendVisible="false" prefHeight="442.0" prefWidth="660.0" title="Dane ze zmiany" titleSide="BOTTOM" />
-                        <Button fx:id="btnUST_14" layoutX="340.0" layoutY="563.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 14">
+                        <PieChart fx:id="halaWykresKolowy" layoutX="1259.0" layoutY="-3.0" legendVisible="false" prefHeight="442.0" prefWidth="660.0" title="Dane ze zmiany" titleSide="BOTTOM" />
+                        <Button fx:id="btnUST_14" layoutX="340.0" layoutY="574.0" maxHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 14">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_11" layoutX="340.0" layoutY="518.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 11">
+                        <Button fx:id="btnUST_11" layoutX="340.0" layoutY="518.0" maxHeight="30.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="134.0" styleClass="wtryskarki" text="ST 11">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_51" layoutX="307.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 51">
+                        <Button fx:id="btnUST_51" layoutX="308.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 51">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_48" layoutX="583.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
+                        <Button fx:id="btnUST_48" layoutX="598.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 48">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_55" layoutX="676.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
+                        <Button fx:id="btnUST_55" layoutX="701.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 55">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_39" layoutX="766.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 39">
+                        <Button fx:id="btnUST_39" layoutX="796.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 39">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_40" layoutX="852.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 40">
+                        <Button fx:id="btnUST_40" layoutX="893.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 40">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_47" layoutX="936.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
+                        <Button fx:id="btnUST_47" layoutX="993.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 47">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_57" layoutX="1023.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
+                        <Button fx:id="btnUST_57" layoutX="1085.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 57">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_54" layoutX="1113.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 54">
+                        <Button fx:id="btnUST_54" layoutX="1177.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 54">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_42" layoutX="1286.0" layoutY="750.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 42">
+                        <Button fx:id="btnUST_42" layoutX="1367.0" layoutY="790.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 42">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_16" layoutX="453.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 16">
+                        <Button fx:id="btnUST_16" layoutX="456.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 16">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_15" layoutX="541.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 15">
+                        <Button fx:id="btnUST_15" layoutX="559.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 15">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_38" layoutX="629.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 38">
+                        <Button fx:id="btnUST_38" layoutX="658.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 38">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_56" layoutX="794.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 56">
+                        <Button fx:id="btnUST_56" layoutX="866.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 56">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_37" layoutX="876.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 37">
+                        <Button fx:id="btnUST_37" layoutX="975.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 37">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_18" layoutX="963.0" layoutY="563.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" rotate="-90.0" styleClass="wtryskarki" text="ST 18">
+                        <Button fx:id="btnUST_18" layoutX="1075.0" layoutY="573.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" rotate="-90.0" styleClass="wtryskarki" text="ST 18">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="btnUST_17" layoutX="1095.0" layoutY="518.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="145.0" styleClass="wtryskarki" text="ST 17">
+                        <Button fx:id="btnUST_17" layoutX="1232.0" layoutY="519.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="165.0" styleClass="wtryskarki" text="ST 17">
                            <font>
                               <Font size="18.0" />
                            </font>
