@@ -27,20 +27,18 @@ public class mysqlconnect {
 
             switch(m){
                 case FIRMA:
-                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=no","obiady","technitools192");
+                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=no","x","xxxx");
                     System.out.println("Połączono z serwerem MySQL sieć firmowa IP: 10.0.1.215:3306");
                     break;
                 case DOM:
                     //połączenie poza siecią firmową
-                    conn = DriverManager.getConnection("jdbc:mysql://91.225.157.226:6666?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
+                    conn = DriverManager.getConnection("jdbc:mysql://91.225.157.226:6666?useSSL=false&autoReconnect=true&useUnicode=yes","x","xxxx");
                     System.out.println("Połączono z serwerem MySQL sieć zewnętrzna IP: 91.225.157.226:6666");
                     break;
                 default:
-                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");     
+                    conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","x","xxxx");     
                     System.out.println("Połączono z serwerem MySQL sieć firmowa IP: 10.0.1.215:3306");
             }
-            
-            //Connection conn = DriverManager.getConnection("jdbc:mysql://89.161.232.241:3306/14443643_projekt?useSSL=false&autoReconnect=true&useUnicode=yes","14443643_projekt","Pro2017#");
             
 
             return conn;
@@ -57,8 +55,3 @@ public class mysqlconnect {
 
 
 }
-
-//połączenie ze skoczowem w jednej sieci
-//Connection conn = DriverManager.getConnection("jdbc:mysql://10.0.1.215:3306?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
-//stare home.pl Connection conn = DriverManager.getConnection("jdbc:mysql://89.161.232.241:3306/14443643_projekt?useSSL=false&autoReconnect=true&useUnicode=yes","14443643_projekt","Pro2017#");
-//połączenie z koniakowa  Connection conn = DriverManager.getConnection("jdbc:mysql://91.225.157.226:7777?useSSL=false&autoReconnect=true&useUnicode=yes","obiady","technitools192");
